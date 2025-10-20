@@ -17,7 +17,7 @@ export const Header = () => {
             onClick={scrollToTop}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <img src={logo} alt="храним.ру" className="h-12 w-12" />
+            <img src={logo} alt="храним.ру" className="h-12 w-12 brightness-0 invert hue-rotate-[45deg] saturate-[3]" />
             <span className="text-2xl font-bold text-primary">храним.ру</span>
           </button>
 
