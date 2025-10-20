@@ -69,10 +69,10 @@ export const ContactForm = () => {
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
-              Подберём контейнер под ваш срок — быстро
+              Оставьте заявку и получите доступ уже сегодня
             </h2>
-            <p className="text-muted-foreground">
-              Заполните форму — перезвоним в течение 30 минут
+            <p className="text-muted-foreground text-lg">
+              Шушары · Асфальт · 24/7 · Безопасно
             </p>
           </div>
 
@@ -141,7 +141,7 @@ export const ContactForm = () => {
                 className="w-full bg-accent hover:bg-accent-hover text-accent-foreground"
                 disabled={loading}
               >
-                {loading ? "Отправка..." : "Получить подбор"}
+                {loading ? "Отправка..." : "Оставить заявку"}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">

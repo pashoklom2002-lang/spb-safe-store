@@ -1,14 +1,13 @@
 import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { USP } from "@/components/USP";
-import { Problems } from "@/components/Problems";
+import { UseCases } from "@/components/UseCases";
+import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
-import { HowItWorks } from "@/components/HowItWorks";
 import { Pricing } from "@/components/Pricing";
+import { HowItWorks } from "@/components/HowItWorks";
+import { Security } from "@/components/Security";
 import { Gallery } from "@/components/Gallery";
-import { AdditionalServices } from "@/components/AdditionalServices";
-import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
@@ -25,14 +24,13 @@ const Index = () => {
       <Header />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
-        <USP />
-        <Problems />
+        <UseCases onScrollToForm={scrollToForm} />
+        <LocationAdvantage />
         <Benefits />
-        <HowItWorks />
         <Pricing onScrollToForm={scrollToForm} />
+        <HowItWorks />
+        <Security />
         <Gallery />
-        <AdditionalServices />
-        <Testimonials />
         <FAQ />
         <div ref={formRef}>
           <ContactForm />

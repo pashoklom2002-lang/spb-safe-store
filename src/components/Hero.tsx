@@ -1,12 +1,8 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import heroImage from "@/assets/hero-containers.jpg";
 import { ArrowRight } from "lucide-react";
 
 export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
-  const [containerType, setContainerType] = useState<string>("");
-
   return (
     <section className="relative min-h-[90vh] flex items-center">
       <div 
@@ -19,37 +15,44 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
       />
       
       <div className="container relative z-10 mx-auto px-4 py-20">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Лучшее место для хранения вещей и оборудования — в Шушарах
+            Контейнеры-кладовки в Шушарах — для личных вещей и бизнеса
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
-            Площадка с асфальтом, круглосуточной охраной и доступом 24/7. Контейнеры 20 и 40 ft — от 6 000 ₽/мес
+            Асфальт, удобный подъезд, охрана и 24/7 доступ. Хранение в 20ft и 40ft контейнерах — для переезда, ремонта, сезонных вещей, инструмента и товара.
           </p>
           
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 max-w-md mx-auto mb-8">
-            <label className="block text-white text-sm font-medium mb-3">
-              Выберите тип контейнера
-            </label>
-            <Select value={containerType} onValueChange={setContainerType}>
-              <SelectTrigger className="bg-white text-foreground">
-                <SelectValue placeholder="Выберите размер" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="20ft">20 футов (6 × 2.4 × 2.6 м)</SelectItem>
-                <SelectItem value="40ft">40 футов (12 × 2.4 × 2.6 м)</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <Button 
+              size="lg" 
+              className="bg-accent hover:bg-accent-hover text-accent-foreground text-lg px-8 py-6 h-auto"
+              onClick={onScrollToForm}
+            >
+              Оставить заявку
+              <ArrowRight className="ml-2" />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white/30 text-lg px-8 py-6 h-auto"
+              onClick={onScrollToForm}
+            >
+              Узнать цены
+            </Button>
           </div>
 
-          <Button 
-            size="lg" 
-            className="bg-accent hover:bg-accent-hover text-accent-foreground text-lg px-8 py-6 h-auto"
-            onClick={onScrollToForm}
-          >
-            Подобрать контейнер
-            <ArrowRight className="ml-2" />
-          </Button>
+          <div className="flex flex-wrap justify-center gap-6 text-white/90 text-sm md:text-base">
+            <span>Асфальт</span>
+            <span>·</span>
+            <span>Шушары</span>
+            <span>·</span>
+            <span>24/7 доступ</span>
+            <span>·</span>
+            <span>Охрана</span>
+            <span>·</span>
+            <span>Подъезд к двери</span>
+          </div>
         </div>
       </div>
     </section>
