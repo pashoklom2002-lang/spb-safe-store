@@ -93,7 +93,7 @@ export const Header = ({
                 href={`https://wa.me/${phone.replace(/\D/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-black hover:bg-black/80 transition-colors"
                 aria-label="WhatsApp"
               >
                 <WhatsAppIcon className="w-6 h-6 text-[#25D366]" />
@@ -103,10 +103,10 @@ export const Header = ({
                 href={`https://t.me/${phone.replace(/\D/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-[#229ED9] hover:bg-[#229ED9]/90 transition-colors"
                 aria-label="Telegram"
               >
-                <TelegramIcon className="w-6 h-6 text-[#0088cc]" />
+                <TelegramIcon className="w-6 h-6 text-white" />
               </a>
             </div>
           </div>
