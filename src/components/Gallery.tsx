@@ -32,13 +32,13 @@ const galleryItems = [
 
 export const Gallery = () => {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          Галерея
+          Площадка в Шушарах
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Современная охраняемая территория с удобным подъездом и контейнерами разных размеров
+          Асфальт, охрана, освещение. Подъезд вплотную к контейнеру — удобно для разгрузки.
         </p>
         
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">

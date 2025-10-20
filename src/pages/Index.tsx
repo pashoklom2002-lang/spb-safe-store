@@ -6,6 +6,7 @@ import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
 import { Pricing } from "@/components/Pricing";
 import { HowItWorks } from "@/components/HowItWorks";
+import { CTA } from "@/components/CTA";
 import { Security } from "@/components/Security";
 import { Gallery } from "@/components/Gallery";
 import { FAQ } from "@/components/FAQ";
@@ -27,10 +28,11 @@ const Index = () => {
         <UseCases onScrollToForm={scrollToForm} />
         <LocationAdvantage />
         <Benefits />
+        <Gallery />
         <Pricing onScrollToForm={scrollToForm} />
         <HowItWorks />
+        <CTA onScrollToForm={scrollToForm} />
         <Security />
-        <Gallery />
         <FAQ />
         <div ref={formRef}>
           <ContactForm />
