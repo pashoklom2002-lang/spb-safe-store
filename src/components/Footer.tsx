@@ -59,6 +59,11 @@ export const Footer = () => {
                 <MessageCircle className="w-5 h-5" />
                 <span>Telegram</span>
               </a>
+
+              <div className="pt-4 border-t border-primary-foreground/20">
+                <p className="text-sm opacity-75">Прием заявок</p>
+                <p className="font-medium">09:00 — 22:00 ежедневно</p>
+              </div>
             </div>
           </div>
 

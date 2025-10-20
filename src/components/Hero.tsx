@@ -24,7 +24,7 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             Аренда контейнеров для хранения в СПб — храним.ру
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
-            Охраняемая площадка • 20 и 40-футовые контейнеры • Гибкие условия
+            Охраняемая площадка • 20 и 40-футовые контейнеры • От 6 000 ₽/мес
           </p>
           
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 max-w-md mx-auto mb-8">
@@ -47,7 +47,7 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             className="bg-accent hover:bg-accent-hover text-accent-foreground text-lg px-8 py-6 h-auto"
             onClick={onScrollToForm}
           >
-            Оставить заявку
+            Получить подбор и цену
             <ArrowRight className="ml-2" />
           </Button>
         </div>

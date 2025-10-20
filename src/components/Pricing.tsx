@@ -5,7 +5,7 @@ const offers = [
   {
     type: "20 футов",
     size: "6 × 2.4 × 2.6 м",
-    price: "от 8 000 ₽",
+    price: "от 6 000 ₽",
     period: "месяц",
     features: [
       "33 м³ объём",
@@ -19,7 +19,7 @@ const offers = [
   {
     type: "40 футов",
     size: "12 × 2.4 × 2.6 м",
-    price: "от 14 000 ₽",
+    price: "от 10 000 ₽",
     period: "месяц",
     features: [
       "67 м³ объём",
@@ -83,7 +83,7 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
                 }`}
                 onClick={onScrollToForm}
               >
-                Арендовать
+                Уточнить наличие
               </Button>
             </div>
           ))}

@@ -3,33 +3,33 @@ import { Shield, Clock, DollarSign, Zap, Key, Truck } from "lucide-react";
 const benefits = [
   {
     icon: Shield,
-    title: "Круглосуточная охрана",
-    description: "Видеонаблюдение 24/7 и контроль доступа",
+    title: "Безопасность",
+    description: "Камеры, охрана, контроль — ваш товар под защитой",
   },
   {
     icon: Zap,
-    title: "Освещение",
-    description: "Подключение электричества в каждом контейнере",
+    title: "Электричество",
+    description: "Свет и розетки в каждом контейнере",
   },
   {
     icon: Clock,
-    title: "Гибкие условия",
-    description: "Аренда от 1 месяца без долгосрочных обязательств",
+    title: "От 1 месяца",
+    description: "Арендуйте на любой срок без долгих договоров",
   },
   {
     icon: DollarSign,
-    title: "Прозрачная цена",
-    description: "Никаких скрытых платежей и дополнительных сборов",
+    title: "Честная цена",
+    description: "Без скрытых платежей — цена не изменится",
   },
   {
     icon: Key,
-    title: "Свободный доступ",
-    description: "Ваш ключ — заезжайте когда удобно",
+    title: "Ваш ключ",
+    description: "Приезжайте когда угодно, даже ночью",
   },
   {
     icon: Truck,
-    title: "Удобный подъезд",
-    description: "Площадка для погрузки и разгрузки техники",
+    title: "Для фур и газелей",
+    description: "Удобная площадка для любого транспорта",
   },
 ];
 
@@ -41,7 +41,7 @@ export const Benefits = () => {
           Почему выбирают нас
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Надежность и удобство для вашего бизнеса
+          Экономьте время и деньги — храните с комфортом
         </p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">

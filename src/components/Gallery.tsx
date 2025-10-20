@@ -7,22 +7,26 @@ const galleryItems = [
   {
     image: facilityImage,
     alt: "Вид на площадку хранения контейнеров в дневное время",
-    title: "Охраняемая площадка"
+    title: "Охраняемая площадка",
+    description: "Территория под видеонаблюдением 24/7"
   },
   {
     image: containersCloseup,
     alt: "20 и 40-футовые контейнеры крупным планом",
-    title: "Контейнеры 20 и 40 футов"
+    title: "Контейнеры 20 и 40 футов",
+    description: "Герметичные контейнеры с освещением"
   },
   {
     image: facilityAccess,
     alt: "Удобный подъезд к территории хранения",
-    title: "Удобный подъезд"
+    title: "Удобный подъезд",
+    description: "Асфальтированная площадка для погрузки"
   },
   {
     image: heroImage,
     alt: "Контейнерная площадка с освещением и охраной",
-    title: "Освещение и безопасность"
+    title: "Освещение и безопасность",
+    description: "Уличное освещение и контроль доступа"
   }
 ];
 
@@ -49,8 +53,9 @@ export const Gallery = () => {
                   alt={item.alt}
                   className="w-full h-[350px] object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-6">
-                  <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 to-transparent p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
               </div>
             </div>

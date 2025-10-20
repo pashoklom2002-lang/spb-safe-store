@@ -69,10 +69,10 @@ export const ContactForm = () => {
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
-              Оставьте заявку
+              Оставьте заявку — подберём контейнер за 15 минут
             </h2>
             <p className="text-muted-foreground">
-              Заполните форму — перезвоним в течение 15 минут
+              Заполните форму, и мы перезвоним с предложением
             </p>
           </div>
 
