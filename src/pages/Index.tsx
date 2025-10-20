@@ -32,17 +32,16 @@ const Index = () => {
 
   return (
     <main className="min-h-screen">
-      <Header />
+      <Header 
+        onScrollToUseCases={() => scrollToSection(useCasesRef)}
+        onScrollToLocation={() => scrollToSection(locationRef)}
+        onScrollToBenefits={() => scrollToSection(benefitsRef)}
+        onScrollToPricing={() => scrollToSection(pricingRef)}
+        onScrollToSecurity={() => scrollToSection(securityRef)}
+        onScrollToFAQ={() => scrollToSection(faqRef)}
+      />
       <div className="pt-20">
-        <Hero 
-          onScrollToForm={scrollToForm}
-          onScrollToUseCases={() => scrollToSection(useCasesRef)}
-          onScrollToLocation={() => scrollToSection(locationRef)}
-          onScrollToBenefits={() => scrollToSection(benefitsRef)}
-          onScrollToPricing={() => scrollToSection(pricingRef)}
-          onScrollToSecurity={() => scrollToSection(securityRef)}
-          onScrollToFAQ={() => scrollToSection(faqRef)}
-        />
+        <Hero onScrollToForm={scrollToForm} />
         <div ref={benefitsRef}>
           <Benefits />
         </div>

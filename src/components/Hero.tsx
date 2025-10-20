@@ -4,23 +4,9 @@ import { ArrowRight } from "lucide-react";
 
 interface HeroProps {
   onScrollToForm: () => void;
-  onScrollToUseCases: () => void;
-  onScrollToLocation: () => void;
-  onScrollToBenefits: () => void;
-  onScrollToPricing: () => void;
-  onScrollToSecurity: () => void;
-  onScrollToFAQ: () => void;
 }
 
-export const Hero = ({ 
-  onScrollToForm,
-  onScrollToUseCases,
-  onScrollToLocation,
-  onScrollToBenefits,
-  onScrollToPricing,
-  onScrollToSecurity,
-  onScrollToFAQ
-}: HeroProps) => {
+export const Hero = ({ onScrollToForm }: HeroProps) => {
   return (
     <section className="relative min-h-[90vh] flex items-center">
       <div 
@@ -35,13 +21,13 @@ export const Hero = ({
       <div className="container relative z-10 mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Контейнеры-кладовки в Шушарах — для личных вещей и бизнеса
+            Контейнеры-кладовки в Шушарах
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8">
-            Асфальт, удобный подъезд, охрана и 24/7 доступ. Хранение в 20ft и 40ft контейнерах — для переезда, ремонта, сезонных вещей, инструмента и товара.
+          <p className="text-xl md:text-2xl text-white/90 mb-12">
+            Просторные теплые контейнеры для безопасного хранения вещей
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-4">
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent-hover text-accent-foreground text-lg px-8 py-6 h-auto"
@@ -58,50 +44,6 @@ export const Hero = ({
             >
               Узнать цены
             </Button>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-white/90 text-sm md:text-base">
-            <button 
-              onClick={onScrollToUseCases}
-              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
-            >
-              Под что подходит
-            </button>
-            <span className="hidden md:inline">·</span>
-            <button 
-              onClick={onScrollToLocation}
-              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
-            >
-              Площадка
-            </button>
-            <span className="hidden md:inline">·</span>
-            <button 
-              onClick={onScrollToBenefits}
-              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
-            >
-              Преимущества
-            </button>
-            <span className="hidden md:inline">·</span>
-            <button 
-              onClick={onScrollToPricing}
-              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
-            >
-              Цены
-            </button>
-            <span className="hidden md:inline">·</span>
-            <button 
-              onClick={onScrollToSecurity}
-              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
-            >
-              Безопасность
-            </button>
-            <span className="hidden md:inline">·</span>
-            <button 
-              onClick={onScrollToFAQ}
-              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
-            >
-              FAQ
-            </button>
           </div>
         </div>
       </div>
