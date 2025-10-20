@@ -66,9 +66,9 @@ export const Header = ({
             </button>
             <button 
               onClick={onScrollToUseCases}
-              className="hover:text-white/80 transition-colors font-bold text-sm"
+              className="text-white hover:text-white/80 transition-colors font-bold text-sm"
             >
-              Под что подходит
+              Для чего
             </button>
             <button 
               onClick={onScrollToPricing}
