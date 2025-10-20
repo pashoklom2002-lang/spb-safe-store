@@ -21,7 +21,7 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
       <div className="container relative z-10 mx-auto px-4 py-20">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Аренда контейнеров для хранения в Санкт-Петербурге
+            Аренда контейнеров для хранения в СПб — храним.ру
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
             Охраняемая площадка • 20 и 40-футовые контейнеры • Гибкие условия

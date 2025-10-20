@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Problems } from "@/components/Problems";
 import { Benefits } from "@/components/Benefits";
@@ -19,18 +20,21 @@ const Index = () => {
 
   return (
     <main className="min-h-screen">
-      <Hero onScrollToForm={scrollToForm} />
-      <Problems />
-      <Benefits />
-      <HowItWorks />
-      <Pricing onScrollToForm={scrollToForm} />
-      <Gallery />
-      <AdditionalServices />
-      <Testimonials />
-      <div ref={formRef}>
-        <ContactForm />
+      <Header />
+      <div className="pt-20">
+        <Hero onScrollToForm={scrollToForm} />
+        <Problems />
+        <Benefits />
+        <HowItWorks />
+        <Pricing onScrollToForm={scrollToForm} />
+        <Gallery />
+        <AdditionalServices />
+        <Testimonials />
+        <div ref={formRef}>
+          <ContactForm />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </main>
   );
 };

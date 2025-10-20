@@ -74,7 +74,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-sm opacity-75">
-          <p>© 2025 Container Storage SPb. Все права защищены.</p>
+          <p>© 2025 храним.ру. Все права защищены.</p>
         </div>
       </div>
     </footer>
