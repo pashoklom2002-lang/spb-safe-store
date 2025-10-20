@@ -40,7 +40,7 @@ const Index = () => {
         onScrollToSecurity={() => scrollToSection(securityRef)}
         onScrollToFAQ={() => scrollToSection(faqRef)}
       />
-      <div className="pt-20">
+      <div className="pt-32">
         <Hero onScrollToForm={scrollToForm} />
         <div ref={benefitsRef}>
           <Benefits />
