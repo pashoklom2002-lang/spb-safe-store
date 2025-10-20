@@ -14,6 +14,16 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
+  const useCasesRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLDivElement>(null);
+  const benefitsRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
+  const securityRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -23,15 +33,35 @@ const Index = () => {
     <main className="min-h-screen">
       <Header />
       <div className="pt-20">
-        <Hero onScrollToForm={scrollToForm} />
-        <UseCases onScrollToForm={scrollToForm} />
-        <LocationAdvantage />
-        <Benefits />
-        <Pricing onScrollToForm={scrollToForm} />
+        <Hero 
+          onScrollToForm={scrollToForm}
+          onScrollToUseCases={() => scrollToSection(useCasesRef)}
+          onScrollToLocation={() => scrollToSection(locationRef)}
+          onScrollToBenefits={() => scrollToSection(benefitsRef)}
+          onScrollToPricing={() => scrollToSection(pricingRef)}
+          onScrollToSecurity={() => scrollToSection(securityRef)}
+          onScrollToFAQ={() => scrollToSection(faqRef)}
+        />
+        <div ref={useCasesRef}>
+          <UseCases onScrollToForm={scrollToForm} />
+        </div>
+        <div ref={locationRef}>
+          <LocationAdvantage />
+        </div>
+        <div ref={benefitsRef}>
+          <Benefits />
+        </div>
+        <div ref={pricingRef}>
+          <Pricing onScrollToForm={scrollToForm} />
+        </div>
         <HowItWorks />
         <CTA onScrollToForm={scrollToForm} />
-        <Security />
-        <FAQ />
+        <div ref={securityRef}>
+          <Security />
+        </div>
+        <div ref={faqRef}>
+          <FAQ />
+        </div>
         <div ref={formRef}>
           <ContactForm />
         </div>

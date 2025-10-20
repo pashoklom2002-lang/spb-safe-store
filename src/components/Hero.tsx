@@ -2,7 +2,25 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-containers.jpg";
 import { ArrowRight } from "lucide-react";
 
-export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
+interface HeroProps {
+  onScrollToForm: () => void;
+  onScrollToUseCases: () => void;
+  onScrollToLocation: () => void;
+  onScrollToBenefits: () => void;
+  onScrollToPricing: () => void;
+  onScrollToSecurity: () => void;
+  onScrollToFAQ: () => void;
+}
+
+export const Hero = ({ 
+  onScrollToForm,
+  onScrollToUseCases,
+  onScrollToLocation,
+  onScrollToBenefits,
+  onScrollToPricing,
+  onScrollToSecurity,
+  onScrollToFAQ
+}: HeroProps) => {
   return (
     <section className="relative min-h-[90vh] flex items-center">
       <div 
@@ -42,16 +60,48 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             </Button>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-white/90 text-sm md:text-base">
-            <span>Асфальт</span>
-            <span>·</span>
-            <span>Шушары</span>
-            <span>·</span>
-            <span>24/7 доступ</span>
-            <span>·</span>
-            <span>Охрана</span>
-            <span>·</span>
-            <span>Подъезд к двери</span>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-white/90 text-sm md:text-base">
+            <button 
+              onClick={onScrollToUseCases}
+              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
+            >
+              Под что подходит
+            </button>
+            <span className="hidden md:inline">·</span>
+            <button 
+              onClick={onScrollToLocation}
+              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
+            >
+              Площадка
+            </button>
+            <span className="hidden md:inline">·</span>
+            <button 
+              onClick={onScrollToBenefits}
+              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
+            >
+              Преимущества
+            </button>
+            <span className="hidden md:inline">·</span>
+            <button 
+              onClick={onScrollToPricing}
+              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
+            >
+              Цены
+            </button>
+            <span className="hidden md:inline">·</span>
+            <button 
+              onClick={onScrollToSecurity}
+              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
+            >
+              Безопасность
+            </button>
+            <span className="hidden md:inline">·</span>
+            <button 
+              onClick={onScrollToFAQ}
+              className="hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4"
+            >
+              FAQ
+            </button>
           </div>
         </div>
       </div>
