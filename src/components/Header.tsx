@@ -27,10 +27,10 @@ export const Header = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#9ACD32] border-b border-[#8BC024] z-50">
+    <header className="fixed top-0 left-0 right-0 bg-primary border-b border-primary-hover z-50">
       <div className="container mx-auto px-4">
         {/* Top Row - Logo, Address, Contacts */}
-        <div className="flex items-center justify-between py-3 border-b border-[#8BC024]">
+        <div className="flex items-center justify-between py-3 border-b border-primary-hover">
           {/* Logo */}
           <button 
             onClick={scrollToTop}
@@ -40,7 +40,7 @@ export const Header = ({
           </button>
 
           {/* Address & Time */}
-          <div className="hidden md:flex items-center gap-6 text-white text-sm">
+          <div className="hidden md:flex items-center gap-6 text-primary-foreground text-sm">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
               <span className="font-semibold">Шушары, Курьерский проезд 1А</span>
@@ -55,7 +55,7 @@ export const Header = ({
           <div className="flex items-center gap-4">
             <a 
               href={`tel:${phone}`}
-              className="hidden lg:flex items-center gap-2 text-white hover:text-white/80 transition-colors"
+              className="hidden lg:flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
             >
               <Phone className="w-5 h-5" />
               <span className="font-medium">{phone}</span>
@@ -86,40 +86,40 @@ export const Header = ({
         </div>
 
         {/* Bottom Row - Navigation */}
-        <nav className="flex items-center justify-center gap-8 py-3 text-white overflow-x-auto">
+        <nav className="flex items-center justify-center gap-8 py-3 text-primary-foreground overflow-x-auto">
           <button 
             onClick={onScrollToBenefits}
-            className="hover:text-white/80 transition-colors font-bold text-sm whitespace-nowrap"
+            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
           >
             Преимущества
           </button>
           <button 
             onClick={onScrollToLocation}
-            className="hover:text-white/80 transition-colors font-bold text-sm whitespace-nowrap"
+            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
           >
             Площадка
           </button>
           <button 
             onClick={onScrollToUseCases}
-            className="hover:text-white/80 transition-colors font-bold text-sm whitespace-nowrap"
+            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
           >
             Под что подходит
           </button>
           <button 
             onClick={onScrollToPricing}
-            className="hover:text-white/80 transition-colors font-bold text-sm whitespace-nowrap"
+            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
           >
             Цены
           </button>
           <button 
             onClick={onScrollToSecurity}
-            className="hover:text-white/80 transition-colors font-bold text-sm whitespace-nowrap"
+            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
           >
             Безопасность
           </button>
           <button 
             onClick={onScrollToFAQ}
-            className="hover:text-white/80 transition-colors font-bold text-sm whitespace-nowrap"
+            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
           >
             FAQ
           </button>
