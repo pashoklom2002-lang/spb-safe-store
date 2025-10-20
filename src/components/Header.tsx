@@ -1,5 +1,5 @@
 import { Phone, MessageCircle } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/skladno-logo.png";
 
 export const Header = () => {
   const phone = "+7 (812) 123-45-67";
@@ -17,8 +17,7 @@ export const Header = () => {
             onClick={scrollToTop}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <img src={logo} alt="храним.ру" className="h-12 w-12 brightness-0 invert hue-rotate-[45deg] saturate-[3]" />
-            <span className="text-2xl font-bold text-primary">храним.ру</span>
+            <img src={logo} alt="Складно тут" className="h-16 w-auto" />
           </button>
 
           {/* Contact Info */}
