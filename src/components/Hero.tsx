@@ -8,7 +8,7 @@ interface HeroProps {
 
 export const Hero = ({ onScrollToForm }: HeroProps) => {
   return (
-    <section className="relative min-h-[90vh] flex items-center">
+    <section className="relative h-screen flex items-center justify-center">
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -18,7 +18,7 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
         }}
       />
       
-      <div className="container relative z-10 mx-auto px-4 py-20">
+      <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
             Контейнеры-кладовки в Шушарах
