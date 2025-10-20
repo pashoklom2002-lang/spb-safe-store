@@ -27,20 +27,19 @@ export const Header = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-primary border-b border-primary-hover z-50">
+    <header className="fixed top-0 left-0 right-0 bg-[#9ACD32] border-b border-[#8BC024] z-50">
       <div className="container mx-auto px-4">
-        {/* Top Row - Logo, Address, Contacts */}
-        <div className="flex items-center justify-between py-3 border-b border-primary-hover">
+        <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo */}
           <button 
             onClick={scrollToTop}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
-            <img src={logo} alt="Складно тут" className="h-12 w-auto" />
+            <img src={logo} alt="Складно тут" className="h-16 w-auto" />
           </button>
 
           {/* Address & Time */}
-          <div className="hidden md:flex items-center gap-6 text-primary-foreground text-sm">
+          <div className="hidden xl:flex items-center gap-4 text-white text-sm">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
               <span className="font-semibold">Шушары, Курьерский проезд 1А</span>
@@ -51,17 +50,57 @@ export const Header = ({
             </div>
           </div>
 
+          {/* Navigation */}
+          <nav className="hidden lg:flex items-center gap-5 text-white">
+            <button 
+              onClick={onScrollToBenefits}
+              className="hover:text-white/80 transition-colors font-bold text-sm"
+            >
+              Преимущества
+            </button>
+            <button 
+              onClick={onScrollToLocation}
+              className="hover:text-white/80 transition-colors font-bold text-sm"
+            >
+              Площадка
+            </button>
+            <button 
+              onClick={onScrollToUseCases}
+              className="hover:text-white/80 transition-colors font-bold text-sm"
+            >
+              Под что подходит
+            </button>
+            <button 
+              onClick={onScrollToPricing}
+              className="hover:text-white/80 transition-colors font-bold text-sm"
+            >
+              Цены
+            </button>
+            <button 
+              onClick={onScrollToSecurity}
+              className="hover:text-white/80 transition-colors font-bold text-sm"
+            >
+              Безопасность
+            </button>
+            <button 
+              onClick={onScrollToFAQ}
+              className="hover:text-white/80 transition-colors font-bold text-sm"
+            >
+              FAQ
+            </button>
+          </nav>
+
           {/* Contact Info */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6 flex-shrink-0">
             <a 
               href={`tel:${phone}`}
-              className="hidden lg:flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              className="hidden md:flex items-center gap-2 text-white hover:text-white/80 transition-colors"
             >
               <Phone className="w-5 h-5" />
               <span className="font-medium">{phone}</span>
             </a>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <a
                 href={`https://wa.me/${phone.replace(/\D/g, '')}`}
                 target="_blank"
@@ -69,7 +108,7 @@ export const Header = ({
                 className="p-2 rounded-full bg-black hover:bg-black/80 transition-colors"
                 aria-label="WhatsApp"
               >
-                <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
+                <WhatsAppIcon className="w-6 h-6 text-[#25D366]" />
               </a>
               
               <a
@@ -79,51 +118,11 @@ export const Header = ({
                 className="p-2 rounded-full bg-[#229ED9] hover:bg-[#229ED9]/90 transition-colors"
                 aria-label="Telegram"
               >
-                <TelegramIcon className="w-5 h-5 text-white" />
+                <TelegramIcon className="w-6 h-6 text-white" />
               </a>
             </div>
           </div>
         </div>
-
-        {/* Bottom Row - Navigation */}
-        <nav className="flex items-center justify-center gap-8 py-3 text-primary-foreground overflow-x-auto">
-          <button 
-            onClick={onScrollToBenefits}
-            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
-          >
-            Преимущества
-          </button>
-          <button 
-            onClick={onScrollToLocation}
-            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
-          >
-            Площадка
-          </button>
-          <button 
-            onClick={onScrollToUseCases}
-            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
-          >
-            Под что подходит
-          </button>
-          <button 
-            onClick={onScrollToPricing}
-            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
-          >
-            Цены
-          </button>
-          <button 
-            onClick={onScrollToSecurity}
-            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
-          >
-            Безопасность
-          </button>
-          <button 
-            onClick={onScrollToFAQ}
-            className="hover:text-primary-foreground/80 transition-colors font-bold text-sm whitespace-nowrap"
-          >
-            FAQ
-          </button>
-        </nav>
       </div>
     </header>
   );
