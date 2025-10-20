@@ -1,4 +1,4 @@
-import { MapPin, Truck, Navigation, CheckCircle, Shield, Clock } from "lucide-react";
+import { Truck, Shield, Clock, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import facilityImage from "@/assets/facility-view.jpg";
 import heroImage from "@/assets/hero-containers.jpg";
@@ -20,31 +20,19 @@ import {
 const features = [
   {
     icon: Truck,
-    title: "Заезд фуры, газели и легкового авто",
-  },
-  {
-    icon: Navigation,
-    title: "Можно подъехать вплотную к двери",
+    title: "Подъезд вплотную",
   },
   {
     icon: CheckCircle,
-    title: "Асфальтированная территория",
-  },
-  {
-    icon: CheckCircle,
-    title: "Никакой грязи, слякоти и луж",
-  },
-  {
-    icon: MapPin,
-    title: "Быстрый доступ без пробок",
+    title: "Асфальт без грязи",
   },
   {
     icon: Shield,
-    title: "Охрана и видеонаблюдение 24/7",
+    title: "Охрана 24/7",
   },
   {
     icon: Clock,
-    title: "Удобный заезд в любое время",
+    title: "Доступ круглосуточно",
   },
 ];
 
@@ -77,7 +65,7 @@ export const LocationAdvantage = () => {
           Самая удобная площадка в Шушарах
         </h2>
         
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
+        <div className="grid grid-cols-[70%_30%] gap-8 max-w-7xl mx-auto items-start">
           <div className="relative">
             <Carousel className="w-full">
               <CarouselContent>
@@ -86,13 +74,13 @@ export const LocationAdvantage = () => {
                     <Dialog>
                       <DialogTrigger asChild>
                         <div 
-                          className="rounded-2xl overflow-hidden shadow-card cursor-pointer hover:shadow-hover transition-all"
+                          className="rounded-3xl overflow-hidden shadow-card cursor-pointer hover:shadow-hover transition-all"
                           onClick={() => setSelectedImage(index)}
                         >
                           <img 
                             src={item.image} 
                             alt={item.alt}
-                            className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-300"
                           />
                         </div>
                       </DialogTrigger>
@@ -124,20 +112,18 @@ export const LocationAdvantage = () => {
             </Carousel>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-8 pt-4">
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-4 group"
+                className="text-center group"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 mb-3 group-hover:from-primary/30 group-hover:to-primary/10 transition-all">
+                  <feature.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
                 </div>
-                <div className="pt-2">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {feature.title}
-                  </h3>
-                </div>
+                <h3 className="text-sm font-medium text-foreground leading-tight">
+                  {feature.title}
+                </h3>
               </div>
             ))}
           </div>
