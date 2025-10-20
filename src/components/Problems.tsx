@@ -1,20 +1,20 @@
-import { AlertCircle, Lock, TrendingUp } from "lucide-react";
+import { Home, Truck, Warehouse } from "lucide-react";
 
 const problems = [
   {
-    icon: AlertCircle,
-    title: "Нехватка места",
-    description: "Дома или в офисе вещи занимают всё пространство — нужно срочное решение без переплат",
+    icon: Home,
+    title: "Вещи не помещаются дома",
+    description: "Мебель, коробки, сезонные вещи — всё занимает место",
   },
   {
-    icon: Lock,
-    title: "Небезопасно",
-    description: "Хранение в гараже или на даче — риск кражи, влаги и порчи ценных вещей",
+    icon: Warehouse,
+    title: "Временное хранение при переезде",
+    description: "Между квартирами нужно где-то держать вещи",
   },
   {
-    icon: TrendingUp,
-    title: "Негибкие условия",
-    description: "Долгие договоры и штрафы за досрочное расторжение — хочется платить только за нужный срок",
+    icon: Truck,
+    title: "Инструмент на стройке",
+    description: "Неудобно держать материалы и оборудование на объекте",
   },
 ];
 
@@ -23,10 +23,10 @@ export const Problems = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          Знакомая ситуация?
+          Зачем нужен контейнер
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Мы знаем, с чем сталкиваются люди при хранении вещей, товаров и оборудования
+          Контейнер решает все — без переплат и заморочек
         </p>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">

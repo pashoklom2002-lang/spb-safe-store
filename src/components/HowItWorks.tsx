@@ -3,23 +3,23 @@ import { FileCheck, Calendar, Key, Package } from "lucide-react";
 const steps = [
   {
     icon: FileCheck,
-    title: "Оставьте заявку",
-    description: "Заполните форму или позвоните — ответ за 30 минут",
+    title: "Оставляете заявку",
+    description: "Звоните или заполняете форму — ответ за 30 минут",
   },
   {
     icon: Calendar,
-    title: "Выберите период",
-    description: "Определяем срок аренды и тип контейнера под ваши задачи",
+    title: "Мы подбираем контейнер",
+    description: "Уточняем размер и срок, проверяем наличие",
   },
   {
     icon: Key,
-    title: "Получите доступ",
-    description: "Договор в день заявки — вносите оплату и получаете ключ",
+    title: "Подписываем договор",
+    description: "Договор в день заявки — быстро, без лишних бумаг",
   },
   {
     icon: Package,
-    title: "Используйте",
-    description: "Заезжайте когда нужно, храните в безопасности без лишних хлопот",
+    title: "Начинаете пользоваться",
+    description: "Получаете ключ — можно заехать уже завтра",
   },
 ];
 
@@ -28,10 +28,10 @@ export const HowItWorks = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          Как это работает
+          Быстрый старт — за 1 день
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          Простой процесс за 4 шага
+          Можно заехать уже завтра
         </p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">

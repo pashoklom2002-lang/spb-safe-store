@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 export const Footer = () => {
   const phone = "+7 (812) 123-45-67";
   const email = "info@container-storage.ru";
-  const address = "Санкт-Петербург, Промышленная зона";
+  const address = "Шушары, Санкт-Петербург, подъезд с КАД";
 
   return (
     <footer className="bg-primary text-primary-foreground py-16">
@@ -70,10 +70,14 @@ export const Footer = () => {
           {/* Карта */}
           <div>
             <h3 className="text-xl font-bold mb-6">Мы на карте</h3>
-            <div className="bg-primary-foreground/10 rounded-lg p-4 h-40 flex items-center justify-center">
-              <p className="text-sm text-center opacity-75">
-                Интерактивная карта<br />будет доступна скоро
-              </p>
+            <div className="bg-primary-foreground/10 rounded-lg overflow-hidden h-40">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac2f7a7f6e8c4c9a6f5e4d3c2b1a09f8e&amp;source=constructor"
+                width="100%"
+                height="160"
+                frameBorder="0"
+                title="Карта расположения площадки в Шушарах"
+              ></iframe>
             </div>
           </div>
         </div>

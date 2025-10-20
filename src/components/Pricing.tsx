@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 
 const offers = [
   {
-    type: "20 футов",
-    size: "6 × 2.4 × 2.6 м",
+    type: "20 ft",
+    size: "14.8 м²",
     price: "от 6 000 ₽",
     period: "месяц",
     features: [
-      "33 м³ объём",
+      "Для вещей и мебели",
       "Освещение включено",
       "Круглосуточный доступ",
       "Видеонаблюдение",
@@ -17,12 +17,12 @@ const offers = [
     popular: false,
   },
   {
-    type: "40 футов",
-    size: "12 × 2.4 × 2.6 м",
+    type: "40 ft",
+    size: "29.7 м²",
     price: "от 10 000 ₽",
     period: "месяц",
     features: [
-      "67 м³ объём",
+      "Для бизнеса и стройматериалов",
       "Освещение включено",
       "Круглосуточный доступ",
       "Видеонаблюдение",
@@ -31,6 +31,20 @@ const offers = [
     ],
     popular: true,
   },
+  {
+    type: "Целая площадка",
+    size: "от 1 000 м²",
+    price: "Цена по запросу",
+    period: "",
+    features: [
+      "Под логистику",
+      "Собственные контейнеры",
+      "Индивидуальные условия",
+      "Охрана и видеонаблюдение",
+      "Асфальтированная территория",
+    ],
+    popular: false,
+  },
 ];
 
 export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
@@ -38,13 +52,13 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          Тарифы и условия
+          Выберите свой контейнер
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Выберите подходящий размер контейнера
+          Разные форматы для разных задач
         </p>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {offers.map((offer, index) => (
             <div 
               key={index}
@@ -63,7 +77,7 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
               
               <div className="mb-6">
                 <span className="text-4xl font-bold text-foreground">{offer.price}</span>
-                <span className="text-muted-foreground ml-2">/ {offer.period}</span>
+                {offer.period && <span className="text-muted-foreground ml-2">/ {offer.period}</span>}
               </div>
               
               <ul className="space-y-3 mb-8">

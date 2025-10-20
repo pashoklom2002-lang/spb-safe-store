@@ -3,33 +3,33 @@ import { Shield, Clock, DollarSign, Zap, Key, Truck } from "lucide-react";
 const benefits = [
   {
     icon: Shield,
-    title: "Безопасность",
-    description: "Камеры, охрана, контроль — ваш товар под защитой",
+    title: "Охраняемая территория",
+    description: "Круглосуточная охрана и видеонаблюдение",
   },
   {
     icon: Zap,
-    title: "Электричество",
+    title: "Электричество и освещение",
     description: "Свет и розетки в каждом контейнере",
   },
   {
     icon: Clock,
-    title: "От 1 месяца",
-    description: "Арендуйте на любой срок без долгих договоров",
+    title: "Аренда от 1 дня",
+    description: "Гибкие условия под любой срок",
   },
   {
     icon: DollarSign,
-    title: "Честная цена",
-    description: "Без скрытых платежей — цена не изменится",
+    title: "Честные тарифы",
+    description: "Прозрачные цены без скрытых платежей",
   },
   {
     icon: Key,
-    title: "Ваш ключ",
-    description: "Приезжайте когда угодно, даже ночью",
+    title: "Доступ 24/7",
+    description: "Приезжайте в любое время с личным ключом",
   },
   {
     icon: Truck,
-    title: "Для фур и газелей",
-    description: "Удобная площадка для любого транспорта",
+    title: "Удобный заезд",
+    description: "Асфальт, место под фуру и манипулятор",
   },
 ];
 
@@ -38,10 +38,10 @@ export const Benefits = () => {
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          Почему выбирают нас
+          Всё, чтобы вещи были в порядке
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Экономьте время и деньги — храните с комфортом
+          Безопасно, удобно, доступно
         </p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">

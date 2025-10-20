@@ -1,25 +1,25 @@
-import { Clock, Shield, Zap, MapPin, FileText } from "lucide-react";
+import { MapPin, Truck, Navigation, Shield, FileCheck } from "lucide-react";
 
 const features = [
   {
-    icon: Clock,
-    title: "Доступ 24/7",
+    icon: MapPin,
+    title: "Асфальтированная территория",
+  },
+  {
+    icon: Truck,
+    title: "Заезд под фуру и манипулятор",
+  },
+  {
+    icon: Navigation,
+    title: "Прямой подъезд с КАД",
   },
   {
     icon: Shield,
-    title: "Камеры и охрана",
+    title: "Охрана 24/7 и камеры",
   },
   {
-    icon: Zap,
-    title: "Свет и электричество",
-  },
-  {
-    icon: MapPin,
-    title: "Удобный заезд",
-  },
-  {
-    icon: FileText,
-    title: "Прозрачные тарифы",
+    icon: FileCheck,
+    title: "Быстрое оформление — за 1 день",
   },
 ];
 
@@ -27,6 +27,9 @@ export const USP = () => {
   return (
     <section className="py-12 bg-background border-y border-border">
       <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
+          Почему выбирают Шушары
+        </h2>
         <div className="flex flex-wrap justify-center gap-8 md:gap-12">
           {features.map((feature, index) => (
             <div 

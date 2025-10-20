@@ -21,10 +21,10 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
       <div className="container relative z-10 mx-auto px-4 py-20">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Аренда контейнеров для хранения в СПб — храним.ру
+            Лучшее место для хранения вещей и оборудования — в Шушарах
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8">
-            Охраняемая площадка • 20 и 40-футовые контейнеры • От 6 000 ₽/мес
+            Площадка с асфальтом, круглосуточной охраной и доступом 24/7. Контейнеры 20 и 40 ft — от 6 000 ₽/мес
           </p>
           
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 max-w-md mx-auto mb-8">
@@ -47,7 +47,7 @@ export const Hero = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             className="bg-accent hover:bg-accent-hover text-accent-foreground text-lg px-8 py-6 h-auto"
             onClick={onScrollToForm}
           >
-            Получить подбор и цену
+            Подобрать контейнер
             <ArrowRight className="ml-2" />
           </Button>
         </div>

@@ -1,10 +1,10 @@
-import { Wrench, Box, Truck, FileText } from "lucide-react";
+import { Truck, Lock, Zap, Package } from "lucide-react";
 
 const services = [
-  { icon: Wrench, text: "Ремонт и техобслуживание контейнеров" },
-  { icon: Box, text: "Доставка контейнера на вашу территорию" },
-  { icon: Truck, text: "Погрузочно-разгрузочные работы" },
-  { icon: FileText, text: "Помощь в оформлении документов" },
+  { icon: Truck, text: "Доставка манипулятором" },
+  { icon: Lock, text: "Установка сигнализации" },
+  { icon: Zap, text: "Подключение освещения" },
+  { icon: Package, text: "Помощь с размещением" },
 ];
 
 export const AdditionalServices = () => {
@@ -13,10 +13,10 @@ export const AdditionalServices = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
-            Дополнительные услуги
+            Всё, что может понадобиться
           </h2>
           <p className="text-center text-muted-foreground mb-10">
-            Всё необходимое для комфортной работы
+            Дополнительные услуги по запросу
           </p>
           
           <div className="grid md:grid-cols-2 gap-4">
