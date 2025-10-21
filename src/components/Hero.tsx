@@ -8,41 +8,32 @@ interface HeroProps {
 
 export const Hero = ({ onScrollToForm }: HeroProps) => {
   return (
-    <section className="relative min-h-[90vh] flex items-center">
+    <section className="relative h-screen flex items-center">
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `linear-gradient(rgba(30, 58, 95, 0.85), rgba(30, 58, 95, 0.75)), url(${heroImage})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       />
       
-      <div className="container relative z-10 mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Контейнеры-кладовки в Шушарах
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="max-w-4xl">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-6 animate-fade-in uppercase leading-tight">
+            Контейнеры<br />для хранения
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-12">
-            Просторные теплые контейнеры для безопасного хранения вещей
+          <p className="text-xl md:text-2xl text-foreground mb-12">
+            Чистые и охраняемые 24/7
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap gap-4">
             <Button 
               size="lg" 
-              className="bg-accent hover:bg-accent-hover text-accent-foreground text-lg px-8 py-6 h-auto"
+              className="bg-primary hover:bg-primary-hover text-primary-foreground text-lg px-8 py-6 h-auto font-semibold"
               onClick={onScrollToForm}
             >
-              Оставить заявку
-              <ArrowRight className="ml-2" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white/30 text-lg px-8 py-6 h-auto"
-              onClick={onScrollToForm}
-            >
-              Узнать цены
+              Выбрать контейнер
             </Button>
           </div>
         </div>
