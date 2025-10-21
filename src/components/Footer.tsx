@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 export const Footer = () => {
   const phone = "+7 (812) 123-45-67";
   const email = "info@container-storage.ru";
-  const address = "Шушары, Санкт-Петербург, подъезд с КАД";
+  const address = "Шушары, Курьерский проезд 1А";
 
   return (
     <footer className="bg-primary text-primary-foreground py-16">
