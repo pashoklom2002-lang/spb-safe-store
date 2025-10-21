@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { UseCases } from "@/components/UseCases";
 import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
+import { Problems } from "@/components/Problems";
 import { Pricing } from "@/components/Pricing";
 import { HowItWorks } from "@/components/HowItWorks";
 import { CTA } from "@/components/CTA";
@@ -42,6 +43,7 @@ const Index = () => {
       />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
+        <Problems />
         <div ref={benefitsRef}>
           <Benefits />
         </div>

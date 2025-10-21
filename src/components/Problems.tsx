@@ -1,20 +1,35 @@
-import { Home, Truck, Warehouse } from "lucide-react";
+import { Package, Briefcase, PaintBucket, Truck, Bike, Gift } from "lucide-react";
 
-const problems = [
+const situations = [
   {
-    icon: Home,
-    title: "Вещи не помещаются дома",
-    description: "Мебель, коробки, сезонные вещи — всё занимает место",
+    number: "01",
+    title: "Для ваших личных вещей",
+    description: "Когда вещей в гардеробе много, а выкидывать жалко",
   },
   {
-    icon: Warehouse,
-    title: "Временное хранение при переезде",
-    description: "Между квартирами нужно где-то держать вещи",
+    number: "02",
+    title: "Для бизнеса",
+    description: "Удобно поставщикам для маркетплейсов",
   },
   {
-    icon: Truck,
-    title: "Инструмент на стройке",
-    description: "Неудобно держать материалы и оборудование на объекте",
+    number: "03",
+    title: "Ремонт",
+    description: "Если затеяли в гостиной ремонт, но диван на кухню не поставишь",
+  },
+  {
+    number: "04",
+    title: "Переезд",
+    description: "Чтобы не тащить все вещи разом",
+  },
+  {
+    number: "05",
+    title: "Сезонное хранение",
+    description: "Шины, велосипед, консервные банки",
+  },
+  {
+    number: "06",
+    title: "И всё, что угодно",
+    description: "Ваш любимый плюшевый медвежонок, лишний дневник, курьёза… Список можно продолжать бесконечно",
   },
 ];
 
@@ -22,26 +37,30 @@ export const Problems = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-foreground">
-          Зачем нужен контейнер
-        </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Контейнер решает все — без переплат и заморочек
-        </p>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {problems.map((problem, index) => (
-            <div 
-              key={index}
-              className="bg-card rounded-xl p-8 shadow-card hover:shadow-card-hover transition-shadow border border-border"
-            >
-              <div className="bg-accent/10 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
-                <problem.icon className="w-7 h-7 text-accent" />
+        <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
+          <div className="lg:sticky lg:top-32">
+            <p className="text-sm text-primary mb-2 uppercase tracking-wider">Когда мы нужны</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
+              Контейнеры помогут в самых разных жизненных ситуациях
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {situations.map((situation, index) => (
+              <div 
+                key={index}
+                className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-all group"
+              >
+                <div className="text-primary text-sm font-bold mb-3">{situation.number}</div>
+                <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                  {situation.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {situation.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-card-foreground">{problem.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

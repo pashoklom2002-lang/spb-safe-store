@@ -1,47 +1,69 @@
-import { Droplets, Calendar, FileCheck, Package, ThermometerSnowflake, Lock } from "lucide-react";
+import { Sofa, Package2, Hammer, Wrench, Box, Tv, ShirtIcon, Bike, BikeIcon, CircleDot } from "lucide-react";
 
-const benefits = [
+const storageItems = [
   {
-    icon: Droplets,
-    title: "Сухие и чистые",
+    icon: Sofa,
+    title: "Мебель",
   },
   {
-    icon: ThermometerSnowflake,
-    title: "Защита от непогоды",
+    icon: Package2,
+    title: "Вещи при переезде",
   },
   {
-    icon: Lock,
-    title: "Герметичный замок",
+    icon: Hammer,
+    title: "Стройматериалы при ремонте",
   },
   {
-    icon: Calendar,
-    title: "Гибкие сроки",
+    icon: Wrench,
+    title: "Инструменты",
   },
   {
-    icon: FileCheck,
-    title: "Быстрое оформление",
+    icon: Box,
+    title: "Товары для маркетплейсов",
   },
   {
-    icon: Package,
-    title: "Личное и коммерческое",
+    icon: Tv,
+    title: "Бытовая техника",
+  },
+  {
+    icon: ShirtIcon,
+    title: "Личные вещи",
+  },
+  {
+    icon: Bike,
+    title: "Велосипеды",
+  },
+  {
+    icon: BikeIcon,
+    title: "Мотоциклы и скутеры",
+  },
+  {
+    icon: CircleDot,
+    title: "Резину, диски и колеса",
   },
 ];
 
 export const Benefits = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-foreground">
-          Преимущества хранения в контейнерах
-        </h2>
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground relative inline-block">
+            Что часто хранят в контейнерах
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-primary"></div>
+          </h2>
+        </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-4">
-                <benefit.icon className="w-7 h-7 text-primary" />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+          {storageItems.map((item, index) => (
+            <div 
+              key={index} 
+              className="bg-card rounded-lg p-6 text-center hover:shadow-lg transition-shadow border border-border"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
+                <item.icon className="w-12 h-12 text-primary stroke-[1.5]" />
               </div>
-              <h3 className="text-sm font-semibold text-foreground">{benefit.title}</h3>
+              <h3 className="text-sm font-medium text-foreground">{item.title}</h3>
             </div>
           ))}
         </div>
