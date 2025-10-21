@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { UseCases } from "@/components/UseCases";
 import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
 import { Problems } from "@/components/Problems";
@@ -16,7 +15,6 @@ import { PromoBanner } from "@/components/PromoBanner";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
-  const useCasesRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLDivElement>(null);
   const benefitsRef = useRef<HTMLDivElement>(null);
   const pricingRef = useRef<HTMLDivElement>(null);
@@ -34,12 +32,12 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Header 
-        onScrollToUseCases={() => scrollToSection(useCasesRef)}
         onScrollToLocation={() => scrollToSection(locationRef)}
         onScrollToBenefits={() => scrollToSection(benefitsRef)}
         onScrollToPricing={() => scrollToSection(pricingRef)}
         onScrollToSecurity={() => scrollToSection(securityRef)}
         onScrollToFAQ={() => scrollToSection(faqRef)}
+        onScrollToForm={scrollToForm}
       />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
@@ -49,9 +47,6 @@ const Index = () => {
         </div>
         <div ref={locationRef}>
           <LocationAdvantage />
-        </div>
-        <div ref={useCasesRef}>
-          <UseCases onScrollToForm={scrollToForm} />
         </div>
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />

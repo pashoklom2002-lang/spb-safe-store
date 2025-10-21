@@ -2,23 +2,24 @@ import { Phone, MapPin, Clock } from "lucide-react";
 import logo from "@/assets/skladno-logo.png";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
+import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
-  onScrollToUseCases: () => void;
   onScrollToLocation: () => void;
   onScrollToBenefits: () => void;
   onScrollToPricing: () => void;
   onScrollToSecurity: () => void;
   onScrollToFAQ: () => void;
+  onScrollToForm: () => void;
 }
 
 export const Header = ({
-  onScrollToUseCases,
   onScrollToLocation,
   onScrollToBenefits,
   onScrollToPricing,
   onScrollToSecurity,
-  onScrollToFAQ
+  onScrollToFAQ,
+  onScrollToForm
 }: HeaderProps) => {
   const phone = "+7 (812) 123-45-67";
   
@@ -27,7 +28,7 @@ export const Header = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#9ACD32] border-b border-[#8BC024] z-50">
+    <header className="fixed top-0 left-0 right-0 bg-primary border-b border-primary/80 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo */}
@@ -65,12 +66,6 @@ export const Header = ({
               Площадка
             </button>
             <button 
-              onClick={onScrollToUseCases}
-              className="text-white hover:text-white/80 transition-colors font-bold text-sm"
-            >
-              Для чего
-            </button>
-            <button 
               onClick={onScrollToPricing}
               className="hover:text-white/80 transition-colors font-bold text-sm"
             >
@@ -90,8 +85,15 @@ export const Header = ({
             </button>
           </nav>
 
-          {/* Contact Info */}
+          {/* Contact Info & CTA Button */}
           <div className="flex items-center gap-6 flex-shrink-0">
+            <Button
+              onClick={onScrollToForm}
+              className="bg-background text-foreground hover:bg-background/90 font-bold hidden md:flex"
+            >
+              Арендовать контейнер
+            </Button>
+            
             <a 
               href={`tel:${phone}`}
               className="hidden md:flex items-center gap-2 text-white hover:text-white/80 transition-colors"
