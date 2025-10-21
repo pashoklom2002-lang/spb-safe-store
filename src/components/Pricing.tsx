@@ -1,14 +1,18 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import container20ft from "@/assets/container-20ft.jpg";
+import container40ft from "@/assets/container-40ft.jpg";
 
 const containers = [
   {
-    type: "20 ft",
+    type: "20 футов",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
+    image: container20ft,
   },
   {
-    type: "40 ft",
+    type: "40 футов",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
+    image: container40ft,
   },
 ];
 
@@ -44,10 +48,19 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             {containers.map((container, index) => (
               <div 
                 key={index}
-                className="bg-card rounded-2xl p-8 border-2 border-border hover:border-primary/50 transition-colors"
+                className="bg-card rounded-2xl overflow-hidden border-2 border-border hover:border-primary/50 transition-colors"
               >
-                <h3 className="text-3xl font-bold text-card-foreground mb-4">{container.type}</h3>
-                <p className="text-muted-foreground leading-relaxed">{container.description}</p>
+                <div className="aspect-[4/3] w-full overflow-hidden bg-black">
+                  <img 
+                    src={container.image} 
+                    alt={`Контейнер ${container.type}`}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-3xl font-bold text-card-foreground mb-4">{container.type}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{container.description}</p>
+                </div>
               </div>
             ))}
           </div>
