@@ -28,7 +28,7 @@ export const Header = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-primary border-b border-primary/80 z-50">
+    <header className="fixed top-0 left-0 right-0 bg-transparent z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo */}
@@ -40,7 +40,7 @@ export const Header = ({
           </button>
 
           {/* Address & Time */}
-          <div className="hidden xl:flex items-center gap-4 text-white text-sm">
+          <div className="hidden xl:flex items-center gap-4 text-primary text-sm">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
               <span className="font-semibold">Шушары, Курьерский проезд 1А</span>
@@ -52,34 +52,34 @@ export const Header = ({
           </div>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center gap-5 text-white">
+          <nav className="hidden lg:flex items-center gap-5 text-primary">
             <button 
               onClick={onScrollToBenefits}
-              className="hover:text-white/80 transition-colors font-bold text-sm"
+              className="hover:text-primary/80 transition-colors font-bold text-sm"
             >
               Преимущества
             </button>
             <button 
               onClick={onScrollToLocation}
-              className="hover:text-white/80 transition-colors font-bold text-sm"
+              className="hover:text-primary/80 transition-colors font-bold text-sm"
             >
               Площадка
             </button>
             <button 
               onClick={onScrollToPricing}
-              className="hover:text-white/80 transition-colors font-bold text-sm"
+              className="hover:text-primary/80 transition-colors font-bold text-sm"
             >
               Цены
             </button>
             <button 
               onClick={onScrollToSecurity}
-              className="hover:text-white/80 transition-colors font-bold text-sm"
+              className="hover:text-primary/80 transition-colors font-bold text-sm"
             >
               Безопасность
             </button>
             <button 
               onClick={onScrollToFAQ}
-              className="hover:text-white/80 transition-colors font-bold text-sm"
+              className="hover:text-primary/80 transition-colors font-bold text-sm"
             >
               FAQ
             </button>
@@ -89,14 +89,14 @@ export const Header = ({
           <div className="flex items-center gap-6 flex-shrink-0">
             <Button
               onClick={onScrollToForm}
-              className="bg-background text-foreground hover:bg-background/90 font-bold hidden md:flex"
+              className="bg-black text-white hover:bg-black/90 font-bold hidden md:flex"
             >
               Арендовать контейнер
             </Button>
             
             <a 
               href={`tel:${phone}`}
-              className="hidden md:flex items-center gap-2 text-white hover:text-white/80 transition-colors"
+              className="hidden md:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
             >
               <Phone className="w-5 h-5" />
               <span className="font-medium">{phone}</span>
