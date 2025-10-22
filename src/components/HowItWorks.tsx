@@ -53,12 +53,7 @@ export const HowItWorks = () => {
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
               {index < steps.length - 1 && (
-                <>
-                  {/* Desktop horizontal line */}
-                  <div className="hidden md:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-32px)] h-0.5 bg-border z-0" />
-                  {/* Mobile vertical line */}
-                  <div className="md:hidden absolute top-[calc(50%+32px)] left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%-32px)] bg-border z-0" />
-                </>
+                <div className="hidden md:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-32px)] h-0.5 bg-border z-0" />
               )}
             </div>
           ))}

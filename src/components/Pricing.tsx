@@ -6,7 +6,7 @@ import container40ft from "@/assets/container-40ft.jpg";
 const containers = [
   {
     type: "5 метров",
-    description: "Компактный вариант для личных вещей, инструментов, сезонного инвентаря",
+    description: "Секция в контейнере",
     image: container20ft,
     price: "от 5 000 ₽",
   },
