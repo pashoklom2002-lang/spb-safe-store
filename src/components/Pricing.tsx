@@ -5,14 +5,22 @@ import container40ft from "@/assets/container-40ft.jpg";
 
 const containers = [
   {
-    type: "20 футов",
-    description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
+    type: "5 метров",
+    description: "Компактный вариант для личных вещей, инструментов, сезонного инвентаря",
     image: container20ft,
+    price: "от 5 000 ₽",
   },
   {
-    type: "40 футов",
+    type: "6 метров",
+    description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
+    image: container20ft,
+    price: "от 8 000 ₽",
+  },
+  {
+    type: "12 метров",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
+    price: "от 12 000 ₽",
   },
 ];
 
@@ -44,7 +52,7 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             Выберите подходящий размер под вашу задачу
           </p>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
             {containers.map((container, index) => (
               <div 
                 key={index}
@@ -57,9 +65,10 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="p-8">
-                  <h3 className="text-3xl font-bold text-card-foreground mb-4">{container.type}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{container.description}</p>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-card-foreground mb-2">{container.type}</h3>
+                  <p className="text-xl font-semibold text-primary mb-3">{container.price}</p>
+                  <p className="text-muted-foreground leading-relaxed text-sm">{container.description}</p>
                 </div>
               </div>
             ))}

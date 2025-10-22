@@ -65,7 +65,7 @@ export const LocationAdvantage = () => {
           Самая удобная площадка в Шушарах
         </h2>
         
-        <div className="grid grid-cols-[70%_30%] gap-8 max-w-7xl mx-auto items-start">
+        <div className="grid lg:grid-cols-[70%_30%] gap-6 max-w-7xl mx-auto items-start">
           <div className="relative">
             <Carousel className="w-full">
               <CarouselContent>
@@ -112,7 +112,7 @@ export const LocationAdvantage = () => {
             </Carousel>
           </div>
 
-          <div className="space-y-8 pt-4">
+          <div className="grid grid-cols-4 lg:grid-cols-1 gap-4 lg:space-y-2">
             {features.map((feature, index) => (
               <div 
                 key={index}
@@ -121,7 +121,7 @@ export const LocationAdvantage = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 mb-3 group-hover:from-primary/30 group-hover:to-primary/10 transition-all">
                   <feature.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-sm font-medium text-foreground leading-tight">
+                <h3 className="text-xs lg:text-sm font-medium text-foreground leading-tight">
                   {feature.title}
                 </h3>
               </div>

@@ -39,10 +39,10 @@ export const HowItWorks = () => {
           Быстро. Без лишних формальностей.
         </p>
         
-        <div className="grid md:grid-cols-5 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-5 gap-8 max-w-6xl mx-auto relative">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
-              <div className="text-center">
+            <div key={index} className="relative flex flex-col items-center">
+              <div className="text-center relative z-10">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-6">
                   {index + 1}
                 </div>
@@ -53,7 +53,12 @@ export const HowItWorks = () => {
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[55%] w-[90%] h-0.5 bg-border" />
+                <>
+                  {/* Desktop horizontal line */}
+                  <div className="hidden md:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-32px)] h-0.5 bg-border z-0" />
+                  {/* Mobile vertical line */}
+                  <div className="md:hidden absolute top-[calc(50%+32px)] left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%-32px)] bg-border z-0" />
+                </>
               )}
             </div>
           ))}

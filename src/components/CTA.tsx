@@ -10,7 +10,7 @@ export const CTA = ({ onScrollToForm }: CTAProps) => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-            Хранение от 300 рублей в день
+            Хранение от 130 рублей в день
           </h2>
           <p className="text-lg text-muted-foreground">
             Оставьте заявку и получите доступ к контейнеру уже сегодня
