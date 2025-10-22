@@ -107,7 +107,7 @@ export const Header = ({
                   size="icon"
                   className="lg:hidden text-primary hover:text-primary/80"
                 >
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-8 h-8" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -161,10 +161,10 @@ export const Header = ({
             
             <a 
               href={`tel:${phone}`}
-              className="hidden md:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+              className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
             >
               <Phone className="w-5 h-5" />
-              <span className="font-medium">{phone}</span>
+              <span className="font-medium hidden sm:inline">{phone}</span>
             </a>
             
             <div className="flex items-center gap-3">
