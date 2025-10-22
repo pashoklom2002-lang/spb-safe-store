@@ -1,8 +1,14 @@
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Menu, X } from "lucide-react";
 import logo from "@/assets/skladno-logo.png";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 interface HeaderProps {
   onScrollToLocation: () => void;
@@ -22,9 +28,15 @@ export const Header = ({
   onScrollToForm
 }: HeaderProps) => {
   const phone = "+7 (812) 123-45-67";
+  const [isOpen, setIsOpen] = useState(false);
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNavClick = (scrollFunc: () => void) => {
+    scrollFunc();
+    setIsOpen(false);
   };
 
   return (
@@ -87,6 +99,59 @@ export const Header = ({
 
           {/* Contact Info & CTA Button */}
           <div className="flex items-center gap-6 flex-shrink-0">
+            {/* Mobile Menu */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="lg:hidden text-primary hover:text-primary/80"
+                >
+                  <Menu className="w-6 h-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-6 mt-8">
+                  <button 
+                    onClick={() => handleNavClick(onScrollToBenefits)}
+                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
+                  >
+                    Преимущества
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick(onScrollToLocation)}
+                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
+                  >
+                    Площадка
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick(onScrollToPricing)}
+                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
+                  >
+                    Цены
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick(onScrollToSecurity)}
+                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
+                  >
+                    Безопасность
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick(onScrollToFAQ)}
+                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
+                  >
+                    FAQ
+                  </button>
+                  <Button
+                    onClick={() => handleNavClick(onScrollToForm)}
+                    className="bg-black text-white hover:bg-black/90 font-bold w-full mt-4"
+                  >
+                    Арендовать контейнер
+                  </Button>
+                </nav>
+              </SheetContent>
+            </Sheet>
+
             <Button
               onClick={onScrollToForm}
               className="bg-black text-white hover:bg-black/90 font-bold hidden md:flex"
