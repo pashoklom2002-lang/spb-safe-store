@@ -1,4 +1,4 @@
-import { Shield, Camera, CheckCircle } from "lucide-react";
+import { Shield, Camera, CheckCircle, Droplet } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Security = () => {
@@ -19,7 +19,7 @@ export const Security = () => {
           Контейнеры сухие, чистые, без посторонних запахов — вещи защищены, техника и товар не пострадают.
         </p>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           <div className={`bg-card rounded-xl p-6 border border-border text-center hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
@@ -27,9 +27,10 @@ export const Security = () => {
             <div className="transition-transform duration-200 ease-out hover:scale-105">
               <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
             </div>
-            <h3 className="text-lg font-semibold text-card-foreground">
+            <h3 className="text-lg font-semibold text-card-foreground mb-2">
               Охраняемая территория
             </h3>
+            <p className="text-sm text-muted-foreground">Безопасность вещей</p>
           </div>
 
           <div className={`bg-card rounded-xl p-6 border border-border text-center hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out ${
@@ -39,9 +40,10 @@ export const Security = () => {
             <div className="transition-transform duration-200 ease-out hover:scale-105">
               <Camera className="w-12 h-12 text-primary mx-auto mb-4" />
             </div>
-            <h3 className="text-lg font-semibold text-card-foreground">
-              Видеонаблюдение 24/7
+            <h3 className="text-lg font-semibold text-card-foreground mb-2">
+              Видео 24/7
             </h3>
+            <p className="text-sm text-muted-foreground">Контроль доступа</p>
           </div>
 
           <div className={`bg-card rounded-xl p-6 border border-border text-center hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out ${
@@ -51,9 +53,23 @@ export const Security = () => {
             <div className="transition-transform duration-200 ease-out hover:scale-105">
               <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
             </div>
-            <h3 className="text-lg font-semibold text-card-foreground">
+            <h3 className="text-lg font-semibold text-card-foreground mb-2">
               Контроль доступа
             </h3>
+            <p className="text-sm text-muted-foreground">Никто лишний не зайдёт</p>
+          </div>
+
+          <div className={`bg-card rounded-xl p-6 border border-border text-center hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+          style={{ transitionDelay: '500ms' }}>
+            <div className="transition-transform duration-200 ease-out hover:scale-105">
+              <Droplet className="w-12 h-12 text-primary mx-auto mb-4" />
+            </div>
+            <h3 className="text-lg font-semibold text-card-foreground mb-2">
+              Сухие контейнеры
+            </h3>
+            <p className="text-sm text-muted-foreground">Без запахов и коррозии</p>
           </div>
         </div>
       </div>

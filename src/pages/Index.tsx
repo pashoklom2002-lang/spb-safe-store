@@ -6,12 +6,14 @@ import { Benefits } from "@/components/Benefits";
 import { Problems } from "@/components/Problems";
 import { Pricing } from "@/components/Pricing";
 import { HowItWorks } from "@/components/HowItWorks";
-import { CTA } from "@/components/CTA";
 import { Security } from "@/components/Security";
 import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { PromoBanner } from "@/components/PromoBanner";
+import { Reviews } from "@/components/Reviews";
+import { Photos } from "@/components/Photos";
+import { Contacts } from "@/components/Contacts";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -41,18 +43,14 @@ const Index = () => {
       />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
-        <Problems />
-        <div ref={benefitsRef}>
-          <Benefits />
-        </div>
-        <div ref={locationRef}>
-          <LocationAdvantage />
-        </div>
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
         </div>
+        <div ref={benefitsRef}>
+          <Benefits />
+        </div>
         <HowItWorks />
-        <CTA onScrollToForm={scrollToForm} />
+        <Reviews />
         <div ref={securityRef}>
           <Security />
         </div>
@@ -62,6 +60,8 @@ const Index = () => {
         <div ref={formRef}>
           <ContactForm />
         </div>
+        <Contacts />
+        <Photos />
         <Footer />
       </div>
       <PromoBanner onScrollToForm={scrollToForm} />

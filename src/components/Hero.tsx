@@ -26,12 +26,13 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
           <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-6 uppercase leading-tight transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Контейнеры<br />для хранения
+            Аренда контейнеров<br />в Шушарах
           </h1>
           <p className={`text-xl md:text-2xl text-foreground mb-12 transition-all duration-700 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Чистые и охраняемые 24/7
+            Хранение вещей и оборудования в контейнерах в Шушарах.<br />
+            Доступ 24/7. Безопасно.
           </p>
           
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out delay-200 ${
@@ -42,7 +43,15 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
               className="bg-primary hover:bg-primary-hover text-primary-foreground text-lg px-8 py-6 h-auto font-semibold"
               onClick={onScrollToForm}
             >
-              Выбрать контейнер
+              Оставить заявку
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="text-lg px-8 py-6 h-auto font-semibold border-2"
+              onClick={onScrollToForm}
+            >
+              Узнать цены
             </Button>
           </div>
         </div>

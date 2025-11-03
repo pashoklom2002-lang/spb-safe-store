@@ -1,4 +1,4 @@
-import { Sofa, Package2, Hammer, Wrench, Box, Tv, ShirtIcon, Bike, BikeIcon, CircleDot } from "lucide-react";
+import { Sofa, Package2, Hammer, Wrench, Box, Tv, ShirtIcon, Dumbbell, ShoppingBag, Monitor } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const storageItems = [
@@ -7,40 +7,24 @@ const storageItems = [
     title: "Мебель",
   },
   {
-    icon: Package2,
-    title: "Вещи при переезде",
+    icon: ShirtIcon,
+    title: "Сезонные вещи",
   },
   {
     icon: Hammer,
-    title: "Стройматериалы при ремонте",
+    title: "Инструменты и стройматериалы",
   },
   {
-    icon: Wrench,
-    title: "Инструменты",
+    icon: Dumbbell,
+    title: "Спортинвентарь",
   },
   {
-    icon: Box,
-    title: "Товары для маркетплейсов",
+    icon: Monitor,
+    title: "Техника",
   },
   {
-    icon: Tv,
-    title: "Бытовая техника",
-  },
-  {
-    icon: ShirtIcon,
-    title: "Личные вещи",
-  },
-  {
-    icon: Bike,
-    title: "Велосипеды",
-  },
-  {
-    icon: BikeIcon,
-    title: "Мотоциклы и скутеры",
-  },
-  {
-    icon: CircleDot,
-    title: "Резину, диски и колеса",
+    icon: ShoppingBag,
+    title: "Товары для e-commerce",
   },
 ];
 
@@ -59,7 +43,7 @@ export const Benefits = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {storageItems.map((item, index) => (
             <div 
               key={index} 

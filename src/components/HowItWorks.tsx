@@ -46,7 +46,7 @@ export const HowItWorks = () => {
           Быстро. Без лишних формальностей.
         </p>
         
-        <div className="grid md:grid-cols-5 gap-8 max-w-6xl mx-auto relative">
+        <div className="grid md:grid-cols-5 gap-6 max-w-6xl mx-auto relative">
           {steps.map((step, index) => (
             <div 
               key={index} 

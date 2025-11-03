@@ -69,16 +69,16 @@ export const ContactForm = () => {
     <section ref={ref} id="contact-form" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto">
-          <div className={`text-center mb-12 transition-all duration-500 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
-              Оставьте заявку и получите доступ уже сегодня
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Шушары · Асфальт · 24/7 · Безопасно
-            </p>
-          </div>
+        <div className={`text-center mb-12 transition-all duration-500 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+        }`}>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
+            Оставьте заявку
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Ответим в течение 10 минут
+          </p>
+        </div>
 
           <form onSubmit={handleSubmit} className={`bg-card rounded-2xl p-8 shadow-card border border-border transition-all duration-500 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
@@ -103,9 +103,23 @@ export const ContactForm = () => {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+7 (___) ___-__-__"
+                  placeholder="+7 (999) 123-45-67"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    // Маска для телефона
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.startsWith('8')) value = '7' + value.slice(1);
+                    if (!value.startsWith('7')) value = '7' + value;
+                    value = value.slice(0, 11);
+                    
+                    let formatted = '+7';
+                    if (value.length > 1) formatted += ' (' + value.slice(1, 4);
+                    if (value.length >= 4) formatted += ') ' + value.slice(4, 7);
+                    if (value.length >= 7) formatted += '-' + value.slice(7, 9);
+                    if (value.length >= 9) formatted += '-' + value.slice(9, 11);
+                    
+                    setFormData({ ...formData, phone: formatted });
+                  }}
                   required
                   maxLength={20}
                   className="mt-2"
@@ -144,7 +158,7 @@ export const ContactForm = () => {
 
               <Button 
                 type="submit" 
-                className="w-full bg-accent hover:bg-accent-hover text-accent-foreground"
+                className="w-full bg-primary hover:bg-primary-hover text-primary-foreground"
                 disabled={loading}
               >
                 {loading ? "Отправка..." : "Оставить заявку"}
