@@ -1,4 +1,5 @@
 import { Package, Briefcase, PaintBucket, Truck, Bike, Gift } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const situations = [
   {
@@ -34,11 +35,15 @@ const situations = [
 ];
 
 export const Problems = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   return (
-    <section className="py-20 bg-background">
+    <section ref={ref} className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
-          <div className="lg:sticky lg:top-32">
+          <div className={`lg:sticky lg:top-32 transition-all duration-500 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}>
             <p className="text-sm text-primary mb-2 uppercase tracking-wider">Когда мы нужны</p>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
               Контейнеры помогут в самых разных жизненных ситуациях
@@ -49,10 +54,13 @@ export const Problems = () => {
             {situations.map((situation, index) => (
               <div 
                 key={index}
-                className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-all group"
+                className={`bg-card rounded-xl p-6 border border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out group ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
               >
                 <div className="text-primary text-sm font-bold mb-3">{situation.number}</div>
-                <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors duration-200">
                   {situation.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">

@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Имя должно содержать минимум 2 символа").max(100, "Имя слишком длинное"),
@@ -16,6 +17,7 @@ const formSchema = z.object({
 
 export const ContactForm = () => {
   const [loading, setLoading] = useState(false);
+  const { ref, isVisible } = useScrollAnimation();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -64,10 +66,12 @@ export const ContactForm = () => {
   };
 
   return (
-    <section id="contact-form" className="py-20 bg-secondary/30">
+    <section ref={ref} id="contact-form" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto">
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 transition-all duration-500 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
               Оставьте заявку и получите доступ уже сегодня
             </h2>
@@ -76,7 +80,9 @@ export const ContactForm = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-card border border-border">
+          <form onSubmit={handleSubmit} className={`bg-card rounded-2xl p-8 shadow-card border border-border transition-all duration-500 ease-out delay-100 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}>
             <div className="space-y-6">
               <div>
                 <Label htmlFor="name">Ваше имя *</Label>
