@@ -169,7 +169,7 @@ export const Header = ({
             
             <div className="flex items-center gap-3">
               <a
-                href={`https://wa.me/${phone.replace(/\D/g, '')}`}
+                href="https://wa.me/+79939662273"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-black hover:bg-black/80 transition-colors"

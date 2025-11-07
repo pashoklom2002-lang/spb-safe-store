@@ -42,7 +42,7 @@ export const Contacts = () => {
                   asChild
                 >
                   <a
-                    href="https://wa.me/79939662273"
+                    href="https://wa.me/+79939662273"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
