@@ -101,9 +101,10 @@ export const Contacts = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}>
             <iframe
-              src="https://yandex.ru/map-widget/v1/?ll=30.392470,59.799270&z=16&l=map&pt=30.392470,59.799270,pm2rdm"
+              src="https://yandex.ru/map-widget/v1/?ll=30.392470%2C59.799270&z=16&l=map&pt=30.392470%2C59.799270%2Cpm2rdm~Складно%20Тут"
               style={{ width: "100%", height: "400px", border: "0" }}
               title="Карта проезда к Складно Тут"
+              allowFullScreen
             />
           </div>
         </div>
