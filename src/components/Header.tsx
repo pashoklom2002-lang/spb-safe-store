@@ -179,7 +179,7 @@ export const Header = ({
               </a>
               
               <a
-                href={`https://t.me/${phone.replace(/\D/g, '')}`}
+                href="https://t.me/Skladno_tut_bot"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#229ED9] hover:bg-[#229ED9]/90 transition-colors"

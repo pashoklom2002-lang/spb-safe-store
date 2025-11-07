@@ -58,7 +58,7 @@ export const Contacts = () => {
                   asChild
                 >
                   <a
-                    href="https://t.me/skladno_tut"
+                    href="https://t.me/Skladno_tut_bot"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
