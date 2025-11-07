@@ -6,19 +6,19 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const containers = [
   {
-    type: "5 метров",
+    type: "5 м²",
     description: "Секция в контейнере",
     image: container20ft,
     price: "от 5 000 ₽",
   },
   {
-    type: "6 метров",
+    type: "16 м²",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
     price: "от 8 000 ₽",
   },
   {
-    type: "12 метров",
+    type: "32 м²",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
     price: "от 12 000 ₽",
@@ -64,7 +64,7 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             {containers.map((container, index) => (
               <div 
                 key={index}
-                className={`bg-card rounded-2xl overflow-hidden border-2 border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.4)] transition-all duration-300 ease-out ${
+                className={`bg-card rounded-2xl overflow-hidden border-2 border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.4)] transition-all duration-300 ease-out flex flex-col ${
                   isVisibleContainers ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
@@ -76,15 +76,15 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
                     className="w-full h-full object-contain hover:scale-105 transition-transform duration-300 ease-out"
                   />
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-2xl font-bold text-card-foreground mb-2">{container.type}</h3>
                   <p className="text-xl font-semibold text-primary mb-3">{container.price}</p>
-                  <p className="text-muted-foreground leading-relaxed text-sm mb-4">{container.description}</p>
+                  <p className="text-muted-foreground leading-relaxed text-sm mb-4 flex-grow">{container.description}</p>
                   <Button 
                     size="sm"
                     variant="outline"
                     onClick={onScrollToForm}
-                    className="w-full"
+                    className="w-full mt-auto"
                   >
                     Узнать доступность
                   </Button>
