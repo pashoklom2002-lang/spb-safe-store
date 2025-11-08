@@ -6,19 +6,19 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const containers = [
   {
-    type: "5 м²",
+    type: "6 м²",
     description: "Секция в контейнере",
     image: container20ft,
     price: "от 5 000 ₽",
   },
   {
-    type: "16 м²",
+    type: "15 м²",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
     price: "от 8 000 ₽",
   },
   {
-    type: "32 м²",
+    type: "30 м²",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
     price: "от 12 000 ₽",
