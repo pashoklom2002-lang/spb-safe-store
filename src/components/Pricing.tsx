@@ -15,13 +15,13 @@ const containers = [
     type: "15 м²",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
-    price: "от 8 000 ₽",
+    price: "от 10 500 ₽",
   },
   {
     type: "30 м²",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
-    price: "от 12 000 ₽",
+    price: "от 19 000 ₽",
   },
 ];
 
