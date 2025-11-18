@@ -2,6 +2,9 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import container20ft from "@/assets/container-20ft.jpg";
 import container40ft from "@/assets/container-40ft.jpg";
+import container6mHover from "@/assets/container-6m-hover.png";
+import container15mHover from "@/assets/container-15m-hover.png";
+import container30mHover from "@/assets/container-30m-hover.png";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const containers = [
@@ -9,18 +12,21 @@ const containers = [
     type: "6 м²",
     description: "Секция в контейнере",
     image: container20ft,
+    hoverImage: container6mHover,
     price: "от 5 000 ₽",
   },
   {
     type: "15 м²",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
+    hoverImage: container15mHover,
     price: "от 10 500 ₽",
   },
   {
     type: "30 м²",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
+    hoverImage: container30mHover,
     price: "от 19 000 ₽",
   },
 ];
@@ -64,16 +70,21 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
             {containers.map((container, index) => (
               <div 
                 key={index}
-                className={`bg-card rounded-2xl overflow-hidden border-2 border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.4)] transition-all duration-300 ease-out flex flex-col ${
+                className={`bg-card rounded-2xl overflow-hidden border-2 border-border hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.4)] transition-all duration-300 ease-out flex flex-col group ${
                   isVisibleContainers ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-black">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
                   <img 
                     src={container.image} 
                     alt={`Контейнер ${container.type}`}
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300 ease-out"
+                    className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-out group-hover:opacity-0"
+                  />
+                  <img 
+                    src={container.hoverImage} 
+                    alt={`Контейнер ${container.type} hover`}
+                    className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
