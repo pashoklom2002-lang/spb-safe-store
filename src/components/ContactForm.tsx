@@ -32,6 +32,7 @@ export const ContactForm = () => {
       const validatedData = formSchema.parse(formData);
       setLoading(true);
 
+      // Отправка в Supabase
       const { error } = await supabase.from("rental_requests").insert([
         {
           name: validatedData.name,
@@ -43,12 +44,23 @@ export const ContactForm = () => {
 
       if (error) throw error;
 
+      // Отправка в Bitrix24
+      const { error: bitrixError } = await supabase.functions.invoke('send-to-bitrix', {
+        body: {
+          name: validatedData.name,
+          phone: validatedData.phone,
+          containerType: validatedData.containerType,
+          rentalPeriod: validatedData.rentalPeriod,
+        }
+      });
+
+      if (bitrixError) {
+        console.error('Ошибка отправки в Bitrix24:', bitrixError);
+      }
+
       toast.success("Заявка отправлена!", {
         description: "Мы свяжемся с вами в ближайшее время",
       });
-
-      // Отправка в Telegram (добавьте свой bot token и chat_id)
-      const telegramMessage = `Новая заявка!\n\nИмя: ${validatedData.name}\nТелефон: ${validatedData.phone}\nКонтейнер: ${validatedData.containerType}\nСрок: ${validatedData.rentalPeriod}`;
       
       // Reset form
       setFormData({ name: "", phone: "", containerType: "", rentalPeriod: "" });
