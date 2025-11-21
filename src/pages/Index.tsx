@@ -10,7 +10,6 @@ import { Security } from "@/components/Security";
 import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
-import { PromoBanner } from "@/components/PromoBanner";
 import { Reviews } from "@/components/Reviews";
 import { Photos } from "@/components/Photos";
 import { Contacts } from "@/components/Contacts";
@@ -64,7 +63,6 @@ const Index = () => {
         <Photos />
         <Footer />
       </div>
-      <PromoBanner onScrollToForm={scrollToForm} />
     </main>
   );
 };
