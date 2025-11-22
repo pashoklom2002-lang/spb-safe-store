@@ -55,16 +55,16 @@ export const FacilityAdvantages = () => {
         >
           {advantages.map((advantage, index) => (
             <div key={index} className="group aspect-square">
-              <div className="bg-card border border-border rounded-lg p-3 h-full flex flex-col items-center justify-center text-center hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.3)] hover:border-primary/50 transition-all duration-300 ease-out hover:-translate-y-1">
+              <div className="bg-card border border-border rounded-lg p-3 h-full flex flex-col items-center text-center hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.3)] hover:border-primary/50 transition-all duration-300 ease-out hover:-translate-y-1">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-br ${advantage.gradient} mb-3 group-hover:scale-110 transition-transform duration-300 ease-out`}
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-br ${advantage.gradient} mb-3 group-hover:scale-110 transition-transform duration-300 ease-out flex-shrink-0`}
                 >
                   <advantage.icon
                     className="w-10 h-10 text-primary"
                     strokeWidth={1.5}
                   />
                 </div>
-                <h3 className="text-sm font-bold text-card-foreground leading-tight">
+                <h3 className="text-sm font-bold text-card-foreground leading-tight flex-1 flex items-center justify-center">
                   {advantage.title}
                 </h3>
               </div>
