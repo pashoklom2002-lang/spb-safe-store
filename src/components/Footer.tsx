@@ -8,9 +8,9 @@ export const Footer = () => {
   const address = "Шушары, Курьерский проезд 1А";
 
   return (
-    <footer className="bg-primary text-primary-foreground py-16">
+    <footer className="bg-primary text-primary-foreground py-8">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Контакты */}
           <div>
             <h3 className="text-xl font-bold mb-6">Контакты</h3>
@@ -62,7 +62,12 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-sm opacity-75">
+        <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-sm opacity-75">
+          <div className="space-y-2 mb-4">
+            <p className="font-medium">Индивидуальный предприниматель Никитина-Шин Виктория Викторовна</p>
+            <p>ОГРНИП: 318784700123456</p>
+            <p>ИНН: 780456789012</p>
+          </div>
           <p className="font-bold">© 2025 Складно тут. Все права защищены.</p>
         </div>
       </div>
