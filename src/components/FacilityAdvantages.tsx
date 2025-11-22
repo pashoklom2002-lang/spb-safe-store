@@ -1,4 +1,4 @@
-import { Truck, Shield, Clock, MapPin, Cctv, Lightbulb, CheckCircle, Droplets, Thermometer, Sun } from "lucide-react";
+import { Truck, Shield, Clock, MapPin, Cctv, CheckCircle, Droplets, Thermometer, Sun, FileCheck, Navigation } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
   Carousel,
@@ -47,14 +47,20 @@ const advantages = [
   },
   {
     icon: Truck,
-    title: "Подъезд вплотную",
-    description: "Удобная загрузка и разгрузка",
+    title: "Заезд под фуру и манипулятор",
+    description: "Подъезд вплотную к контейнеру",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: CheckCircle,
-    title: "Асфальт без грязи",
-    description: "Чистая территория круглый год",
+    title: "Асфальтированная территория",
+    description: "Чистая площадка без грязи",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
+    icon: Navigation,
+    title: "Прямой подъезд с КАД",
+    description: "Всего 2 минуты от развязки",
     gradient: "from-primary/20 to-primary/5"
   },
   {
@@ -64,9 +70,9 @@ const advantages = [
     gradient: "from-primary/20 to-primary/5"
   },
   {
-    icon: MapPin,
-    title: "2 минуты от КАДа",
-    description: "Удобное расположение",
+    icon: FileCheck,
+    title: "Быстрое оформление",
+    description: "Готово за 1 день",
     gradient: "from-primary/20 to-primary/5"
   },
 ];
