@@ -49,13 +49,13 @@ export const FacilityAdvantages = () => {
         </h2>
 
         <div
-          className={`max-w-xl mx-auto grid grid-cols-3 gap-2 transition-all duration-500 ease-out delay-100 ${
+          className={`container mx-auto px-4 grid grid-cols-3 gap-2 transition-all duration-500 ease-out delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           {advantages.map((advantage, index) => (
-            <div key={index} className="group aspect-square">
-              <div className="bg-card border border-border rounded-lg p-3 h-full flex flex-col items-center text-center hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.3)] hover:border-primary/50 transition-all duration-300 ease-out hover:-translate-y-1">
+            <div key={index} className="group">
+              <div className="bg-card border border-border rounded-lg p-4 h-32 flex flex-col items-center text-center hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.3)] hover:border-primary/50 transition-all duration-300 ease-out hover:-translate-y-1">
                 <div
                   className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-br ${advantage.gradient} mb-3 group-hover:scale-110 transition-transform duration-300 ease-out flex-shrink-0`}
                 >
