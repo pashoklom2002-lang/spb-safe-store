@@ -5,12 +5,12 @@ const advantages = [
   {
     icon: Cctv,
     title: "Охраняемая территория",
-    gradient: "from-primary/20 to-primary/5"
+    gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Thermometer,
     title: "Тёплые, сухие и освещённые контейнеры",
-    gradient: "from-primary/20 to-primary/5"
+    gradient: "from-primary/20 to-primary/5",
   },
 ];
 
@@ -39,9 +39,12 @@ export const FacilityAdvantages = () => {
                 <div
                   className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${advantage.gradient} mb-6 group-hover:scale-110 transition-transform duration-300 ease-out`}
                 >
-                  <advantage.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                  <advantage.icon
+                    className="w-8 h-8 text-primary"
+                    strokeWidth={1.5}
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-card-foreground">
+                <h3 className="text-xl md:text-2xl font-bold text-card-foreground leading-snug">
                   {advantage.title}
                 </h3>
               </div>
