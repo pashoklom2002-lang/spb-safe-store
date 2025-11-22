@@ -19,12 +19,12 @@ const advantages = [
   },
   {
     icon: FileText,
-    title: "Быстрое оформление",
+    title: "Гибкие условия аренды",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Ruler,
-    title: "Разные размеры контейнеров",
+    title: "Разные типы контейнеров",
     gradient: "from-primary/20 to-primary/5",
   },
   {
