@@ -102,7 +102,7 @@ export const Contacts = () => {
           }`}>
             <iframe
               src="https://yandex.ru/map-widget/v1/?ll=30.392470%2C59.799270&z=16&l=map&pt=30.392470%2C59.799270%2Cpm2rdm~Складно%20Тут"
-              style={{ width: "100%", height: "400px", border: "0" }}
+              style={{ width: "100%", height: "200px", border: "0" }}
               title="Карта проезда к Складно Тут"
               allowFullScreen
             />
