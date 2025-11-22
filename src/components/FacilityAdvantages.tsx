@@ -1,4 +1,4 @@
-import { Truck, Shield, Clock, CheckCircle, MapPin, Camera } from "lucide-react";
+import { Truck, Shield, Clock, MapPin, Cctv, Lightbulb, CheckCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
   Carousel,
@@ -10,6 +10,24 @@ import {
 
 const advantages = [
   {
+    icon: Shield,
+    title: "Охраняемая территория",
+    description: "",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
+    icon: Cctv,
+    title: "Видеонаблюдение и доступ к камерам",
+    description: "",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
+    icon: Lightbulb,
+    title: "Теплые, сухие и освещенные контейнеры",
+    description: "",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
     icon: Truck,
     title: "Подъезд вплотную",
     description: "Удобный заезд для любого транспорта",
@@ -19,12 +37,6 @@ const advantages = [
     icon: CheckCircle,
     title: "Асфальт без грязи",
     description: "Чистая территория в любую погоду",
-    gradient: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: Shield,
-    title: "Охрана 24/7",
-    description: "Круглосуточная охрана территории",
     gradient: "from-primary/20 to-primary/5"
   },
   {
@@ -39,19 +51,13 @@ const advantages = [
     description: "Удобное расположение рядом с развязкой",
     gradient: "from-primary/20 to-primary/5"
   },
-  {
-    icon: Camera,
-    title: "Видеонаблюдение",
-    description: "Полный контроль безопасности",
-    gradient: "from-primary/20 to-primary/5"
-  },
 ];
 
 export const FacilityAdvantages = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-16 bg-background">
+    <section ref={ref} className="py-16 bg-secondary/30">
       <div className="container mx-auto px-4">
         <h2 className={`text-2xl md:text-4xl font-bold mb-12 text-foreground text-center transition-all duration-500 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
@@ -80,9 +86,11 @@ export const FacilityAdvantages = () => {
                       <h3 className="text-lg font-bold text-card-foreground mb-2">
                         {advantage.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {advantage.description}
-                      </p>
+                      {advantage.description && (
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {advantage.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </CarouselItem>

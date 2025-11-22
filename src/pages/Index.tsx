@@ -7,7 +7,6 @@ import { Benefits } from "@/components/Benefits";
 import { Problems } from "@/components/Problems";
 import { Pricing } from "@/components/Pricing";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Security } from "@/components/Security";
 import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
@@ -41,7 +40,9 @@ const Index = () => {
       />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
-        <FacilityAdvantages />
+        <div ref={securityRef}>
+          <FacilityAdvantages />
+        </div>
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
         </div>
@@ -49,9 +50,6 @@ const Index = () => {
           <Benefits />
         </div>
         <HowItWorks />
-        <div ref={securityRef}>
-          <Security />
-        </div>
         <div ref={faqRef}>
           <FAQ />
         </div>
