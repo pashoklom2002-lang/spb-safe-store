@@ -40,11 +40,11 @@ const Index = () => {
       />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
-        <div ref={securityRef}>
-          <FacilityAdvantages />
-        </div>
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
+        </div>
+        <div ref={securityRef}>
+          <FacilityAdvantages />
         </div>
         <div ref={benefitsRef}>
           <Benefits />
