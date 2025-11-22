@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { FacilityAdvantages } from "@/components/FacilityAdvantages";
 import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
 import { Problems } from "@/components/Problems";
@@ -17,7 +16,6 @@ const Index = () => {
   const locationRef = useRef<HTMLDivElement>(null);
   const benefitsRef = useRef<HTMLDivElement>(null);
   const pricingRef = useRef<HTMLDivElement>(null);
-  const securityRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
@@ -34,7 +32,6 @@ const Index = () => {
         onScrollToLocation={() => scrollToSection(locationRef)}
         onScrollToBenefits={() => scrollToSection(benefitsRef)}
         onScrollToPricing={() => scrollToSection(pricingRef)}
-        onScrollToSecurity={() => scrollToSection(securityRef)}
         onScrollToFAQ={() => scrollToSection(faqRef)}
         onScrollToForm={scrollToForm}
       />
@@ -42,9 +39,6 @@ const Index = () => {
         <Hero onScrollToForm={scrollToForm} />
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
-        </div>
-        <div ref={securityRef}>
-          <FacilityAdvantages />
         </div>
         <div ref={benefitsRef}>
           <Benefits />

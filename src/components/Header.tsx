@@ -14,7 +14,6 @@ interface HeaderProps {
   onScrollToLocation: () => void;
   onScrollToBenefits: () => void;
   onScrollToPricing: () => void;
-  onScrollToSecurity: () => void;
   onScrollToFAQ: () => void;
   onScrollToForm: () => void;
 }
@@ -23,7 +22,6 @@ export const Header = ({
   onScrollToLocation,
   onScrollToBenefits,
   onScrollToPricing,
-  onScrollToSecurity,
   onScrollToFAQ,
   onScrollToForm
 }: HeaderProps) => {
@@ -101,12 +99,6 @@ export const Header = ({
               Цены
             </button>
             <button 
-              onClick={onScrollToSecurity}
-              className="hover:text-primary/80 transition-colors font-bold text-sm"
-            >
-              Безопасность
-            </button>
-            <button 
               onClick={onScrollToFAQ}
               className="hover:text-primary/80 transition-colors font-bold text-sm"
             >
@@ -146,12 +138,6 @@ export const Header = ({
                     className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
                   >
                     Цены
-                  </button>
-                  <button 
-                    onClick={() => handleNavClick(onScrollToSecurity)}
-                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
-                  >
-                    Безопасность
                   </button>
                   <button 
                     onClick={() => handleNavClick(onScrollToFAQ)}
