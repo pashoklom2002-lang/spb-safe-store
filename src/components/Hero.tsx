@@ -31,8 +31,8 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
           <p className={`text-xl md:text-2xl text-foreground mb-12 transition-all duration-700 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Хранение вещей и оборудования в контейнерах в Шушарах.<br />
-            Доступ 24/7. Безопасно.
+            Хранение вещей и оборудования в контейнерах в Шушарах<br />
+            Доступ 24/7. Безопасно
           </p>
           
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out delay-200 ${
