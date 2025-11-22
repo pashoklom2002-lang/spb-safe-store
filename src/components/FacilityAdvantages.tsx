@@ -1,35 +1,35 @@
-import { Cctv, Thermometer, Clock, FileText, Ruler, Truck } from "lucide-react";
+import { Lock, Thermometer, Clock, Video, Ruler, Truck } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const advantages = [
   {
-    icon: Cctv,
-    title: "Охраняемая территория",
+    icon: Lock,
+    title: "охраняемая территория",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Thermometer,
-    title: "Тёплые, сухие и освещённые контейнеры",
+    title: "тёплые, сухие и освещённые контейнеры",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Clock,
-    title: "Доступ 24/7",
+    title: "доступ 24/7",
     gradient: "from-primary/20 to-primary/5",
   },
   {
-    icon: FileText,
-    title: "Личный доступ к камерам",
+    icon: Video,
+    title: "личный доступ к камерам",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Ruler,
-    title: "Разные типы контейнеров",
+    title: "разные типы контейнеров",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Truck,
-    title: "Удобный заезд и разгрузка",
+    title: "удобный заезд и разгрузка",
     gradient: "from-primary/20 to-primary/5",
   },
 ];
