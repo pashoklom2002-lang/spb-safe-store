@@ -12,55 +12,25 @@ const advantages = [
   {
     icon: Shield,
     title: "Охраняемая территория",
-    description: "Круглосуточная охрана периметра",
-    gradient: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: Cctv,
-    title: "Видеонаблюдение",
-    description: "Камеры по всей территории",
-    gradient: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: Cctv,
-    title: "Доступ к камерам",
-    description: "Онлайн-просмотр для арендаторов",
+    description: "Круглосуточная охрана и видеонаблюдение",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: Thermometer,
-    title: "Теплые контейнеры",
-    description: "Защита от промерзания",
-    gradient: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: Droplets,
-    title: "Сухие контейнеры",
-    description: "Никакой влаги и коррозии",
-    gradient: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: Sun,
-    title: "Освещенные контейнеры",
-    description: "Удобный доступ в любое время",
+    title: "Теплые, сухие и освещенные",
+    description: "Комфортные условия хранения",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: Truck,
-    title: "Заезд под фуру и манипулятор",
-    description: "Подъезд вплотную к контейнеру",
-    gradient: "from-primary/20 to-primary/5"
-  },
-  {
-    icon: CheckCircle,
-    title: "Асфальтированная территория",
-    description: "Чистая площадка без грязи",
+    title: "Заезд под фуру",
+    description: "Удобная загрузка и разгрузка",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: Navigation,
-    title: "Прямой подъезд с КАД",
-    description: "Всего 2 минуты от развязки",
+    title: "2 минуты от КАД",
+    description: "Удобное расположение",
     gradient: "from-primary/20 to-primary/5"
   },
   {
@@ -71,8 +41,8 @@ const advantages = [
   },
   {
     icon: FileCheck,
-    title: "Быстрое оформление",
-    description: "Готово за 1 день",
+    title: "Оформление за 1 день",
+    description: "Быстрый старт аренды",
     gradient: "from-primary/20 to-primary/5"
   },
 ];
@@ -86,7 +56,7 @@ export const FacilityAdvantages = () => {
         <h2 className={`text-2xl md:text-4xl font-bold mb-12 text-foreground text-center transition-all duration-500 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          Преимущества площадки
+          Преимущества
         </h2>
         
         <div className={`max-w-6xl mx-auto transition-all duration-500 ease-out delay-100 ${
