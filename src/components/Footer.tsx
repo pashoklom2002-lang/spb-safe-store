@@ -8,13 +8,13 @@ export const Footer = () => {
   const address = "Шушары, Курьерский проезд 1А";
 
   return (
-    <footer className="bg-primary text-primary-foreground py-8">
+    <footer className="bg-primary text-primary-foreground py-6">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Контакты */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Контакты</h3>
-            <div className="space-y-4">
+            <h3 className="text-xl font-bold mb-4">Контакты</h3>
+            <div className="space-y-3">
               <a 
                 href={phoneHref}
                 className="flex items-center gap-3 hover:text-accent transition-colors font-bold"
@@ -32,8 +32,8 @@ export const Footer = () => {
 
           {/* Мессенджеры */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Напишите нам</h3>
-            <div className="space-y-4">
+            <h3 className="text-xl font-bold mb-4">Напишите нам</h3>
+            <div className="space-y-3">
               <a
                 href="https://wa.me/+79217987222"
                 target="_blank"
@@ -54,7 +54,7 @@ export const Footer = () => {
                 <span>Telegram</span>
               </a>
 
-              <div className="pt-4 border-t border-primary-foreground/20">
+              <div className="pt-3 border-t border-primary-foreground/20">
                 <p className="text-sm opacity-75">Прием заявок</p>
                 <p className="font-bold">09:00 — 22:00 ежедневно</p>
               </div>
@@ -62,13 +62,12 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-sm opacity-75">
-          <div className="space-y-2 mb-4">
-            <p className="font-medium">Индивидуальный предприниматель Никитина-Шин Виктория Викторовна</p>
-            <p>ОГРНИП: 318784700123456</p>
-            <p>ИНН: 780456789012</p>
+        <div className="border-t border-primary-foreground/20 mt-6 pt-4 text-left text-xs opacity-75">
+          <div className="space-y-0.5 mb-2">
+            <p className="font-medium">ИП Никитина-Шин Виктория Викторовна</p>
+            <p>ОГРНИП: 318784700123456 | ИНН: 780456789012</p>
           </div>
-          <p className="font-bold">© 2025 Складно тут. Все права защищены.</p>
+          <p className="font-bold text-center">© 2025 Складно тут. Все права защищены.</p>
         </div>
       </div>
     </footer>
