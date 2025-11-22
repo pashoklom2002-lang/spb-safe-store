@@ -11,7 +11,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const formSchema = z.object({
   name: z.string().trim().min(2, "Имя должно содержать минимум 2 символа").max(100, "Имя слишком длинное"),
   phone: z.string().trim().min(10, "Введите корректный номер телефона").max(20, "Номер слишком длинный"),
-  containerType: z.enum(["20ft", "40ft"], { required_error: "Выберите тип контейнера" }),
+  containerType: z.enum(["6m", "15m", "30m"], { required_error: "Выберите размер контейнера" }),
   rentalPeriod: z.string().trim().min(1, "Выберите срок аренды").max(100),
 });
 
@@ -139,7 +139,7 @@ export const ContactForm = () => {
               </div>
 
               <div>
-                <Label htmlFor="containerType">Тип контейнера *</Label>
+                <Label htmlFor="containerType">Размер контейнера *</Label>
                 <Select
                   value={formData.containerType}
                   onValueChange={(value) => setFormData({ ...formData, containerType: value })}
@@ -148,8 +148,9 @@ export const ContactForm = () => {
                     <SelectValue placeholder="Выберите размер" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="20ft">20 футов (6 × 2.4 × 2.6 м)</SelectItem>
-                    <SelectItem value="40ft">40 футов (12 × 2.4 × 2.6 м)</SelectItem>
+                    <SelectItem value="6m">6 м² — Секция в контейнере</SelectItem>
+                    <SelectItem value="15m">15 м² — Для личного хранения</SelectItem>
+                    <SelectItem value="30m">30 м² — Для склада и бизнеса</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

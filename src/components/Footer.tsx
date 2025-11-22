@@ -3,8 +3,8 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 
 export const Footer = () => {
-  const phone = "8 993 966-22-73";
-  const phoneHref = "tel:+79939662273";
+  const phone = "8 921 798-72-22";
+  const phoneHref = "tel:+79217987222";
   const address = "Шушары, Курьерский проезд 1А";
 
   return (
@@ -35,7 +35,7 @@ export const Footer = () => {
             <h3 className="text-xl font-bold mb-6">Напишите нам</h3>
             <div className="space-y-4">
               <a
-                href="https://wa.me/+79939662273"
+                href="https://wa.me/+79217987222"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-accent transition-colors font-bold"
