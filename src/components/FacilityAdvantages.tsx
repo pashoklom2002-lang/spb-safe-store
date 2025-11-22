@@ -24,7 +24,7 @@ const advantages = [
   },
   {
     icon: Ruler,
-    title: "разные типы контейнеров",
+    title: "гибкие условия аренды",
     gradient: "from-primary/20 to-primary/5",
   },
   {
