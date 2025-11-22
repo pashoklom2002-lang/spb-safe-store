@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { PrivacyPolicyDialog } from "./PrivacyPolicyDialog";
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Имя должно содержать минимум 2 символа").max(100, "Имя слишком длинное"),
@@ -180,7 +181,7 @@ export const ContactForm = () => {
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+                Нажимая кнопку, вы соглашаетесь с <PrivacyPolicyDialog />
               </p>
             </div>
           </form>
