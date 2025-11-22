@@ -19,7 +19,7 @@ const advantages = [
   },
   {
     icon: FileText,
-    title: "Гибкие условия аренды",
+    title: "Личный доступ к камерам",
     gradient: "from-primary/20 to-primary/5",
   },
   {
