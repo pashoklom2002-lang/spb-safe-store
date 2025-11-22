@@ -1,4 +1,4 @@
-import { Lock, Thermometer, Clock, Video, Ruler, Truck } from "lucide-react";
+import { Lock, Thermometer, Clock, Cctv, Ruler, Truck } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const advantages = [
@@ -18,7 +18,7 @@ const advantages = [
     gradient: "from-primary/20 to-primary/5",
   },
   {
-    icon: Video,
+    icon: Cctv,
     title: "личный доступ к камерам",
     gradient: "from-primary/20 to-primary/5",
   },
