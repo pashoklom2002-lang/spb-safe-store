@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, HandMetal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import container20ft from "@/assets/container-20ft.jpg";
 import container40ft from "@/assets/container-40ft.jpg";
@@ -86,6 +86,10 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
                     alt={`Контейнер ${container.type} hover`}
                     className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   />
+                  {/* Hover indicator */}
+                  <div className="absolute bottom-3 right-3 bg-primary/90 backdrop-blur-sm text-primary-foreground rounded-full p-2.5 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 ease-out shadow-lg">
+                    <HandMetal className="w-4 h-4 md:w-5 md:h-5" />
+                  </div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-2xl font-bold text-card-foreground mb-2">{container.type}</h3>
