@@ -1,4 +1,4 @@
-import { Truck, Shield, Clock, MapPin, Cctv, Lightbulb, CheckCircle } from "lucide-react";
+import { Truck, Shield, Clock, MapPin, Cctv, Lightbulb, CheckCircle, Droplets, Thermometer, Sun } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
   Carousel,
@@ -12,43 +12,61 @@ const advantages = [
   {
     icon: Shield,
     title: "Охраняемая территория",
-    description: "",
+    description: "Круглосуточная охрана периметра",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: Cctv,
-    title: "Видеонаблюдение и доступ к камерам",
-    description: "",
+    title: "Видеонаблюдение",
+    description: "Камеры по всей территории",
     gradient: "from-primary/20 to-primary/5"
   },
   {
-    icon: Lightbulb,
-    title: "Теплые, сухие и освещенные контейнеры",
-    description: "",
+    icon: Cctv,
+    title: "Доступ к камерам",
+    description: "Онлайн-просмотр для арендаторов",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
+    icon: Thermometer,
+    title: "Теплые контейнеры",
+    description: "Защита от промерзания",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
+    icon: Droplets,
+    title: "Сухие контейнеры",
+    description: "Никакой влаги и коррозии",
+    gradient: "from-primary/20 to-primary/5"
+  },
+  {
+    icon: Sun,
+    title: "Освещенные контейнеры",
+    description: "Удобный доступ в любое время",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: Truck,
     title: "Подъезд вплотную",
-    description: "Удобный заезд для любого транспорта",
+    description: "Удобная загрузка и разгрузка",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: CheckCircle,
     title: "Асфальт без грязи",
-    description: "Чистая территория в любую погоду",
+    description: "Чистая территория круглый год",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: Clock,
-    title: "Доступ круглосуточно",
-    description: "Приезжайте в любое время",
+    title: "Доступ 24/7",
+    description: "Приезжайте когда удобно",
     gradient: "from-primary/20 to-primary/5"
   },
   {
     icon: MapPin,
     title: "2 минуты от КАДа",
-    description: "Удобное расположение рядом с развязкой",
+    description: "Удобное расположение",
     gradient: "from-primary/20 to-primary/5"
   },
 ];
@@ -86,11 +104,9 @@ export const FacilityAdvantages = () => {
                       <h3 className="text-lg font-bold text-card-foreground mb-2">
                         {advantage.title}
                       </h3>
-                      {advantage.description && (
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {advantage.description}
-                        </p>
-                      )}
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {advantage.description}
+                      </p>
                     </div>
                   </div>
                 </CarouselItem>
