@@ -9,7 +9,7 @@ const advantages = [
   },
   {
     icon: Thermometer,
-    title: "тёплые, сухие и освещённые контейнеры",
+    title: "тёплые, сухие и освещённые",
     gradient: "from-primary/20 to-primary/5",
   },
   {
