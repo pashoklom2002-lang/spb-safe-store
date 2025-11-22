@@ -32,7 +32,7 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             Хранение вещей и оборудования в контейнерах в Шушарах<br />
-            Доступ 24/7. Безопасно
+            Доступ 24/7 Безопасно
           </p>
           
           <div className={`flex flex-wrap gap-4 transition-all duration-700 ease-out delay-200 ${
