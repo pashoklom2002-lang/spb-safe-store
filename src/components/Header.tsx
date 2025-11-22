@@ -65,7 +65,7 @@ export const Header = ({
             onClick={scrollToTop}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
-            <img src={logo} alt="Складно тут" className="h-16 w-auto" />
+            <img src={logo} alt="Складно тут" className="h-20 w-auto rounded-2xl border-2 border-primary p-1" />
           </button>
 
           {/* Address & Time */}
