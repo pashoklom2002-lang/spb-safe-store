@@ -9,7 +9,7 @@ const advantages = [
   },
   {
     icon: Thermometer,
-    title: "тёплые, сухие и освещённые",
+    title: "тёплые и освещённые контейнеры",
     gradient: "from-primary/20 to-primary/5",
   },
   {
@@ -41,11 +41,11 @@ export const FacilityAdvantages = () => {
     <section ref={ref} className="py-16 bg-secondary/30">
       <div className="container mx-auto px-4">
         <h2
-          className={`text-2xl md:text-4xl font-bold mb-12 text-foreground text-center transition-all duration-500 ease-out ${
+          className={`text-xl md:text-4xl font-bold mb-12 text-foreground text-center transition-all duration-500 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          Преимущества площадки
+          Преимущества
         </h2>
 
         <div
