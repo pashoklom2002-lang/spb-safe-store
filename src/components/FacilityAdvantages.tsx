@@ -1,4 +1,4 @@
-import { Cctv, Thermometer } from "lucide-react";
+import { Cctv, Thermometer, Clock, FileText, Ruler, Truck } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const advantages = [
@@ -10,6 +10,26 @@ const advantages = [
   {
     icon: Thermometer,
     title: "Тёплые, сухие и освещённые контейнеры",
+    gradient: "from-primary/20 to-primary/5",
+  },
+  {
+    icon: Clock,
+    title: "Доступ 24/7",
+    gradient: "from-primary/20 to-primary/5",
+  },
+  {
+    icon: FileText,
+    title: "Быстрое оформление",
+    gradient: "from-primary/20 to-primary/5",
+  },
+  {
+    icon: Ruler,
+    title: "Разные размеры контейнеров",
+    gradient: "from-primary/20 to-primary/5",
+  },
+  {
+    icon: Truck,
+    title: "Удобный заезд и разгрузка",
     gradient: "from-primary/20 to-primary/5",
   },
 ];
@@ -29,7 +49,7 @@ export const FacilityAdvantages = () => {
         </h2>
 
         <div
-          className={`max-w-5xl mx-auto grid md:grid-cols-2 gap-8 transition-all duration-500 ease-out delay-100 ${
+          className={`max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-500 ease-out delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
