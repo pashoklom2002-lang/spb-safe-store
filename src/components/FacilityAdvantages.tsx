@@ -49,22 +49,22 @@ export const FacilityAdvantages = () => {
         </h2>
 
         <div
-          className={`max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-500 ease-out delay-100 ${
+          className={`max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-500 ease-out delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           {advantages.map((advantage, index) => (
-            <div key={index} className="group">
-              <div className="bg-card border border-border rounded-xl p-4 h-full hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.3)] hover:border-primary/50 transition-all duration-300 ease-out hover:-translate-y-1">
+            <div key={index} className="group aspect-square">
+              <div className="bg-card border border-border rounded-xl p-4 h-full flex flex-col items-center justify-center text-center hover:shadow-[0_8px_30px_-4px_hsl(84_100%_64%_/_0.3)] hover:border-primary/50 transition-all duration-300 ease-out hover:-translate-y-1">
                 <div
-                  className={`inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br ${advantage.gradient} mb-3 group-hover:scale-110 transition-transform duration-300 ease-out`}
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${advantage.gradient} mb-3 group-hover:scale-110 transition-transform duration-300 ease-out`}
                 >
                   <advantage.icon
-                    className="w-5 h-5 text-primary"
+                    className="w-6 h-6 text-primary"
                     strokeWidth={1.5}
                   />
                 </div>
-                <h3 className="text-base md:text-lg font-bold text-card-foreground leading-snug">
+                <h3 className="text-sm md:text-base font-bold text-card-foreground leading-tight">
                   {advantage.title}
                 </h3>
               </div>
