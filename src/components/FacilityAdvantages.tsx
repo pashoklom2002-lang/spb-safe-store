@@ -64,7 +64,7 @@ export const FacilityAdvantages = () => {
                     strokeWidth={1.5}
                   />
                 </div>
-                <h3 className="text-base font-bold text-card-foreground leading-tight flex-1 flex items-center justify-center px-1">
+                <h3 className="text-xs md:text-base font-bold text-card-foreground leading-tight flex-1 flex items-center justify-center px-1">
                   {advantage.title}
                 </h3>
               </div>
