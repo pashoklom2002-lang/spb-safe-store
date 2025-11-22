@@ -63,7 +63,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-sm opacity-75">
-          <p className="font-bold">© 2025 Складно Тут. Все права защищены.</p>
+          <p className="font-bold">© 2025 Складно тут. Все права защищены.</p>
         </div>
       </div>
     </footer>

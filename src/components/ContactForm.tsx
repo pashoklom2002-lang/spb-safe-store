@@ -87,9 +87,6 @@ export const ContactForm = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
             Оставьте заявку
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Ответим в течение 10 минут
-          </p>
         </div>
 
           <form onSubmit={handleSubmit} className={`bg-card rounded-2xl p-8 shadow-card border border-border transition-all duration-500 ease-out delay-100 ${
