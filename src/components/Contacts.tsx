@@ -29,10 +29,10 @@ export const Contacts = () => {
               <Phone className="w-8 h-8 text-primary mb-4" />
               <h3 className="text-lg font-semibold text-card-foreground mb-2">Телефон</h3>
               <a 
-                href="tel:+79939662273"
+                href="tel:+79217987222"
                 className="text-2xl font-bold text-primary hover:text-primary-hover transition-colors"
               >
-                8 993 966-22-73
+                8 921 798-72-22
               </a>
               
               <div className="flex gap-3 mt-4">
@@ -42,7 +42,7 @@ export const Contacts = () => {
                   asChild
                 >
                   <a
-                    href="https://wa.me/+79939662273"
+                    href="https://wa.me/+79217987222"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
