@@ -161,7 +161,7 @@ export const Header = ({
                   </button>
                   <Button
                     onClick={() => handleNavClick(onScrollToForm)}
-                    className="bg-black text-white hover:bg-black/90 font-bold w-full mt-4"
+                    className="bg-black text-white hover:bg-black/90 font-bold w-full mt-4 border-2 border-primary"
                   >
                     Арендовать контейнер
                   </Button>
@@ -171,7 +171,7 @@ export const Header = ({
 
             <Button
               onClick={onScrollToForm}
-              className="bg-black text-white hover:bg-black/90 font-bold hidden md:flex"
+              className="bg-black text-white hover:bg-black/90 font-bold hidden md:flex border-2 border-primary"
             >
               Арендовать контейнер
             </Button>
