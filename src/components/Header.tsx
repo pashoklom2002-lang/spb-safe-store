@@ -182,7 +182,7 @@ export const Header = ({
               </a>
               
               <a
-                href="https://t.me/Skladno_tut_bot"
+                href="https://t.me/skladno_tut"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#229ED9] hover:bg-[#229ED9]/90 transition-colors"

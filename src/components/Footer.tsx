@@ -45,7 +45,7 @@ export const Footer = () => {
               </a>
               
               <a
-                href="https://t.me/Skladno_tut_bot"
+                href="https://t.me/skladno_tut"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-accent transition-colors font-bold"
