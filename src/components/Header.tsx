@@ -3,7 +3,7 @@ import logo from "@/assets/skladno-logo.png";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Sheet,
   SheetContent,
@@ -29,6 +29,23 @@ export const Header = ({
 }: HeaderProps) => {
   const phone = "+7 (812) 123-45-67";
   const [isOpen, setIsOpen] = useState(false);
+  
+  // Initialize Top.Mail.Ru counter
+  useEffect(() => {
+    const _tmr = (window as any)._tmr || ((window as any)._tmr = []);
+    _tmr.push({id: "3719533", type: "pageView", start: (new Date()).getTime()});
+    
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.id = "tmr-code";
+    script.src = "https://top-fwz1.mail.ru/js/code.js";
+    
+    const firstScript = document.getElementsByTagName("script")[0];
+    if (firstScript && firstScript.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript);
+    }
+  }, []);
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
