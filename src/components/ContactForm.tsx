@@ -154,16 +154,21 @@ export const ContactForm = () => {
 
               <div>
                 <Label htmlFor="rentalPeriod">Срок аренды *</Label>
-                <Input
-                  id="rentalPeriod"
-                  type="text"
-                  placeholder="Например: 3 месяца"
+                <Select
                   value={formData.rentalPeriod}
-                  onChange={(e) => setFormData({ ...formData, rentalPeriod: e.target.value })}
-                  required
-                  maxLength={100}
-                  className="mt-2"
-                />
+                  onValueChange={(value) => setFormData({ ...formData, rentalPeriod: value })}
+                >
+                  <SelectTrigger id="rentalPeriod" className="mt-2">
+                    <SelectValue placeholder="Выберите срок аренды" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2 месяца">2 месяца</SelectItem>
+                    <SelectItem value="3 месяца">3 месяца</SelectItem>
+                    <SelectItem value="6 месяцев">6 месяцев</SelectItem>
+                    <SelectItem value="11+1 месяцев">11+1 месяцев</SelectItem>
+                    <SelectItem value="другой срок">другой срок</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <Button 
