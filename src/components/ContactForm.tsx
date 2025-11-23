@@ -141,7 +141,7 @@ export const ContactForm = () => {
                 </Select>
               </div>
 
-              <Button disabled={loading} className="w-full bg-primary text-white">
+              <Button disabled={loading} className="w-full bg-primary text-black">
                 {loading ? "Отправка..." : "Оставить заявку"}
               </Button>
 
