@@ -9,10 +9,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { PrivacyPolicyDialog } from "./PrivacyPolicyDialog";
 
 const formSchema = z.object({
-  name: z.string().trim().min(2, "Имя должно содержать минимум 2 символа").max(100, "Имя слишком длинное"),
-  phone: z.string().trim().min(10, "Введите корректный номер телефона").max(20, "Номер слишком длинный"),
-  containerType: z.enum(["6m", "15m", "30m"], { required_error: "Выберите размер контейнера" }),
-  rentalPeriod: z.string().trim().min(1, "Выберите срок аренды").max(100),
+  name: z.string().trim().min(2),
+  phone: z.string().trim().min(10),
+  containerType: z.enum(["6m", "15m", "30m"]),
+  rentalPeriod: z.string().trim().min(1),
 });
 
 export const ContactForm = () => {
@@ -29,81 +29,67 @@ export const ContactForm = () => {
     e.preventDefault();
 
     try {
-      const validatedData = formSchema.parse(formData);
+      const validated = formSchema.parse(formData);
       setLoading(true);
 
-      // Прямая отправка в Bitrix24 через PHP-скрипт на REG.RU
-      const response = await fetch("https://skladnotut.ru/send-to-bitrix.php", {
+      const response = await fetch("https://api.skladnotut.ru/send-to-bitrix.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: validatedData.name,
-          phone: validatedData.phone,
-          containerType: validatedData.containerType,
-          rentalPeriod: validatedData.rentalPeriod,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(validated),
       });
 
-      const responseText = await response.text();
+      if (!response.ok) throw new Error("Ошибка сервера");
 
-      if (!response.ok) {
-        throw new Error(responseText || "Ошибка отправки в Bitrix24");
-      }
-
-      toast.success("Заявка отправлена!", {
-        description: "Мы свяжемся с вами в ближайшее время",
-      });
-      
-      // Reset form
+      toast.success("Заявка отправлена");
       setFormData({ name: "", phone: "", containerType: "", rentalPeriod: "" });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        toast.error(error.errors[0].message);
-      } else if (error instanceof Error) {
-        toast.error("Ошибка отправки заявки", {
-          description: error.message || "Попробуйте позже или позвоните нам",
-        });
-      } else {
-        toast.error("Ошибка отправки заявки", {
-          description: "Попробуйте позже или позвоните нам",
-        });
-      }
+
+    } catch (err) {
+      toast.error("Ошибка отправки заявки");
     } finally {
       setLoading(false);
     }
+  };
+
+  const formatPhone = (value: string) => {
+    let v = value.replace(/\D/g, "");
+    if (v.startsWith("8")) v = "7" + v.slice(1);
+    if (!v.startsWith("7")) v = "7" + v;
+    v = v.slice(0, 11);
+
+    let f = "+7";
+    if (v.length > 1) f += " (" + v.slice(1, 4);
+    if (v.length >= 4) f += ") " + v.slice(4, 7);
+    if (v.length >= 7) f += "-" + v.slice(7, 9);
+    if (v.length >= 9) f += "-" + v.slice(9, 11);
+    return f;
   };
 
   return (
     <section ref={ref} id="contact-form" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto">
-          <div
-            className={`text-center mb-12 transition-all duration-500 ease-out ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">Оставьте заявку</h2>
+
+          <div className={`text-center mb-12 transition-all ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}>
+            <h2 className="text-4xl font-bold">Оставьте заявку</h2>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className={`bg-card rounded-2xl p-8 shadow-card border border-border transition-all duration-500 ease-out delay-100 ${
+            className={`bg-card p-8 rounded-2xl shadow-card border transition-all ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             <div className="space-y-6">
+
               <div>
                 <Label htmlFor="name">Ваше имя *</Label>
                 <Input
                   id="name"
-                  type="text"
-                  placeholder="Иван"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  maxLength={100}
                   className="mt-2"
                 />
               </div>
@@ -112,79 +98,60 @@ export const ContactForm = () => {
                 <Label htmlFor="phone">Телефон *</Label>
                 <Input
                   id="phone"
-                  type="tel"
-                  placeholder="+7 (999) 123-45-67"
                   value={formData.phone}
-                  onChange={(e) => {
-                    // Маска для телефона
-                    let value = e.target.value.replace(/\D/g, "");
-                    if (value.startsWith("8")) value = "7" + value.slice(1);
-                    if (!value.startsWith("7")) value = "7" + value;
-                    value = value.slice(0, 11);
-
-                    let formatted = "+7";
-                    if (value.length > 1) formatted += " (" + value.slice(1, 4);
-                    if (value.length >= 4) formatted += ") " + value.slice(4, 7);
-                    if (value.length >= 7) formatted += "-" + value.slice(7, 9);
-                    if (value.length >= 9) formatted += "-" + value.slice(9, 11);
-
-                    setFormData({ ...formData, phone: formatted });
-                  }}
+                  onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value) })}
                   required
-                  maxLength={20}
                   className="mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="containerType">Размер контейнера *</Label>
+                <Label>Размер контейнера *</Label>
                 <Select
                   value={formData.containerType}
-                  onValueChange={(value) => setFormData({ ...formData, containerType: value })}
+                  onValueChange={(v) => setFormData({ ...formData, containerType: v })}
                 >
-                  <SelectTrigger id="containerType" className="mt-2">
+                  <SelectTrigger className="mt-2">
                     <SelectValue placeholder="Выберите размер" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="6m">6 м² — Секция в контейнере</SelectItem>
-                    <SelectItem value="15m">15 м² — Для личного хранения</SelectItem>
-                    <SelectItem value="30m">30 м² — Для склада и бизнеса</SelectItem>
+                    <SelectItem value="6m">6 м² — Секция</SelectItem>
+                    <SelectItem value="15m">15 м² — Личное хранение</SelectItem>
+                    <SelectItem value="30m">30 м² — Для бизнеса</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div>
-                <Label htmlFor="rentalPeriod">Срок аренды *</Label>
+                <Label>Срок аренды *</Label>
                 <Select
                   value={formData.rentalPeriod}
-                  onValueChange={(value) => setFormData({ ...formData, rentalPeriod: value })}
+                  onValueChange={(v) => setFormData({ ...formData, rentalPeriod: v })}
                 >
-                  <SelectTrigger id="rentalPeriod" className="mt-2">
-                    <SelectValue placeholder="Выберите срок аренды" />
+                  <SelectTrigger className="mt-2">
+                    <SelectValue placeholder="Выберите срок" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="2 месяца">2 месяца</SelectItem>
                     <SelectItem value="3 месяца">3 месяца</SelectItem>
                     <SelectItem value="6 месяцев">6 месяцев</SelectItem>
                     <SelectItem value="11+1 месяцев">11+1 месяцев</SelectItem>
-                    <SelectItem value="другой срок">другой срок</SelectItem>
+                    <SelectItem value="другой срок">Другой срок</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary-hover text-primary-foreground"
-                disabled={loading}
-              >
+              <Button disabled={loading} className="w-full bg-primary text-white">
                 {loading ? "Отправка..." : "Оставить заявку"}
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-xs text-center text-muted-foreground">
                 Нажимая кнопку, вы соглашаетесь с <PrivacyPolicyDialog />
               </p>
+
             </div>
           </form>
+
         </div>
       </div>
     </section>
