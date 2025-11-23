@@ -20,7 +20,7 @@ const steps = [
   {
     icon: Key,
     title: "Получаете доступ и инструкции",
-    description: "Код от ворот, ключи от контейнера и схема проезда"
+    description: "Ключи от контейнера и схема проезда"
   },
   {
     icon: Headphones,
