@@ -23,7 +23,7 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
       
       <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl">
-          <h1 className={`text-4xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 md:mb-6 uppercase leading-tight md:leading-loose transition-all duration-700 ease-out ${
+          <h1 className={`text-4xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 md:mb-6 uppercase leading-loose transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             Аренда контейнеров<br />в Шушарах
