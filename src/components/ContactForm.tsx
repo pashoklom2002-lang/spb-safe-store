@@ -27,7 +27,7 @@ export const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       const validatedData = formSchema.parse(formData);
       setLoading(true);
@@ -46,8 +46,10 @@ export const ContactForm = () => {
         }),
       });
 
+      const responseText = await response.text();
+
       if (!response.ok) {
-        throw new Error('Ошибка отправки в Bitrix24');
+        throw new Error(responseText || "Ошибка отправки в Bitrix24");
       }
 
       toast.success("Заявка отправлена!", {
@@ -59,6 +61,10 @@ export const ContactForm = () => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.error(error.errors[0].message);
+      } else if (error instanceof Error) {
+        toast.error("Ошибка отправки заявки", {
+          description: error.message || "Попробуйте позже или позвоните нам",
+        });
       } else {
         toast.error("Ошибка отправки заявки", {
           description: "Попробуйте позже или позвоните нам",
@@ -73,17 +79,20 @@ export const ContactForm = () => {
     <section ref={ref} id="contact-form" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto">
-        <div className={`text-center mb-12 transition-all duration-500 ease-out ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-        }`}>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
-            Оставьте заявку
-          </h2>
-        </div>
+          <div
+            className={`text-center mb-12 transition-all duration-500 ease-out ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">Оставьте заявку</h2>
+          </div>
 
-          <form onSubmit={handleSubmit} className={`bg-card rounded-2xl p-8 shadow-card border border-border transition-all duration-500 ease-out delay-100 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}>
+          <form
+            onSubmit={handleSubmit}
+            className={`bg-card rounded-2xl p-8 shadow-card border border-border transition-all duration-500 ease-out delay-100 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
             <div className="space-y-6">
               <div>
                 <Label htmlFor="name">Ваше имя *</Label>
@@ -108,17 +117,17 @@ export const ContactForm = () => {
                   value={formData.phone}
                   onChange={(e) => {
                     // Маска для телефона
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.startsWith('8')) value = '7' + value.slice(1);
-                    if (!value.startsWith('7')) value = '7' + value;
+                    let value = e.target.value.replace(/\D/g, "");
+                    if (value.startsWith("8")) value = "7" + value.slice(1);
+                    if (!value.startsWith("7")) value = "7" + value;
                     value = value.slice(0, 11);
-                    
-                    let formatted = '+7';
-                    if (value.length > 1) formatted += ' (' + value.slice(1, 4);
-                    if (value.length >= 4) formatted += ') ' + value.slice(4, 7);
-                    if (value.length >= 7) formatted += '-' + value.slice(7, 9);
-                    if (value.length >= 9) formatted += '-' + value.slice(9, 11);
-                    
+
+                    let formatted = "+7";
+                    if (value.length > 1) formatted += " (" + value.slice(1, 4);
+                    if (value.length >= 4) formatted += ") " + value.slice(4, 7);
+                    if (value.length >= 7) formatted += "-" + value.slice(7, 9);
+                    if (value.length >= 9) formatted += "-" + value.slice(9, 11);
+
                     setFormData({ ...formData, phone: formatted });
                   }}
                   required
@@ -163,8 +172,8 @@ export const ContactForm = () => {
                 </Select>
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-primary hover:bg-primary-hover text-primary-foreground"
                 disabled={loading}
               >
