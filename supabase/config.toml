@@ -1,1 +1,4 @@
 project_id = "vmcthgwutvauqgxmvnur"
+
+[functions.send-to-bitrix]
+verify_jwt = false
