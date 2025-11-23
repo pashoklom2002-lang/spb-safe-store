@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -33,30 +32,25 @@ export const ContactForm = () => {
       const validatedData = formSchema.parse(formData);
       setLoading(true);
 
-      // Отправка в Supabase
-      const { error } = await supabase.from("rental_requests").insert([
+      // Прямая отправка в Bitrix24 без сохранения данных
+      const response = await fetch(
+        `https://vmcthgwutvauqgxmvnur.supabase.co/functions/v1/send-to-bitrix`,
         {
-          name: validatedData.name,
-          phone: validatedData.phone,
-          container_type: validatedData.containerType,
-          rental_period: validatedData.rentalPeriod,
-        },
-      ]);
-
-      if (error) throw error;
-
-      // Отправка в Bitrix24
-      const { error: bitrixError } = await supabase.functions.invoke('send-to-bitrix', {
-        body: {
-          name: validatedData.name,
-          phone: validatedData.phone,
-          containerType: validatedData.containerType,
-          rentalPeriod: validatedData.rentalPeriod,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: validatedData.name,
+            phone: validatedData.phone,
+            containerType: validatedData.containerType,
+            rentalPeriod: validatedData.rentalPeriod,
+          })
         }
-      });
+      );
 
-      if (bitrixError) {
-        console.error('Ошибка отправки в Bitrix24:', bitrixError);
+      if (!response.ok) {
+        throw new Error('Ошибка отправки в Bitrix24');
       }
 
       toast.success("Заявка отправлена!", {
