@@ -32,22 +32,19 @@ export const ContactForm = () => {
       const validatedData = formSchema.parse(formData);
       setLoading(true);
 
-      // Прямая отправка в Bitrix24 без сохранения данных
-      const response = await fetch(
-        `https://vmcthgwutvauqgxmvnur.supabase.co/functions/v1/send-to-bitrix`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: validatedData.name,
-            phone: validatedData.phone,
-            containerType: validatedData.containerType,
-            rentalPeriod: validatedData.rentalPeriod,
-          })
-        }
-      );
+      // Прямая отправка в Bitrix24 через PHP-скрипт на REG.RU
+      const response = await fetch("https://skladnotut.ru/send-to-bitrix.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: validatedData.name,
+          phone: validatedData.phone,
+          containerType: validatedData.containerType,
+          rentalPeriod: validatedData.rentalPeriod,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error('Ошибка отправки в Bitrix24');
