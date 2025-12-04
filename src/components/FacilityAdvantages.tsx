@@ -4,32 +4,32 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const advantages = [
   {
     icon: Lock,
-    title: "охраняемая территория",
+    title: "Охраняемая территория",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Thermometer,
-    title: "тёплые и освещённые контейнеры",
+    title: "Теплые и освещенные контейнеры",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Clock,
-    title: "доступ 24/7",
+    title: "Доступ 24/7",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Cctv,
-    title: "личный доступ к камерам",
+    title: "Личный доступ к камерам",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Ruler,
-    title: "гибкие условия аренды",
+    title: "Гибкие условия аренды",
     gradient: "from-primary/20 to-primary/5",
   },
   {
     icon: Truck,
-    title: "удобный заезд и разгрузка",
+    title: "Удобный заезд и разгрузка",
     gradient: "from-primary/20 to-primary/5",
   },
 ];
