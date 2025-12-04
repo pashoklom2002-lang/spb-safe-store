@@ -11,6 +11,7 @@ import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Contacts } from "@/components/Contacts";
+import { Reviews } from "@/components/Reviews";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -49,6 +50,7 @@ const Index = () => {
         <div ref={faqRef}>
           <FAQ />
         </div>
+        <Reviews />
         <div ref={formRef}>
           <ContactForm />
         </div>
