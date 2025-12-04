@@ -14,33 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      rental_requests: {
-        Row: {
-          container_type: string
-          created_at: string
-          id: string
-          name: string
-          phone: string
-          rental_period: string
-        }
-        Insert: {
-          container_type: string
-          created_at?: string
-          id?: string
-          name: string
-          phone: string
-          rental_period: string
-        }
-        Update: {
-          container_type?: string
-          created_at?: string
-          id?: string
-          name?: string
-          phone?: string
-          rental_period?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
