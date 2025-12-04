@@ -100,12 +100,35 @@ export const Contacts = () => {
           <div className={`rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-out delay-400 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}>
-            <iframe
-              src="https://yandex.ru/map-widget/v1/?ll=30.392470%2C59.799270&z=16&l=map&pt=30.392470%2C59.799270%2Cpm2rdm~Складно%20Тут"
-              style={{ width: "100%", height: "200px", border: "0" }}
-              title="Карта проезда к Складно Тут"
-              allowFullScreen
-            />
+            <div style={{ position: 'relative', overflow: 'hidden' }}>
+              <a 
+                href="https://yandex.ru/maps/org/skladno_tut/203985924246/?utm_medium=mapframe&utm_source=maps" 
+                style={{ color: '#eee', fontSize: '12px', position: 'absolute', top: '0px' }}
+              >
+                Складно тут
+              </a>
+              <a 
+                href="https://yandex.ru/maps/2/saint-petersburg/category/warehouse_services/184105438/?utm_medium=mapframe&utm_source=maps" 
+                style={{ color: '#eee', fontSize: '12px', position: 'absolute', top: '14px' }}
+              >
+                Складские услуги в Санкт‑Петербурге
+              </a>
+              <a 
+                href="https://yandex.ru/maps/2/saint-petersburg/category/baggage_storage/43845902895/?utm_medium=mapframe&utm_source=maps" 
+                style={{ color: '#eee', fontSize: '12px', position: 'absolute', top: '28px' }}
+              >
+                Камера хранения в Санкт‑Петербурге
+              </a>
+              <iframe 
+                src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=30.417874%2C59.799891&mode=search&oid=203985924246&ol=biz&pt=30.392470%2C59.799270&sll=30.384915%2C59.799891&source=mapframe&sspn=0.077419%2C0.029020&text=%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%20%D1%82%D1%83%D1%82&utm_source=mapframe&z=13" 
+                width="100%" 
+                height="400" 
+                frameBorder="1"
+                allowFullScreen
+                style={{ position: 'relative' }}
+                title="Складно тут на Яндекс.Картах"
+              />
+            </div>
           </div>
         </div>
       </div>
