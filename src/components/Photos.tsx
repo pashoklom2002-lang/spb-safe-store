@@ -59,9 +59,9 @@ export const Photos = () => {
             {photos.map((photo, index) => (
               <div
                 key={index}
-                className={`relative aspect-[16/10] overflow-visible cursor-pointer transition-all duration-500 ease-out rounded-xl ${
+                className={`relative aspect-[16/10] overflow-visible cursor-pointer transition-all duration-150 rounded-xl ${
                   hoveredIndex === index 
-                    ? 'z-50 scale-[2] md:scale-[1.8]' 
+                    ? 'z-50 scale-[1.4] md:scale-[1.3]' 
                     : 'z-0'
                 }`}
                 style={{
