@@ -18,44 +18,20 @@ export const Reviews = () => {
           Отзывы наших клиентов
         </p>
         
-        <div className={`rounded-xl overflow-hidden shadow-lg mb-8 max-w-xl mx-auto transition-all duration-500 ease-out delay-200 ${
+        <div className={`max-w-4xl mx-auto transition-all duration-500 ease-out delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          <div style={{ width: '100%', height: '800px', overflow: 'hidden', position: 'relative' }}>
+          <div className="rounded-xl overflow-hidden shadow-lg border border-border">
             <iframe 
-              style={{ width: '100%', height: '100%', border: '1px solid #e6e6e6', borderRadius: '8px', boxSizing: 'border-box' }} 
               src="https://yandex.ru/maps-reviews-widget/203985924246?comments"
+              className="w-full"
+              style={{ height: '600px', border: 'none' }}
               title="Отзывы Складно тут"
             />
-            <a 
-              href="https://yandex.ru/maps/org/skladno_tut/203985924246/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{ 
-                boxSizing: 'border-box', 
-                textDecoration: 'none', 
-                color: '#b3b3b3', 
-                fontSize: '10px', 
-                fontFamily: 'YS Text, sans-serif', 
-                padding: '0 16px', 
-                position: 'absolute', 
-                bottom: '8px', 
-                width: '100%', 
-                textAlign: 'center', 
-                left: '0', 
-                overflow: 'hidden', 
-                textOverflow: 'ellipsis', 
-                display: 'block', 
-                maxHeight: '14px', 
-                whiteSpace: 'nowrap' 
-              }}
-            >
-              Складно тут на карте Санкт‑Петербурга — Яндекс Карты
-            </a>
           </div>
         </div>
         
-        <div className={`text-center transition-all duration-500 ease-out delay-300 ${
+        <div className={`text-center mt-8 transition-all duration-500 ease-out delay-300 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
           <Button 
