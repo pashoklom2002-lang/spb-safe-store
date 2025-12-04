@@ -8,9 +8,9 @@ import facility4 from "@/assets/facility-4.jpg";
 
 const photos = [
   { src: facility1, alt: "Контейнеры на площадке" },
-  { src: facility2, alt: "Ряды контейнеров" },
-  { src: facility3, alt: "Территория склада" },
-  { src: facility4, alt: "Внутри контейнера" },
+  { src: facility2, alt: "Ровные ряды" },
+  { src: facility3, alt: "Широкий подъезд" },
+  { src: facility4, alt: "Кладовка изнутри" },
 ];
 
 export const Photos = () => {
