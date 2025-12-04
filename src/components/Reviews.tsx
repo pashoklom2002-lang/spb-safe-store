@@ -18,10 +18,10 @@ export const Reviews = () => {
           Отзывы наших клиентов
         </p>
         
-        <div className={`max-w-4xl mx-auto transition-all duration-500 ease-out delay-200 ${
+        <div className={`max-w-2xl mx-auto transition-all duration-500 ease-out delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          <div className="rounded-xl overflow-hidden shadow-lg border border-border">
+          <div className="rounded-xl overflow-hidden shadow-lg bg-white">
             <iframe 
               src="https://yandex.ru/maps-reviews-widget/203985924246?comments"
               className="w-full"
