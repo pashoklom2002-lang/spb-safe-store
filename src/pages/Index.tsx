@@ -43,6 +43,7 @@ const Index = () => {
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
         </div>
+        <Photos />
         <FacilityAdvantages />
         <div ref={benefitsRef}>
           <Benefits />
@@ -51,7 +52,6 @@ const Index = () => {
         <div ref={faqRef}>
           <FAQ />
         </div>
-        <Photos />
         <Reviews />
         <div ref={formRef}>
           <ContactForm />
