@@ -1,6 +1,6 @@
 import { Phone, MapPin, Clock, Menu, X } from "lucide-react";
 import logo from "@/assets/skladno-logo.png";
-import whatsappIcon from "@/assets/whatsapp-icon.png";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -178,7 +178,7 @@ export const Header = ({
                 className="hover:opacity-80 transition-opacity"
                 aria-label="WhatsApp"
               >
-                <img src={whatsappIcon} alt="WhatsApp" className="w-10 h-10" />
+                <WhatsAppIcon className="w-[26px] h-[26px]" />
               </a>
               
               <a
@@ -188,7 +188,7 @@ export const Header = ({
                 className="hover:opacity-80 transition-opacity"
                 aria-label="Telegram"
               >
-                <TelegramIcon className="w-10 h-10" />
+                <TelegramIcon className="w-[26px] h-[26px]" />
               </a>
             </div>
           </div>
