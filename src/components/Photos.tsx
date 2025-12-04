@@ -30,26 +30,22 @@ export const Photos = () => {
           Как выглядит территория хранения
         </p>
         
-        <div className={`flex gap-2 md:gap-4 h-[300px] md:h-[400px] max-w-6xl mx-auto transition-all duration-500 ease-out delay-200 ${
+        <div className={`grid grid-cols-2 gap-4 max-w-4xl mx-auto transition-all duration-500 ease-out delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
           {photos.map((photo, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden rounded-xl cursor-pointer transition-all duration-500 ease-out ${
-                hoveredIndex === index 
-                  ? 'flex-[3]' 
-                  : hoveredIndex !== null 
-                    ? 'flex-[0.5]' 
-                    : 'flex-1'
-              }`}
+              className="relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer group"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <img
                 src={photo.src}
                 alt={photo.alt}
-                className="w-full h-full object-cover transition-transform duration-500"
+                className={`w-full h-full object-cover transition-transform duration-500 ${
+                  hoveredIndex === index ? 'scale-110' : 'scale-100'
+                }`}
               />
               <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
                 hoveredIndex === index ? 'opacity-100' : 'opacity-0'
