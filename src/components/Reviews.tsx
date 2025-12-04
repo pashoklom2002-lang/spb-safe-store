@@ -15,7 +15,7 @@ export const Reviews = () => {
         <p className={`text-center text-muted-foreground mb-12 max-w-2xl mx-auto transition-all duration-500 ease-out delay-100 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          Реальные отзывы из Яндекс.Карт
+          Отзывы наших клиентов
         </p>
         
         <div className={`rounded-xl overflow-hidden shadow-lg mb-8 max-w-4xl mx-auto transition-all duration-500 ease-out delay-200 ${
