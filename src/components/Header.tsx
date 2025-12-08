@@ -67,9 +67,9 @@ export const Header = ({
           </button>
 
           {/* Address Badge */}
-          <div className="hidden lg:flex items-center gap-2 bg-black text-white px-3 py-1.5 rounded-lg border-2 border-primary text-sm font-bold">
-            <MapPin className="w-4 h-4" />
-            <span>Шушары, Курьерский проезд 1А</span>
+          <div className="hidden sm:flex items-center gap-2 bg-black text-white px-3 py-2 rounded-lg border-2 border-primary text-sm font-bold">
+            <MapPin className="w-4 h-4 flex-shrink-0" />
+            <span className="whitespace-nowrap">Шушары, Курьерский проезд 1А</span>
           </div>
 
           {/* Navigation */}
