@@ -114,9 +114,9 @@ export const Header = ({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden text-primary hover:text-primary/80 h-11 w-11"
+                  className="lg:hidden text-primary hover:text-primary/80 h-10 w-14 px-3"
                 >
-                  <Menu className="w-8 h-8" strokeWidth={3} />
+                  <Menu className="w-10 h-10" strokeWidth={3} />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
