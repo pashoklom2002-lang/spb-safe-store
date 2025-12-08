@@ -132,10 +132,10 @@ export const ContactForm = () => {
                     <SelectValue placeholder="Выберите срок" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="2 месяца">2 месяца</SelectItem>
+                    <SelectItem value="1 месяц">1 месяц</SelectItem>
                     <SelectItem value="3 месяца">3 месяца</SelectItem>
-                    <SelectItem value="6 месяцев">6 месяцев</SelectItem>
-                    <SelectItem value="11+1 месяцев">11+1 месяцев</SelectItem>
+                    <SelectItem value="6 месяцев + 2 недели в подарок">6 месяцев + 2 недели в подарок</SelectItem>
+                    <SelectItem value="11 месяцев + 1 месяц в подарок">11 месяцев + 1 месяц в подарок</SelectItem>
                     <SelectItem value="другой срок">Другой срок</SelectItem>
                   </SelectContent>
                 </Select>
