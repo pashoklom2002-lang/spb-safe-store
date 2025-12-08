@@ -13,21 +13,21 @@ const containers = [
     description: "Секция в контейнере",
     image: container20ft,
     hoverImage: container6mHover,
-    price: "от 5 000 ₽",
+    price: "от 4 000 ₽",
   },
   {
     type: "15 м²",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
     hoverImage: container15mHover,
-    price: "от 10 500 ₽",
+    price: "от 9 400 ₽",
   },
   {
     type: "30 м²",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
     hoverImage: container30mHover,
-    price: "от 19 000 ₽",
+    price: "от 15 200 ₽",
   },
 ];
 
