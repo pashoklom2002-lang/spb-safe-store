@@ -111,13 +111,9 @@ export const Header = ({
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="lg:hidden text-primary hover:text-primary/80 h-10 w-10 p-0"
-                >
-                  <Menu className="w-9 h-9" strokeWidth={3} />
-                </Button>
+                <div className="lg:hidden text-primary">
+                  <Menu className="w-12 h-10" strokeWidth={3.5} />
+                </div>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-6 mt-8">
