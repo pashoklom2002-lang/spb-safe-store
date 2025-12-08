@@ -69,7 +69,10 @@ export const Header = ({
           {/* Address Badge */}
           <div className="flex items-center gap-1.5 bg-black text-white px-2 py-1 sm:px-3 sm:py-2 rounded-lg border-2 border-primary text-[10px] sm:text-sm font-bold">
             <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-            <span className="leading-tight sm:whitespace-nowrap">Шушары,<br className="sm:hidden" /> Курьерский проезд 1А</span>
+            <span className="leading-tight">
+              <span className="sm:hidden">Шушары,<br />Курьерский проезд 1А</span>
+              <span className="hidden sm:inline">Шушары, Курьерский проезд 1А</span>
+            </span>
           </div>
 
           {/* Navigation */}
