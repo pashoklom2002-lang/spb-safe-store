@@ -1,5 +1,5 @@
-import { Phone, MapPin, Clock, Menu, X } from "lucide-react";
-import logo from "@/assets/skladno-logo.png";
+import { Phone, MapPin, Menu } from "lucide-react";
+import logo from "@/assets/logo-header.jpg";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { Button } from "@/components/ui/button";
@@ -63,19 +63,13 @@ export const Header = ({
             onClick={scrollToTop}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
-            <img src={logo} alt="Складно тут" className="h-14 w-auto rounded-xl border border-primary p-0" />
+            <img src={logo} alt="Складно тут" className="h-12 w-auto rounded-lg border-2 border-primary" />
           </button>
 
-          {/* Address & Time */}
-          <div className="hidden xl:flex items-center gap-4 text-primary text-sm">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              <span className="font-semibold">Шушары, Курьерский проезд 1А</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span className="font-semibold">24/7</span>
-            </div>
+          {/* Address Badge */}
+          <div className="hidden lg:flex items-center gap-2 bg-black text-white px-3 py-1.5 rounded-lg border-2 border-primary text-sm font-bold">
+            <MapPin className="w-4 h-4" />
+            <span>Шушары, Курьерский проезд 1А</span>
           </div>
 
           {/* Navigation */}
