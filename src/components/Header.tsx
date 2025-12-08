@@ -114,9 +114,9 @@ export const Header = ({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden text-primary hover:text-primary/80 h-10 w-10"
+                  className="lg:hidden text-primary hover:text-primary/80 h-11 w-11"
                 >
-                  <Menu className="w-10 h-10" strokeWidth={2.5} />
+                  <Menu className="w-8 h-8" strokeWidth={3} />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -164,10 +164,10 @@ export const Header = ({
             
             <a 
               href={`tel:${phone}`}
-              className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg border-2 border-primary hover:bg-black/90 transition-colors"
+              className="flex items-center gap-2 bg-black text-white px-3 py-1.5 rounded-lg border-2 border-primary hover:bg-black/90 transition-colors text-sm font-bold"
             >
-              <Phone className="w-5 h-5" />
-              <span className="font-medium hidden sm:inline">{phone}</span>
+              <Phone className="w-4 h-4" />
+              <span className="hidden sm:inline">{phone}</span>
             </a>
             
             <div className="flex items-center gap-2">
