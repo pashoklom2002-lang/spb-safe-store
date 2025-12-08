@@ -20,7 +20,7 @@ const containers = [
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
     hoverImage: container15mHover,
-    price: "от 9 400 ₽",
+    price: "от 8 400 ₽",
   },
   {
     type: "30 м²",
