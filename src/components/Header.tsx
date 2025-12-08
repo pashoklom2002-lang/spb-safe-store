@@ -1,5 +1,5 @@
 import { Phone, MapPin, Menu } from "lucide-react";
-import logo from "@/assets/logo-header.jpg";
+import logo from "@/assets/logo-header.png";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { Button } from "@/components/ui/button";
