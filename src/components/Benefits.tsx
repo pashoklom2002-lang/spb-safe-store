@@ -34,7 +34,7 @@ export const Benefits = () => {
   return (
     <section ref={ref} className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className={`mb-16 transition-all duration-500 ease-out ${
+        <div className={`mb-16 text-center transition-all duration-500 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground relative inline-block">
