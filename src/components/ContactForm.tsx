@@ -27,25 +27,67 @@ export const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // 1. Защита от двойной отправки
+    if (loading) return;
+    setLoading(true);
 
     try {
-      const validated = formSchema.parse(formData);
-      setLoading(true);
+      // 2. Валидация с safeParse
+      const validated = formSchema.safeParse(formData);
+      if (!validated.success) {
+        toast.error("Проверьте поля формы");
+        return;
+      }
 
-      const response = await fetch("https://api.skladnotut.ru/send-to-bitrix.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-      });
+      console.log("[lead] payload", validated.data);
 
-      if (!response.ok) throw new Error("Ошибка сервера");
+      // 3. Запрос с CORS-совместимой конфигурацией
+      let response: Response;
+      try {
+        response = await fetch("https://api.skladnotut.ru/send-to-bitrix.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(validated.data),
+          mode: "cors",
+          cache: "no-store",
+          credentials: "omit",
+        });
+      } catch (fetchErr) {
+        console.error("[lead] fetch error", fetchErr);
+        toast.error("Ошибка сети или CORS. Проверьте подключение");
+        return;
+      }
 
+      // 4. Обработка ответа
+      const rawText = await response.text();
+      console.log("[lead] status", response.status);
+      console.log("[lead] responseText", rawText);
+
+      if (!response.ok) {
+        toast.error(`Ошибка сервера: HTTP ${response.status}`);
+        return;
+      }
+
+      let json;
+      try {
+        json = JSON.parse(rawText);
+      } catch {
+        toast.error("Сервер вернул некорректный ответ");
+        return;
+      }
+
+      if (json.success !== true) {
+        toast.error(json.error ?? "Ошибка сервера");
+        return;
+      }
+
+      // Успех
       toast.success("Заявка отправлена");
       setFormData({ name: "", phone: "", containerType: "", rentalPeriod: "" });
 
-    } catch (err) {
-      toast.error("Ошибка отправки заявки");
     } finally {
+      // 6. setLoading(false) только в finally
       setLoading(false);
     }
   };
