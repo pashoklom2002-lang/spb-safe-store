@@ -9,10 +9,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { PrivacyPolicyDialog } from "./PrivacyPolicyDialog";
 
 const formSchema = z.object({
-  name: z.string().trim().min(2),
-  phone: z.string().trim().min(10),
-  containerType: z.enum(["6m", "15m", "30m"]),
-  rentalPeriod: z.string().trim().min(1),
+  name: z.string().trim().min(2, "Введите имя (минимум 2 символа)"),
+  phone: z.string().trim().min(10, "Введите корректный телефон"),
+  containerType: z.enum(["6m", "15m", "30m"], { required_error: "Выберите размер контейнера" }),
+  rentalPeriod: z.string().trim().min(1, "Выберите срок аренды"),
 });
 
 export const ContactForm = () => {
@@ -42,21 +42,35 @@ export const ContactForm = () => {
 
       console.log("[lead] payload", validated.data);
 
-      // 3. Запрос с CORS-совместимой конфигурацией
+      // 3. Запрос с CORS-совместимой конфигурацией и таймаутом
       let response: Response;
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
+
       try {
-        response = await fetch("https://api.skladnotut.ru/send-to-bitrix.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(validated.data),
-          mode: "cors",
-          cache: "no-store",
-          credentials: "omit",
-        });
-      } catch (fetchErr) {
-        console.error("[lead] fetch error", fetchErr);
-        toast.error("Ошибка сети или CORS. Проверьте подключение");
-        return;
+        try {
+          response = await fetch("https://api.skladnotut.ru/send-to-bitrix.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(validated.data),
+            mode: "cors",
+            cache: "no-store",
+            credentials: "omit",
+            signal: controller.signal,
+          });
+        } catch (fetchErr: any) {
+          console.error("[lead] fetch error", fetchErr);
+
+          if (fetchErr?.name === "AbortError") {
+            toast.error("Сервер долго отвечает. Попробуйте ещё раз");
+            return;
+          }
+
+          toast.error("Ошибка сети или CORS. Проверьте подключение");
+          return;
+        }
+      } finally {
+        clearTimeout(timer);
       }
 
       // 4. Обработка ответа
@@ -183,7 +197,7 @@ export const ContactForm = () => {
                 </Select>
               </div>
 
-              <Button disabled={loading} className="w-full bg-primary text-black">
+              <Button type="submit" disabled={loading} className="w-full bg-primary text-black">
                 {loading ? "Отправка..." : "Оставить заявку"}
               </Button>
 
