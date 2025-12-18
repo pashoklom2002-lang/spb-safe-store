@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
+import { VKIcon } from "@/components/icons/VKIcon";
 
 export const Footer = () => {
   const phone = "8 921 798-72-22";
@@ -45,13 +46,23 @@ export const Footer = () => {
               </a>
               
               <a
-                href="https://t.me/skladno_tut"
+                href="https://t.me/skladno_tut_channel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-accent transition-colors font-bold"
               >
                 <TelegramIcon className="w-5 h-5" />
                 <span>Telegram</span>
+              </a>
+              
+              <a
+                href="https://vk.com/skladnotut"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 hover:text-accent transition-colors font-bold"
+              >
+                <VKIcon className="w-5 h-5" />
+                <span>VK</span>
               </a>
 
               <div className="pt-3 border-t border-primary-foreground/20">
