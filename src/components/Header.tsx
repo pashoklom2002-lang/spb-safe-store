@@ -2,6 +2,7 @@ import { Phone, MapPin, Menu } from "lucide-react";
 import logo from "@/assets/logo-header.png";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
+import { VKIcon } from "@/components/icons/VKIcon";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import {
@@ -182,6 +183,16 @@ export const Header = ({
                 aria-label="Telegram"
               >
                 <TelegramIcon className="w-[26px] h-[26px]" />
+              </a>
+              
+              <a
+                href="https://vk.com/skladnotut"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="VK"
+              >
+                <VKIcon className="w-[26px] h-[26px]" />
               </a>
             </div>
           </div>
