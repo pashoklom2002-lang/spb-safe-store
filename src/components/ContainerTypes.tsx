@@ -8,7 +8,7 @@ interface ContainerCard {
 
 const containers: ContainerCard[] = [
   {
-    size: "Контейнер ~6 м²",
+    size: "Контейнер ~5 м²",
     baseImage: "", // Здесь подставить ссылку на baseImage
     hoverImage: "", // Здесь подставить ссылку на hoverImage
   },

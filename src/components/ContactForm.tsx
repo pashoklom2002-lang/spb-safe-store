@@ -11,7 +11,7 @@ import { PrivacyPolicyDialog } from "./PrivacyPolicyDialog";
 const formSchema = z.object({
   name: z.string().trim().min(2, "Введите имя (минимум 2 символа)"),
   phone: z.string().trim().min(10, "Введите корректный телефон"),
-  containerType: z.enum(["6m", "15m", "30m"], { required_error: "Выберите размер контейнера" }),
+  containerType: z.enum(["5m", "15m", "30m"], { required_error: "Выберите размер контейнера" }),
   rentalPeriod: z.string().trim().min(1, "Выберите срок аренды"),
 });
 
@@ -171,7 +171,7 @@ export const ContactForm = () => {
                     <SelectValue placeholder="Выберите размер" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="6m">6 м² — Секция</SelectItem>
+                    <SelectItem value="5m">5 м² — Секция</SelectItem>
                     <SelectItem value="15m">15 м² — Личное хранение</SelectItem>
                     <SelectItem value="30m">30 м² — Для бизнеса</SelectItem>
                   </SelectContent>
