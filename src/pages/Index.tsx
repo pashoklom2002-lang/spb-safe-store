@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { PromoBlock } from "@/components/PromoBlock";
+
 import { FacilityAdvantages } from "@/components/FacilityAdvantages";
 import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
@@ -42,7 +42,7 @@ const Index = () => {
       />
       <div className="pt-20">
         <Hero onScrollToForm={scrollToForm} />
-        <PromoBlock onScrollToForm={scrollToForm} />
+        
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
         </div>
