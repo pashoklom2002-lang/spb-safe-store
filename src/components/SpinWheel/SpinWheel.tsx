@@ -44,7 +44,6 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   const getTextPosition = (index: number) => {
     const angle = sectorAngle * index + sectorAngle / 2 - 90;
     const radians = angle * (Math.PI / 180);
-    // Move text closer to outer edge
     const textRadius = radius * 0.72;
     return {
       x: centerX + textRadius * Math.cos(radians),
@@ -53,24 +52,26 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     };
   };
 
-  // Special gold color for 17% and +2 weeks
-  const SPECIAL_GOLD = '#FFD700';
+  // Wonka Golden Ticket style gold
+  const SPECIAL_GOLD = '#D4AF37';
   const SPECIAL_TEXT = '#2A2414';
 
-  const getSectorColor = (sector: Prize, index: number) => {
+  // Colors for alternation
+  const DARK_COLOR = 'hsl(0 0% 12%)';
+  const PRIMARY_COLOR = 'hsl(84 100% 64%)';
+
+  const getSectorColor = (sector: Prize) => {
     if (sector.isSpecial) {
       return SPECIAL_GOLD;
     }
-    // Alternate between dark and primary (lime)
-    return index % 2 === 0 ? 'hsl(0 0% 12%)' : 'hsl(84 100% 64%)';
+    return sector.color === 'dark' ? DARK_COLOR : PRIMARY_COLOR;
   };
 
-  const getTextColor = (sector: Prize, index: number) => {
+  const getTextColor = (sector: Prize) => {
     if (sector.isSpecial) {
       return SPECIAL_TEXT;
     }
-    // Dark text on lime, white text on dark
-    return index % 2 === 0 ? 'hsl(0 0% 98%)' : 'hsl(0 0% 4%)';
+    return sector.color === 'dark' ? 'hsl(0 0% 98%)' : 'hsl(0 0% 4%)';
   };
 
   useEffect(() => {
@@ -129,7 +130,6 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     }, 4000);
   };
 
-  // Check if this is the special "2 weeks" prize
   const isTwoWeeksPrize = (label: string) => {
     return label.includes('недел');
   };
@@ -148,37 +148,12 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
         </svg>
       </div>
 
-      {/* Wheel */}
+      {/* Wheel - no outer ring to show wreath */}
       <svg
         viewBox="0 0 400 400"
         className="w-full h-full drop-shadow-2xl cursor-pointer max-w-[min(80vw,60vh)]"
         onClick={spin}
       >
-        <defs>
-          <filter id="wheelShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="hsl(84 100% 64% / 0.3)" />
-          </filter>
-        </defs>
-
-        {/* Outer ring - original lime/primary style */}
-        <circle
-          cx={centerX}
-          cy={centerY}
-          r={radius + 15}
-          fill="none"
-          stroke="hsl(var(--primary))"
-          strokeWidth="8"
-          filter="url(#wheelShadow)"
-        />
-        <circle
-          cx={centerX}
-          cy={centerY}
-          r={radius + 8}
-          fill="none"
-          stroke="hsl(var(--background))"
-          strokeWidth="4"
-        />
-
         {/* Wheel group with rotation */}
         <g
           ref={wheelRef}
@@ -198,17 +173,16 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
               <g key={index}>
                 <path
                   d={createSectorPath(startAngle, endAngle)}
-                  fill={getSectorColor(sector, index)}
+                  fill={getSectorColor(sector)}
                   stroke="hsl(var(--background))"
                   strokeWidth="1"
                 />
                 {isTwoWeeks ? (
-                  // Two-line text for "+ 2 недели"
                   <g transform={`translate(${textPos.x}, ${textPos.y}) rotate(${textPos.rotation})`}>
                     <text
                       x={0}
                       y={-6}
-                      fill={getTextColor(sector, index)}
+                      fill={getTextColor(sector)}
                       fontSize="12"
                       fontWeight="bold"
                       textAnchor="middle"
@@ -219,7 +193,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
                     <text
                       x={0}
                       y={8}
-                      fill={getTextColor(sector, index)}
+                      fill={getTextColor(sector)}
                       fontSize="10"
                       fontWeight="bold"
                       textAnchor="middle"
@@ -232,7 +206,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
                   <text
                     x={textPos.x}
                     y={textPos.y}
-                    fill={getTextColor(sector, index)}
+                    fill={getTextColor(sector)}
                     fontSize="14"
                     fontWeight="bold"
                     textAnchor="middle"
