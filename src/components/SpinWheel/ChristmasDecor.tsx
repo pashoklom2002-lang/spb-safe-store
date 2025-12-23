@@ -63,42 +63,21 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
             );
           })}
 
-          {/* Decorations: balls and pinecones */}
+          {/* Decorations: only balls */}
           {[
-            { angle: 30, type: 'ball', color: 'red', size: 10 },
-            { angle: 75, type: 'pinecone', size: 12 },
-            { angle: 120, type: 'ball', color: 'gold', size: 9 },
-            { angle: 165, type: 'ball', color: 'red', size: 10 },
-            { angle: 210, type: 'pinecone', size: 11 },
-            { angle: 255, type: 'ball', color: 'gold', size: 10 },
-            { angle: 300, type: 'ball', color: 'red', size: 9 },
-            { angle: 345, type: 'pinecone', size: 10 },
+            { angle: 30, color: 'red', size: 10 },
+            { angle: 75, color: 'gold', size: 11 },
+            { angle: 120, color: 'red', size: 9 },
+            { angle: 165, color: 'gold', size: 10 },
+            { angle: 210, color: 'red', size: 11 },
+            { angle: 255, color: 'gold', size: 10 },
+            { angle: 300, color: 'red', size: 9 },
+            { angle: 345, color: 'gold', size: 10 },
           ].map((item, i) => {
             const angleRad = item.angle * (Math.PI / 180);
             const radius = 210;
             const cx = 220 + Math.cos(angleRad) * radius;
             const cy = 220 + Math.sin(angleRad) * radius;
-
-            if (item.type === 'pinecone') {
-              return (
-                <g key={`deco-${i}`} transform={`translate(${cx}, ${cy})`}>
-                  {/* Pinecone shape */}
-                  <ellipse cx={0} cy={0} rx={item.size * 0.6} ry={item.size} fill="url(#pinecone)" />
-                  {/* Pinecone scales pattern */}
-                  {Array.from({ length: 3 }).map((_, j) => (
-                    <ellipse 
-                      key={j}
-                      cx={0} 
-                      cy={-item.size * 0.3 + j * 5} 
-                      rx={item.size * 0.4 - j * 2} 
-                      ry={3}
-                      fill="#5c4a0f"
-                      opacity={0.5}
-                    />
-                  ))}
-                </g>
-              );
-            }
 
             return (
               <g key={`deco-${i}`}>
