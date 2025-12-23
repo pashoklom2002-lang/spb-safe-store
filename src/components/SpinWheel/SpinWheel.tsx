@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Prize } from './types';
+import { useSounds } from './useSounds';
 
 interface SpinWheelProps {
   sectors: Prize[];
@@ -11,6 +12,8 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   const [rotation, setRotation] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
   const wheelRef = useRef<SVGGElement>(null);
+  const tickIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const { playTickSound, playSpinSound, playWinSound } = useSounds();
 
   const sectorAngle = 360 / sectors.length;
   const radius = 150;
@@ -49,10 +52,57 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     };
   };
 
+  const getSectorColor = (color: Prize['color']) => {
+    switch (color) {
+      case 'primary':
+        return 'hsl(84 100% 64%)'; // lime green
+      case 'gold':
+        return 'hsl(43 50% 35%)'; // dark matte gold
+      case 'dark':
+      default:
+        return 'hsl(0 0% 12%)'; // dark
+    }
+  };
+
+  const getTextColor = (color: Prize['color']) => {
+    switch (color) {
+      case 'primary':
+        return 'hsl(0 0% 4%)'; // dark text on lime
+      case 'gold':
+      case 'dark':
+      default:
+        return 'hsl(0 0% 98%)'; // white text
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (tickIntervalRef.current) {
+        clearInterval(tickIntervalRef.current);
+      }
+    };
+  }, []);
+
   const spin = () => {
     if (isSpinning || disabled) return;
 
     setIsSpinning(true);
+    playSpinSound();
+
+    // Start tick sounds
+    let tickInterval = 50;
+    const startTicks = () => {
+      tickIntervalRef.current = setInterval(() => {
+        playTickSound();
+        tickInterval += 10; // Slow down over time
+        if (tickInterval > 300) {
+          if (tickIntervalRef.current) {
+            clearInterval(tickIntervalRef.current);
+          }
+        }
+      }, tickInterval);
+    };
+    startTicks();
 
     // Weighted random selection
     const totalWeight = sectors.reduce((sum, s) => sum + s.weight, 0);
@@ -68,15 +118,18 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     }
 
     // Calculate rotation to land on selected sector
-    // Pointer is at top (0 degrees), sectors start from top going clockwise
     const sectorCenter = sectorAngle * selectedIndex + sectorAngle / 2;
-    const fullRotations = 5 + Math.floor(Math.random() * 3); // 5-7 full rotations
+    const fullRotations = 5 + Math.floor(Math.random() * 3);
     const targetRotation = 360 * fullRotations + (360 - sectorCenter);
     
     setRotation(prev => prev + targetRotation);
 
     setTimeout(() => {
+      if (tickIntervalRef.current) {
+        clearInterval(tickIntervalRef.current);
+      }
       setIsSpinning(false);
+      playWinSound();
       onSpinEnd(sectors[selectedIndex]);
     }, 4000);
   };
@@ -139,20 +192,19 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
             const startAngle = sectorAngle * index;
             const endAngle = startAngle + sectorAngle;
             const textPos = getTextPosition(index);
-            const isPrimary = sector.color === 'primary';
 
             return (
               <g key={index}>
                 <path
                   d={createSectorPath(startAngle, endAngle)}
-                  fill={isPrimary ? 'hsl(var(--primary))' : 'hsl(0 0% 12%)'}
+                  fill={getSectorColor(sector.color)}
                   stroke="hsl(var(--background))"
                   strokeWidth="1"
                 />
                 <text
                   x={textPos.x}
                   y={textPos.y}
-                  fill={isPrimary ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))'}
+                  fill={getTextColor(sector.color)}
                   fontSize={sector.label.length > 5 ? "9" : "14"}
                   fontWeight="bold"
                   textAnchor="middle"

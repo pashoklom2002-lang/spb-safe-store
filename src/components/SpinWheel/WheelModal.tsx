@@ -97,8 +97,10 @@ const WheelModal = ({ isOpen, onClose }: WheelModalProps) => {
             <p className="text-muted-foreground mb-4">
               Ваш приз:
             </p>
-            <div className="text-2xl font-bold text-primary">
-              {previousPrize}
+            <div className="text-xl font-bold text-primary">
+              {previousPrize?.includes('%') 
+                ? `скидка ${previousPrize} на весь срок хранения` 
+                : previousPrize}
             </div>
             <p className="text-sm text-muted-foreground mt-4">
               Мы свяжемся с вами в ближайшее время

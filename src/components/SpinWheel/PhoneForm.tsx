@@ -90,6 +90,13 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
     }
   };
 
+  const formatPrizeText = (prizeValue: string) => {
+    if (prizeValue.includes('%')) {
+      return `скидку ${prizeValue} на весь срок хранения`;
+    }
+    return prizeValue;
+  };
+
   return (
     <div className="text-center space-y-6">
       <div className="space-y-2">
@@ -98,7 +105,7 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
         </div>
         <h3 className="text-2xl font-bold text-foreground">🎉 Поздравляем!</h3>
         <p className="text-lg text-muted-foreground">Вы выиграли:</p>
-        <div className="text-3xl font-bold text-primary py-2">{prize}</div>
+        <div className="text-2xl font-bold text-primary py-2">{formatPrizeText(prize)}</div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
