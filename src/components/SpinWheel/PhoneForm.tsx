@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Gift, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { PrivacyPolicyDialog } from '@/components/PrivacyPolicyDialog';
 
 interface PhoneFormProps {
   prize: string;
@@ -28,7 +29,6 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
     
-    // If user starts typing without +7, add it
     if (value.length === 1 && !value.startsWith('+')) {
       value = '+7' + value;
     }
@@ -91,24 +91,27 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
   };
 
   const formatPrizeText = (prizeValue: string) => {
-    if (prizeValue.includes('%')) {
-      return `скидку ${prizeValue} на весь срок хранения`;
+    // Check if it's a percentage prize (contains % or −)
+    if (prizeValue.includes('%') || prizeValue.includes('−')) {
+      // Extract just the number and %
+      const cleanPrize = prizeValue.replace('−', '');
+      return `скидку ${cleanPrize} на весь срок хранения`;
     }
     return prizeValue;
   };
 
   return (
-    <div className="text-center space-y-6">
+    <div className="text-center space-y-4">
       <div className="space-y-2">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-4">
-          <Gift className="w-8 h-8 text-primary" />
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/20 mb-2">
+          <Gift className="w-7 h-7 text-primary" />
         </div>
-        <h3 className="text-2xl font-bold text-foreground">🎉 Поздравляем!</h3>
-        <p className="text-lg text-muted-foreground">Вы выиграли:</p>
-        <div className="text-2xl font-bold text-primary py-2">{formatPrizeText(prize)}</div>
+        <h3 className="text-xl font-bold text-foreground">🎉 Поздравляем!</h3>
+        <p className="text-base text-muted-foreground">Вы выиграли:</p>
+        <div className="text-xl font-bold text-primary py-1">{formatPrizeText(prize)}</div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3">
         <div className="space-y-2">
           <p className="text-sm text-muted-foreground">
             Введите телефон, чтобы забрать приз
@@ -118,7 +121,7 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
             placeholder="+7 (___) ___-__-__"
             value={phone}
             onChange={handlePhoneChange}
-            className="text-center text-lg h-12 bg-secondary border-border focus:border-primary"
+            className="text-center text-lg h-11 bg-secondary border-border focus:border-primary"
             autoFocus
           />
         </div>
@@ -126,7 +129,7 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
         <Button
           type="submit"
           size="lg"
-          className="w-full h-12 text-lg font-semibold"
+          className="w-full h-11 text-base font-semibold"
           disabled={!isValidPhone() || isSubmitting}
         >
           {isSubmitting ? (
@@ -140,8 +143,8 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
         </Button>
       </form>
 
-      <p className="text-xs text-muted-foreground">
-        Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        Нажимая кнопку «Забрать приз», вы соглашаетесь на обработку персональных данных в соответствии с <PrivacyPolicyDialog />
       </p>
     </div>
   );

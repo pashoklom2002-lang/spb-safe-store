@@ -36,6 +36,14 @@ const Wheel = () => {
     setShowForm(false);
   };
 
+  const formatPrizeDisplay = (prizeValue: string) => {
+    if (prizeValue.includes('%') || prizeValue.includes('−')) {
+      const cleanPrize = prizeValue.replace('−', '');
+      return `скидку ${cleanPrize} на весь срок хранения`;
+    }
+    return prizeValue;
+  };
+
   return (
     <>
       <Helmet>
@@ -43,58 +51,60 @@ const Wheel = () => {
         <meta name="description" content="Крутите колесо удачи и получите гарантированный приз — скидку до 17% или 2 недели бесплатного хранения!" />
       </Helmet>
 
-      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+      <div className="h-screen w-screen overflow-hidden bg-background flex flex-col items-center justify-center p-3 md:p-4">
         {/* Logo */}
-        <div className="mb-6">
-          <img src={logo} alt="СкладноТут" className="h-12 w-auto" />
+        <div className="shrink-0 mb-2 md:mb-3">
+          <img src={logo} alt="СкладноТут" className="h-8 md:h-10 w-auto" />
         </div>
 
         {/* Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+        <div className="text-center shrink-0 mb-2 md:mb-4">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-1">
             🎄 Новогодняя удача! 🎄
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             Крутите колесо и получите гарантированный приз!
           </p>
         </div>
 
-        {/* Main content */}
-        <div className="w-full max-w-lg">
+        {/* Main content - takes remaining space */}
+        <div className="flex-1 w-full max-w-2xl flex items-center justify-center min-h-0">
           {alreadyPlayed ? (
-            <div className="bg-card rounded-2xl p-8 text-center border border-border shadow-lg">
-              <div className="text-6xl mb-4">🎁</div>
-              <h2 className="text-2xl font-bold text-foreground mb-2">
+            <div className="bg-card rounded-2xl p-6 text-center border border-border shadow-lg max-w-md w-full">
+              <div className="text-5xl mb-3">🎁</div>
+              <h2 className="text-xl font-bold text-foreground mb-2">
                 Вы уже участвовали!
               </h2>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-muted-foreground mb-3 text-sm">
                 Ваш приз:
               </p>
-              <div className="text-2xl font-bold text-primary">
-                {previousPrize}
+              <div className="text-lg font-bold text-primary">
+                {previousPrize && formatPrizeDisplay(previousPrize)}
               </div>
-              <p className="text-sm text-muted-foreground mt-4">
+              <p className="text-xs text-muted-foreground mt-3">
                 Мы свяжемся с вами в ближайшее время
               </p>
               <a
                 href="/"
-                className="inline-block mt-6 text-primary hover:underline"
+                className="inline-block mt-4 text-primary hover:underline text-sm"
               >
                 ← Перейти на сайт
               </a>
             </div>
           ) : showForm && wonPrize ? (
-            <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+            <div className="bg-card rounded-2xl p-5 md:p-6 border border-border shadow-lg max-w-md w-full">
               <PhoneForm prize={wonPrize} onSuccess={handleFormSuccess} />
             </div>
           ) : (
-            <ChristmasDecor>
-              <SpinWheel
-                sectors={sectors}
-                onSpinEnd={handleSpinEnd}
-                disabled={!!wonPrize}
-              />
-            </ChristmasDecor>
+            <div className="w-full h-full flex items-center justify-center">
+              <ChristmasDecor>
+                <SpinWheel
+                  sectors={sectors}
+                  onSpinEnd={handleSpinEnd}
+                  disabled={!!wonPrize}
+                />
+              </ChristmasDecor>
+            </div>
           )}
         </div>
 
@@ -102,7 +112,7 @@ const Wheel = () => {
         {!alreadyPlayed && (
           <a
             href="/"
-            className="mt-8 text-muted-foreground hover:text-primary transition-colors"
+            className="shrink-0 mt-2 text-muted-foreground hover:text-primary transition-colors text-sm"
           >
             ← Перейти на сайт
           </a>
