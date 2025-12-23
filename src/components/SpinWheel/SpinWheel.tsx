@@ -54,7 +54,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   };
 
   // Special gold color for 17% and +2 weeks
-  const SPECIAL_GOLD = '#C9A24D';
+  const SPECIAL_GOLD = '#FFD700';
   const SPECIAL_TEXT = '#2A2414';
 
   const getSectorColor = (sector: Prize, index: number) => {
@@ -214,8 +214,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
                       textAnchor="middle"
                       dominantBaseline="middle"
                     >
-                      <tspan fill="#cc0000">+</tspan>
-                      <tspan> 2</tspan>
+                      + 2
                     </text>
                     <text
                       x={0}
