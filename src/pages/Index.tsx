@@ -14,6 +14,8 @@ import { Footer } from "@/components/Footer";
 import { Contacts } from "@/components/Contacts";
 import { Reviews } from "@/components/Reviews";
 import { Photos } from "@/components/Photos";
+import { WheelTrigger } from "@/components/SpinWheel";
+
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLDivElement>(null);
@@ -60,6 +62,9 @@ const Index = () => {
         <Contacts />
         <Footer />
       </div>
+      
+      {/* Wheel of Fortune trigger button */}
+      <WheelTrigger />
     </main>
   );
 };
