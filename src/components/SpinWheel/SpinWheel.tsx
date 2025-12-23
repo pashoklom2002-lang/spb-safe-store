@@ -16,7 +16,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   const { playTickSound, playSpinSound, playWinSound } = useSounds();
 
   const sectorAngle = 360 / sectors.length;
-  const radius = 150;
+  const radius = 180;
   const centerX = 200;
   const centerY = 200;
 
@@ -44,7 +44,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   const getTextPosition = (index: number) => {
     const angle = sectorAngle * index + sectorAngle / 2 - 90;
     const radians = angle * (Math.PI / 180);
-    const textRadius = radius * 0.65;
+    const textRadius = radius * 0.6;
     return {
       x: centerX + textRadius * Math.cos(radians),
       y: centerY + textRadius * Math.sin(radians),
@@ -52,27 +52,33 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     };
   };
 
-  const getSectorColor = (color: Prize['color']) => {
-    switch (color) {
-      case 'primary':
-        return 'hsl(84 100% 64%)'; // lime green
-      case 'gold':
-        return 'hsl(43 50% 35%)'; // dark matte gold
-      case 'dark':
-      default:
-        return 'hsl(0 0% 12%)'; // dark
+  // Golden Ticket color palette
+  const GOLD_MAIN = '#C9A24D';      // Matte noble gold
+  const GOLD_DARK = '#8F7432';      // Dark gold for depth
+  const GOLD_LIGHT = '#E6CF8B';     // Light gold for accents
+  const GOLD_TEXT = '#2A2414';      // Dark brown text
+  const SPECIAL_GOLD = 'hsl(43 50% 35%)'; // Keep original for 17% and +2 weeks
+
+  const getSectorColor = (sector: Prize, index: number) => {
+    if (sector.isSpecial) {
+      return SPECIAL_GOLD;
     }
+    // Alternate between main gold and dark gold for non-special sectors
+    return index % 2 === 0 ? GOLD_MAIN : GOLD_DARK;
   };
 
-  const getTextColor = (color: Prize['color']) => {
-    switch (color) {
-      case 'primary':
-        return 'hsl(0 0% 4%)'; // dark text on lime
-      case 'gold':
-      case 'dark':
-      default:
-        return 'hsl(0 0% 98%)'; // white text
+  const getTextColor = (sector: Prize) => {
+    if (sector.isSpecial) {
+      return 'hsl(0 0% 98%)'; // White text on special gold
     }
+    return GOLD_TEXT; // Dark brown text on golden sectors
+  };
+
+  const getStrokeColor = (sector: Prize) => {
+    if (sector.isSpecial) {
+      return 'hsl(var(--background))';
+    }
+    return GOLD_DARK;
   };
 
   useEffect(() => {
@@ -94,7 +100,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     const startTicks = () => {
       tickIntervalRef.current = setInterval(() => {
         playTickSound();
-        tickInterval += 10; // Slow down over time
+        tickInterval += 10;
         if (tickInterval > 300) {
           if (tickIntervalRef.current) {
             clearInterval(tickIntervalRef.current);
@@ -134,15 +140,29 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     }, 4000);
   };
 
+  // Calculate font size based on label length
+  const getFontSize = (label: string) => {
+    if (label.includes('недел')) return '8';
+    if (label.length > 5) return '10';
+    return '14';
+  };
+
   return (
-    <div className="relative w-full max-w-[400px] mx-auto">
+    <div className="relative w-full h-full flex items-center justify-center">
       {/* Pointer */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 z-20">
         <svg width="40" height="50" viewBox="0 0 40 50">
+          <defs>
+            <linearGradient id="pointerGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor={GOLD_LIGHT} />
+              <stop offset="50%" stopColor={GOLD_MAIN} />
+              <stop offset="100%" stopColor={GOLD_DARK} />
+            </linearGradient>
+          </defs>
           <polygon
             points="20,50 5,10 20,0 35,10"
-            fill="hsl(var(--primary))"
-            stroke="hsl(var(--background))"
+            fill="url(#pointerGold)"
+            stroke={GOLD_DARK}
             strokeWidth="2"
           />
         </svg>
@@ -151,32 +171,38 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
       {/* Wheel */}
       <svg
         viewBox="0 0 400 400"
-        className="w-full h-full drop-shadow-2xl cursor-pointer"
+        className="w-full h-full drop-shadow-2xl cursor-pointer max-w-[min(80vw,60vh)]"
         onClick={spin}
       >
         <defs>
           <filter id="wheelShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="hsl(84 100% 64% / 0.3)" />
+            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="rgba(201, 162, 77, 0.4)" />
           </filter>
+          <linearGradient id="ringGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={GOLD_LIGHT} />
+            <stop offset="30%" stopColor={GOLD_MAIN} />
+            <stop offset="70%" stopColor={GOLD_MAIN} />
+            <stop offset="100%" stopColor={GOLD_DARK} />
+          </linearGradient>
         </defs>
 
-        {/* Outer ring */}
+        {/* Outer ring - Golden Ticket style */}
         <circle
           cx={centerX}
           cy={centerY}
           r={radius + 15}
           fill="none"
-          stroke="hsl(var(--primary))"
-          strokeWidth="8"
+          stroke="url(#ringGold)"
+          strokeWidth="10"
           filter="url(#wheelShadow)"
         />
         <circle
           cx={centerX}
           cy={centerY}
-          r={radius + 8}
+          r={radius + 6}
           fill="none"
-          stroke="hsl(var(--background))"
-          strokeWidth="4"
+          stroke={GOLD_DARK}
+          strokeWidth="2"
         />
 
         {/* Wheel group with rotation */}
@@ -197,19 +223,20 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
               <g key={index}>
                 <path
                   d={createSectorPath(startAngle, endAngle)}
-                  fill={getSectorColor(sector.color)}
-                  stroke="hsl(var(--background))"
+                  fill={getSectorColor(sector, index)}
+                  stroke={getStrokeColor(sector)}
                   strokeWidth="1"
                 />
                 <text
                   x={textPos.x}
                   y={textPos.y}
-                  fill={getTextColor(sector.color)}
-                  fontSize={sector.label.length > 5 ? "9" : "14"}
+                  fill={getTextColor(sector)}
+                  fontSize={getFontSize(sector.label)}
                   fontWeight="bold"
                   textAnchor="middle"
                   dominantBaseline="middle"
                   transform={`rotate(${textPos.rotation}, ${textPos.x}, ${textPos.y})`}
+                  style={{ fontFamily: 'system-ui, sans-serif' }}
                 >
                   {sector.label}
                 </text>
@@ -218,20 +245,20 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
           })}
         </g>
 
-        {/* Center button */}
+        {/* Center button - Golden style */}
         <circle
           cx={centerX}
           cy={centerY}
-          r="35"
-          fill="hsl(var(--primary))"
-          stroke="hsl(var(--background))"
-          strokeWidth="4"
+          r="40"
+          fill="url(#ringGold)"
+          stroke={GOLD_DARK}
+          strokeWidth="3"
           className={`${!isSpinning && !disabled ? 'cursor-pointer hover:opacity-90' : ''}`}
         />
         <text
           x={centerX}
           y={centerY}
-          fill="hsl(var(--primary-foreground))"
+          fill={GOLD_TEXT}
           fontSize="12"
           fontWeight="bold"
           textAnchor="middle"

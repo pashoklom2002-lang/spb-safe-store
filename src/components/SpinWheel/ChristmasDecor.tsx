@@ -6,12 +6,13 @@ interface ChristmasDecorProps {
 
 const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative w-full h-full flex items-center justify-center">
       {/* Wreath SVG behind the wheel */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <svg 
           viewBox="0 0 440 440" 
-          className="w-[120%] h-[120%] max-w-[480px] max-h-[480px]"
+          className="w-full h-full max-w-[min(90vw,70vh)] max-h-[min(90vw,70vh)]"
+          style={{ minWidth: '300px', minHeight: '300px' }}
         >
           <defs>
             <linearGradient id="pineGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -39,7 +40,7 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
           {/* Pine wreath ring - multiple layers */}
           {Array.from({ length: 36 }).map((_, i) => {
             const angle = (i * 10) * (Math.PI / 180);
-            const radius = 195;
+            const radius = 210;
             const cx = 220 + Math.cos(angle) * radius;
             const cy = 220 + Math.sin(angle) * radius;
             const rotation = (i * 10) + 90;
@@ -52,8 +53,8 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
                     key={j}
                     cx={0}
                     cy={j * 3 - 6}
-                    rx={18 + (j % 3) * 2}
-                    ry={4}
+                    rx={16 + (j % 3) * 2}
+                    ry={3}
                     fill={j % 2 === 0 ? "url(#pineGradientDark)" : "url(#pineGradientLight)"}
                     transform={`rotate(${(j - 2) * 15})`}
                   />
@@ -64,17 +65,17 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
 
           {/* Decorations: balls and pinecones */}
           {[
-            { angle: 30, type: 'ball', color: 'red', size: 12 },
-            { angle: 75, type: 'pinecone', size: 14 },
-            { angle: 120, type: 'ball', color: 'gold', size: 10 },
-            { angle: 165, type: 'ball', color: 'red', size: 11 },
-            { angle: 210, type: 'pinecone', size: 13 },
-            { angle: 255, type: 'ball', color: 'gold', size: 12 },
-            { angle: 300, type: 'ball', color: 'red', size: 10 },
-            { angle: 345, type: 'pinecone', size: 12 },
+            { angle: 30, type: 'ball', color: 'red', size: 10 },
+            { angle: 75, type: 'pinecone', size: 12 },
+            { angle: 120, type: 'ball', color: 'gold', size: 9 },
+            { angle: 165, type: 'ball', color: 'red', size: 10 },
+            { angle: 210, type: 'pinecone', size: 11 },
+            { angle: 255, type: 'ball', color: 'gold', size: 10 },
+            { angle: 300, type: 'ball', color: 'red', size: 9 },
+            { angle: 345, type: 'pinecone', size: 10 },
           ].map((item, i) => {
             const angleRad = item.angle * (Math.PI / 180);
-            const radius = 195;
+            const radius = 210;
             const cx = 220 + Math.cos(angleRad) * radius;
             const cy = 220 + Math.sin(angleRad) * radius;
 
@@ -122,7 +123,7 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
           {/* Garland lights */}
           {Array.from({ length: 18 }).map((_, i) => {
             const angle = (i * 20) * (Math.PI / 180);
-            const radius = 195;
+            const radius = 210;
             const cx = 220 + Math.cos(angle) * radius;
             const cy = 220 + Math.sin(angle) * radius;
             const colors = ['#ff4444', '#ffcc00', '#44ff44', '#ff44ff', '#44ffff'];
@@ -133,12 +134,12 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
                 key={`light-${i}`}
                 cx={cx}
                 cy={cy}
-                r={4}
+                r={3}
                 fill={color}
                 className="animate-pulse"
                 style={{
                   animationDelay: `${i * 0.15}s`,
-                  filter: `drop-shadow(0 0 6px ${color})`,
+                  filter: `drop-shadow(0 0 4px ${color})`,
                 }}
               />
             );
@@ -147,7 +148,7 @@ const ChristmasDecor = ({ children }: ChristmasDecorProps) => {
       </div>
 
       {/* Main content (wheel) */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
         {children}
       </div>
     </div>

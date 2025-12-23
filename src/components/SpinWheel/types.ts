@@ -12,11 +12,11 @@ export interface WheelState {
 }
 
 export const PRIZES: Prize[] = [
-  { label: "10%", weight: 3, color: 'dark' },
-  { label: "12%", weight: 3, color: 'primary' },
-  { label: "15%", weight: 4, color: 'dark' },
-  { label: "17%", weight: 3, color: 'gold', isSpecial: true },
-  { label: "2 недели бесплатно", weight: 1, color: 'gold', isSpecial: true },
+  { label: "−10%", weight: 3, color: 'dark' },
+  { label: "−12%", weight: 3, color: 'primary' },
+  { label: "−15%", weight: 4, color: 'dark' },
+  { label: "−17%", weight: 3, color: 'gold', isSpecial: true },
+  { label: "+ 2 недели", weight: 1, color: 'gold', isSpecial: true },
 ];
 
 // Generate 14 sectors based on weights with proper color alternation
