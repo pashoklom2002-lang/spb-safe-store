@@ -44,7 +44,8 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   const getTextPosition = (index: number) => {
     const angle = sectorAngle * index + sectorAngle / 2 - 90;
     const radians = angle * (Math.PI / 180);
-    const textRadius = radius * 0.6;
+    // Move text closer to outer edge
+    const textRadius = radius * 0.72;
     return {
       x: centerX + textRadius * Math.cos(radians),
       y: centerY + textRadius * Math.sin(radians),
@@ -52,33 +53,24 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     };
   };
 
-  // Golden Ticket color palette
-  const GOLD_MAIN = '#C9A24D';      // Matte noble gold
-  const GOLD_DARK = '#8F7432';      // Dark gold for depth
-  const GOLD_LIGHT = '#E6CF8B';     // Light gold for accents
-  const GOLD_TEXT = '#2A2414';      // Dark brown text
-  const SPECIAL_GOLD = 'hsl(43 50% 35%)'; // Keep original for 17% and +2 weeks
+  // Special gold color for 17% and +2 weeks
+  const SPECIAL_GOLD = '#C9A24D';
+  const SPECIAL_TEXT = '#2A2414';
 
   const getSectorColor = (sector: Prize, index: number) => {
     if (sector.isSpecial) {
       return SPECIAL_GOLD;
     }
-    // Alternate between main gold and dark gold for non-special sectors
-    return index % 2 === 0 ? GOLD_MAIN : GOLD_DARK;
+    // Alternate between dark and primary (lime)
+    return index % 2 === 0 ? 'hsl(0 0% 12%)' : 'hsl(84 100% 64%)';
   };
 
-  const getTextColor = (sector: Prize) => {
+  const getTextColor = (sector: Prize, index: number) => {
     if (sector.isSpecial) {
-      return 'hsl(0 0% 98%)'; // White text on special gold
+      return SPECIAL_TEXT;
     }
-    return GOLD_TEXT; // Dark brown text on golden sectors
-  };
-
-  const getStrokeColor = (sector: Prize) => {
-    if (sector.isSpecial) {
-      return 'hsl(var(--background))';
-    }
-    return GOLD_DARK;
+    // Dark text on lime, white text on dark
+    return index % 2 === 0 ? 'hsl(0 0% 98%)' : 'hsl(0 0% 4%)';
   };
 
   useEffect(() => {
@@ -95,7 +87,6 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     setIsSpinning(true);
     playSpinSound();
 
-    // Start tick sounds
     let tickInterval = 50;
     const startTicks = () => {
       tickIntervalRef.current = setInterval(() => {
@@ -110,7 +101,6 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     };
     startTicks();
 
-    // Weighted random selection
     const totalWeight = sectors.reduce((sum, s) => sum + s.weight, 0);
     let random = Math.random() * totalWeight;
     let selectedIndex = 0;
@@ -123,7 +113,6 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
       }
     }
 
-    // Calculate rotation to land on selected sector
     const sectorCenter = sectorAngle * selectedIndex + sectorAngle / 2;
     const fullRotations = 5 + Math.floor(Math.random() * 3);
     const targetRotation = 360 * fullRotations + (360 - sectorCenter);
@@ -140,11 +129,9 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
     }, 4000);
   };
 
-  // Calculate font size based on label length
-  const getFontSize = (label: string) => {
-    if (label.includes('недел')) return '8';
-    if (label.length > 5) return '10';
-    return '14';
+  // Check if this is the special "2 weeks" prize
+  const isTwoWeeksPrize = (label: string) => {
+    return label.includes('недел');
   };
 
   return (
@@ -152,17 +139,10 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
       {/* Pointer */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 z-20">
         <svg width="40" height="50" viewBox="0 0 40 50">
-          <defs>
-            <linearGradient id="pointerGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor={GOLD_LIGHT} />
-              <stop offset="50%" stopColor={GOLD_MAIN} />
-              <stop offset="100%" stopColor={GOLD_DARK} />
-            </linearGradient>
-          </defs>
           <polygon
             points="20,50 5,10 20,0 35,10"
-            fill="url(#pointerGold)"
-            stroke={GOLD_DARK}
+            fill="hsl(var(--primary))"
+            stroke="hsl(var(--background))"
             strokeWidth="2"
           />
         </svg>
@@ -176,33 +156,27 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
       >
         <defs>
           <filter id="wheelShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="rgba(201, 162, 77, 0.4)" />
+            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="hsl(84 100% 64% / 0.3)" />
           </filter>
-          <linearGradient id="ringGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={GOLD_LIGHT} />
-            <stop offset="30%" stopColor={GOLD_MAIN} />
-            <stop offset="70%" stopColor={GOLD_MAIN} />
-            <stop offset="100%" stopColor={GOLD_DARK} />
-          </linearGradient>
         </defs>
 
-        {/* Outer ring - Golden Ticket style */}
+        {/* Outer ring - original lime/primary style */}
         <circle
           cx={centerX}
           cy={centerY}
           r={radius + 15}
           fill="none"
-          stroke="url(#ringGold)"
-          strokeWidth="10"
+          stroke="hsl(var(--primary))"
+          strokeWidth="8"
           filter="url(#wheelShadow)"
         />
         <circle
           cx={centerX}
           cy={centerY}
-          r={radius + 6}
+          r={radius + 8}
           fill="none"
-          stroke={GOLD_DARK}
-          strokeWidth="2"
+          stroke="hsl(var(--background))"
+          strokeWidth="4"
         />
 
         {/* Wheel group with rotation */}
@@ -218,47 +192,76 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
             const startAngle = sectorAngle * index;
             const endAngle = startAngle + sectorAngle;
             const textPos = getTextPosition(index);
+            const isTwoWeeks = isTwoWeeksPrize(sector.label);
 
             return (
               <g key={index}>
                 <path
                   d={createSectorPath(startAngle, endAngle)}
                   fill={getSectorColor(sector, index)}
-                  stroke={getStrokeColor(sector)}
+                  stroke="hsl(var(--background))"
                   strokeWidth="1"
                 />
-                <text
-                  x={textPos.x}
-                  y={textPos.y}
-                  fill={getTextColor(sector)}
-                  fontSize={getFontSize(sector.label)}
-                  fontWeight="bold"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  transform={`rotate(${textPos.rotation}, ${textPos.x}, ${textPos.y})`}
-                  style={{ fontFamily: 'system-ui, sans-serif' }}
-                >
-                  {sector.label}
-                </text>
+                {isTwoWeeks ? (
+                  // Two-line text for "+ 2 недели"
+                  <g transform={`translate(${textPos.x}, ${textPos.y}) rotate(${textPos.rotation})`}>
+                    <text
+                      x={0}
+                      y={-6}
+                      fill={getTextColor(sector, index)}
+                      fontSize="12"
+                      fontWeight="bold"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      <tspan fill="#cc0000">+</tspan>
+                      <tspan> 2</tspan>
+                    </text>
+                    <text
+                      x={0}
+                      y={8}
+                      fill={getTextColor(sector, index)}
+                      fontSize="10"
+                      fontWeight="bold"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      недели
+                    </text>
+                  </g>
+                ) : (
+                  <text
+                    x={textPos.x}
+                    y={textPos.y}
+                    fill={getTextColor(sector, index)}
+                    fontSize="14"
+                    fontWeight="bold"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    transform={`rotate(${textPos.rotation}, ${textPos.x}, ${textPos.y})`}
+                  >
+                    {sector.label}
+                  </text>
+                )}
               </g>
             );
           })}
         </g>
 
-        {/* Center button - Golden style */}
+        {/* Center button */}
         <circle
           cx={centerX}
           cy={centerY}
-          r="40"
-          fill="url(#ringGold)"
-          stroke={GOLD_DARK}
-          strokeWidth="3"
+          r="35"
+          fill="hsl(var(--primary))"
+          stroke="hsl(var(--background))"
+          strokeWidth="4"
           className={`${!isSpinning && !disabled ? 'cursor-pointer hover:opacity-90' : ''}`}
         />
         <text
           x={centerX}
           y={centerY}
-          fill={GOLD_TEXT}
+          fill="hsl(var(--primary-foreground))"
           fontSize="12"
           fontWeight="bold"
           textAnchor="middle"
