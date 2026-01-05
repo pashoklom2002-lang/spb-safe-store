@@ -26,7 +26,8 @@ export const Header = ({
   onScrollToFAQ,
   onScrollToForm
 }: HeaderProps) => {
-  const phone = "+7 (921) 798-72-22";
+  const phone = "+7 (995) 606-22-73";
+  const phoneHref = "tel:+79956062273";
   const [isOpen, setIsOpen] = useState(false);
   
   // Initialize Top.Mail.Ru counter
@@ -157,7 +158,7 @@ export const Header = ({
             </Button>
             
             <a 
-              href={`tel:${phone}`}
+              href={phoneHref}
               className="flex items-center gap-2 bg-black text-white px-3 py-1.5 rounded-lg border-2 border-primary hover:bg-black/90 transition-colors text-sm font-bold"
             >
               <Phone className="w-4 h-4" />
