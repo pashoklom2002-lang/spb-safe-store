@@ -1,31 +1,30 @@
-import { FileCheck, Calendar, Key, Package, Headphones } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
-    icon: FileCheck,
+    emoji: "📲",
     title: "Вы оставляете заявку",
-    description: "По телефону, WhatsApp или через форму на сайте"
+    description: "В соцсетях, по телефону или через форму на сайте"
   },
   {
-    icon: Package,
+    emoji: "📦",
     title: "Менеджер подбирает лучший вариант",
     description: "Консультация и подбор контейнера под ваши задачи"
   },
   {
-    icon: Calendar,
+    emoji: "🤝",
     title: "Оформляем договор",
     description: "Быстро и без лишних документов"
   },
   {
-    icon: Key,
+    emoji: "🔑",
     title: "Получаете доступ и инструкции",
     description: "Ключи от контейнера и схема проезда"
   },
   {
-    icon: Headphones,
-    title: "Поддержка 24/7",
-    description: "Всегда на связи, если возникнут вопросы"
+    emoji: "✅",
+    title: "Свободно пользуетесь с доступом 24/7",
+    description: "Вы можете приезжать и пользоваться контейнером в любое время"
   },
 ];
 
@@ -56,17 +55,19 @@ export const HowItWorks = () => {
               style={{ transitionDelay: `${(index + 2) * 100}ms` }}
             >
               <div className="text-center relative z-10">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-6 transition-transform duration-200 ease-out hover:scale-110">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-base font-bold mb-6 transition-transform duration-200 ease-out hover:scale-110">
                   {index + 1}
                 </div>
                 <div className="mb-4 transition-transform duration-200 ease-out hover:scale-105">
-                  <step.icon className="w-10 h-10 text-accent mx-auto" />
+                  <span className="text-4xl" style={{ fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif" }}>
+                    {step.emoji}
+                  </span>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-32px)] h-0.5 bg-border z-0" />
+                <div className="hidden md:block absolute top-5 left-[calc(50%+20px)] w-[calc(100%-20px)] h-0.5 bg-border z-0" />
               )}
             </div>
           ))}
