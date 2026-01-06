@@ -54,14 +54,26 @@ export const HowItWorks = () => {
               }`}
               style={{ transitionDelay: `${(index + 2) * 100}ms` }}
             >
-              <div className="text-center relative z-10">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-base font-bold mb-6 transition-transform duration-200 ease-out hover:scale-110">
-                  {index + 1}
-                </div>
-                <div className="mb-4 transition-transform duration-200 ease-out hover:scale-105">
+              <div className="text-center md:text-center relative z-10 w-full">
+                {/* Mobile: emoji left, number right */}
+                <div className="flex md:hidden items-center justify-between mb-4 px-2">
                   <span className="text-4xl" style={{ fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif" }}>
                     {step.emoji}
                   </span>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-base font-bold transition-transform duration-200 ease-out hover:scale-110">
+                    {index + 1}
+                  </div>
+                </div>
+                {/* Desktop: number then emoji stacked */}
+                <div className="hidden md:block">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-base font-bold mb-6 transition-transform duration-200 ease-out hover:scale-110">
+                    {index + 1}
+                  </div>
+                  <div className="mb-4 transition-transform duration-200 ease-out hover:scale-105">
+                    <span className="text-4xl" style={{ fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif" }}>
+                      {step.emoji}
+                    </span>
+                  </div>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
