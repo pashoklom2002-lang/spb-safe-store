@@ -1,29 +1,35 @@
-import { Sofa, Package2, Hammer, Wrench, Box, Tv, ShirtIcon, Dumbbell, ShoppingBag, Monitor } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+import storageFurniture from "@/assets/storage-furniture.png";
+import storageClothing from "@/assets/storage-clothing.png";
+import storageTools from "@/assets/storage-tools.png";
+import storageSports from "@/assets/storage-sports.png";
+import storageElectronics from "@/assets/storage-electronics.png";
+import storageEcommerce from "@/assets/storage-ecommerce.png";
 
 const storageItems = [
   {
-    icon: Sofa,
+    image: storageFurniture,
     title: "Мебель",
   },
   {
-    icon: ShirtIcon,
+    image: storageClothing,
     title: "Сезонные вещи",
   },
   {
-    icon: Hammer,
+    image: storageTools,
     title: "Инструменты и стройматериалы",
   },
   {
-    icon: Dumbbell,
+    image: storageSports,
     title: "Спортинвентарь",
   },
   {
-    icon: Monitor,
+    image: storageElectronics,
     title: "Техника",
   },
   {
-    icon: ShoppingBag,
+    image: storageEcommerce,
     title: "Товары для e-commerce",
   },
 ];
@@ -43,19 +49,25 @@ export const Benefits = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {storageItems.map((item, index) => (
             <div 
               key={index} 
-              className={`bg-card rounded-lg p-6 text-center hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out border border-border ${
+              className={`bg-card rounded-lg overflow-hidden hover:-translate-y-1 hover:shadow-[0_6px_24px_-2px_hsl(0_0%_0%_/_0.6)] transition-all duration-300 ease-out border border-border ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 mb-4 transition-transform duration-200 ease-out hover:scale-105">
-                <item.icon className="w-12 h-12 text-primary stroke-[1.5]" />
+              <div className="aspect-[16/10] overflow-hidden">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-300 ease-out hover:scale-105"
+                />
               </div>
-              <h3 className="text-sm font-medium text-foreground">{item.title}</h3>
+              <div className="p-4 text-center">
+                <h3 className="text-sm font-medium text-foreground">{item.title}</h3>
+              </div>
             </div>
           ))}
         </div>
