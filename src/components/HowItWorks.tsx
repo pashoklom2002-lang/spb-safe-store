@@ -55,8 +55,8 @@ export const HowItWorks = () => {
               style={{ transitionDelay: `${(index + 2) * 100}ms` }}
             >
               <div className="text-center md:text-center relative z-10 w-full">
-                {/* Mobile: emoji left, number right */}
-                <div className="flex md:hidden items-center justify-between mb-4 px-2">
+                {/* Mobile: emoji left, number right - centered */}
+                <div className="flex md:hidden items-center justify-center gap-4 mb-4">
                   <span className="text-4xl" style={{ fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif" }}>
                     {step.emoji}
                   </span>
