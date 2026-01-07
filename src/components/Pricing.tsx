@@ -130,11 +130,11 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
           }`}>
             Цены
           </h2>
-          <p className={`text-center text-muted-foreground mb-12 max-w-2xl mx-auto transition-all duration-500 ease-out delay-100 ${
+          <p className={`text-center text-muted-foreground mb-12 max-w-md mx-auto transition-all duration-500 ease-out delay-100 ${
             isVisibleTariffs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}>
             Цены зависят от срока, типа контейнера и задач.<br/>
-            Подберём вариант под ваш объём и срок — без переплат и обязательств.
+            Подберём вариант под ваш объём и срок.
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
@@ -146,7 +146,7 @@ export const Pricing = ({ onScrollToForm }: { onScrollToForm: () => void }) => {
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
               >
-                <h3 className="text-xl font-bold text-card-foreground mb-3">{tariff.name}</h3>
+                <h3 className="text-xl font-bold text-primary mb-3">{tariff.name}</h3>
                 <p className="text-muted-foreground">{tariff.description}</p>
               </div>
             ))}
