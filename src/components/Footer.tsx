@@ -4,8 +4,8 @@ import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { VKIcon } from "@/components/icons/VKIcon";
 
 export const Footer = () => {
-  const phone = "8 921 798-72-22";
-  const phoneHref = "tel:+79217987222";
+  const phone = "+7 (995) 606-22-73";
+  const phoneHref = "tel:+79956062273";
   const address = "Шушары, Курьерский проезд 1А";
 
   return (
