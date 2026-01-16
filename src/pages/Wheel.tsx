@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { SpinWheel, PhoneForm, generateSectors, getWheelState, setWheelState } from '@/components/SpinWheel';
 import { Prize } from '@/components/SpinWheel/types';
+import { useYandexMetrika, buildURLWithUTM } from '@/hooks/useYandexMetrika';
 import logo from '@/assets/skladno-logo.png';
 
 const Wheel = () => {
@@ -11,6 +12,9 @@ const Wheel = () => {
   const [previousPrize, setPreviousPrize] = useState<string | null>(null);
 
   const sectors = useMemo(() => generateSectors(), []);
+  
+  // Инициализация Яндекс Метрики для SPA-трекинга
+  const { reachGoal } = useYandexMetrika();
 
   useEffect(() => {
     const state = getWheelState();
@@ -20,8 +24,13 @@ const Wheel = () => {
     }
   }, []);
 
+  // URL основного сайта с сохранением UTM
+  const mainSiteUrl = buildURLWithUTM('/');
+
   const handleSpinEnd = (prize: Prize) => {
     setWonPrize(prize.label);
+    // Отправляем цель в Метрику
+    reachGoal('wheel_spin', { prize: prize.label });
     setTimeout(() => {
       setShowForm(true);
     }, 500);
@@ -30,6 +39,8 @@ const Wheel = () => {
   const handleFormSuccess = () => {
     if (wonPrize) {
       setWheelState(wonPrize);
+      // Отправляем цель о заполнении формы
+      reachGoal('wheel_form_submit', { prize: wonPrize });
     }
     setAlreadyPlayed(true);
     setPreviousPrize(wonPrize);
@@ -85,7 +96,7 @@ const Wheel = () => {
                 Мы свяжемся с вами в ближайшее время
               </p>
               <a
-                href="/"
+                href={mainSiteUrl}
                 className="inline-block mt-4 text-primary hover:underline text-sm"
               >
                 ← Перейти на сайт
@@ -109,7 +120,7 @@ const Wheel = () => {
         {/* Footer link */}
         {!alreadyPlayed && (
           <a
-            href="/"
+            href={mainSiteUrl}
             className="shrink-0 mt-2 text-muted-foreground hover:text-primary transition-colors text-sm"
           >
             ← Перейти на сайт
