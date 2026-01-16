@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { SpinWheel, ChristmasDecor, PhoneForm, generateSectors, getWheelState, setWheelState } from '@/components/SpinWheel';
+import { SpinWheel, PhoneForm, generateSectors, getWheelState, setWheelState } from '@/components/SpinWheel';
 import { Prize } from '@/components/SpinWheel/types';
 import logo from '@/assets/skladno-logo.png';
 
@@ -60,7 +60,7 @@ const Wheel = () => {
         {/* Title */}
         <div className="text-center shrink-0 mb-2 md:mb-4">
           <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-1">
-            🎄 Новогодняя удача! 🎄
+            🎯 Испытай удачу! 🎯
           </h1>
           <p className="text-muted-foreground text-sm md:text-base">
             Крутите колесо и получите гарантированный приз!
@@ -97,13 +97,11 @@ const Wheel = () => {
             </div>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <ChristmasDecor>
-                <SpinWheel
-                  sectors={sectors}
-                  onSpinEnd={handleSpinEnd}
-                  disabled={!!wonPrize}
-                />
-              </ChristmasDecor>
+              <SpinWheel
+                sectors={sectors}
+                onSpinEnd={handleSpinEnd}
+                disabled={!!wonPrize}
+              />
             </div>
           )}
         </div>
