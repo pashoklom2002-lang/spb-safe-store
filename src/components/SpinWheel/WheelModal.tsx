@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
 import SpinWheel from './SpinWheel';
-import ChristmasDecor from './ChristmasDecor';
 import PhoneForm from './PhoneForm';
 import { Prize, generateSectors, getWheelState, setWheelState } from './types';
 
@@ -81,10 +80,10 @@ const WheelModal = ({ isOpen, onClose }: WheelModalProps) => {
       <div className="relative z-10 w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-foreground mb-2">
-            🎄 Новогодняя удача! 🎄
+            🎯 Испытай удачу!
           </h2>
           <p className="text-muted-foreground">
-            Крутите колесо и получите гарантированный приз!
+            Крути колесо и получи гарантированный приз!
           </p>
         </div>
 
@@ -111,13 +110,11 @@ const WheelModal = ({ isOpen, onClose }: WheelModalProps) => {
             <PhoneForm prize={wonPrize} onSuccess={handleFormSuccess} />
           </div>
         ) : (
-          <ChristmasDecor>
-            <SpinWheel
-              sectors={sectors}
-              onSpinEnd={handleSpinEnd}
-              disabled={!!wonPrize}
-            />
-          </ChristmasDecor>
+          <SpinWheel
+            sectors={sectors}
+            onSpinEnd={handleSpinEnd}
+            disabled={!!wonPrize}
+          />
         )}
       </div>
     </div>
