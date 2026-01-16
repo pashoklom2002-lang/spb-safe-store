@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Header } from "@/components/Header";
+import { useYandexMetrika } from "@/hooks/useYandexMetrika";
 import { Hero } from "@/components/Hero";
 
 import { FacilityAdvantages } from "@/components/FacilityAdvantages";
@@ -22,6 +23,9 @@ const Index = () => {
   const benefitsRef = useRef<HTMLDivElement>(null);
   const pricingRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
+
+  // Инициализация Яндекс Метрики для SPA-трекинга и сохранения UTM
+  useYandexMetrika();
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
