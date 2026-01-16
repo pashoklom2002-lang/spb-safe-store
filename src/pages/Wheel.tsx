@@ -97,6 +97,7 @@ const Wheel = () => {
               </p>
               <a
                 href={mainSiteUrl}
+                onClick={() => reachGoal('wheel_go_to_site', { from: 'already_played' })}
                 className="inline-block mt-4 text-primary hover:underline text-sm"
               >
                 ← Перейти на сайт
@@ -121,6 +122,7 @@ const Wheel = () => {
         {!alreadyPlayed && (
           <a
             href={mainSiteUrl}
+            onClick={() => reachGoal('wheel_go_to_site', { from: 'footer' })}
             className="shrink-0 mt-2 text-muted-foreground hover:text-primary transition-colors text-sm"
           >
             ← Перейти на сайт

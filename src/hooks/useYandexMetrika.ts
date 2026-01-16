@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 const METRIKA_ID = 105962931;
 const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-const UTM_STORAGE_KEY = 'skladnotut_utm';
+const UTM_STORAGE_KEY = 'st_utm';
 
 declare global {
   interface Window {
@@ -26,36 +26,34 @@ export const extractUTMParams = (): Record<string, string> => {
   return utm;
 };
 
-// Сохранение UTM в sessionStorage
+// Сохранение UTM в localStorage
 export const saveUTMParams = (utm: Record<string, string>): void => {
   if (Object.keys(utm).length > 0) {
-    sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
+    localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
   }
 };
 
-// Загрузка UTM из sessionStorage
+// Загрузка UTM из localStorage
 export const loadUTMParams = (): Record<string, string> => {
   try {
-    const stored = sessionStorage.getItem(UTM_STORAGE_KEY);
+    const stored = localStorage.getItem(UTM_STORAGE_KEY);
     return stored ? JSON.parse(stored) : {};
   } catch {
     return {};
   }
 };
 
-// Формирование URL с UTM-параметрами
-export const buildURLWithUTM = (baseUrl: string): string => {
-  // Сначала пробуем из URL, затем из storage
+// Формирование URL с UTM-параметрами (абсолютный URL на основной сайт)
+export const buildURLWithUTM = (path: string = '/'): string => {
+  // Сначала пробуем из URL, затем из localStorage
   let utm = extractUTMParams();
   if (Object.keys(utm).length === 0) {
     utm = loadUTMParams();
   }
   
-  if (Object.keys(utm).length === 0) {
-    return baseUrl;
-  }
+  const baseUrl = 'https://skladnotut.ru';
+  const url = new URL(path, baseUrl);
   
-  const url = new URL(baseUrl, window.location.origin);
   Object.entries(utm).forEach(([key, value]) => {
     url.searchParams.set(key, value);
   });
@@ -69,7 +67,7 @@ export const useYandexMetrika = () => {
 
   // Отправка hit при смене роута (для SPA)
   useEffect(() => {
-    // Сохраняем UTM при первом входе
+    // Сохраняем UTM при первом входе в localStorage
     const currentUTM = extractUTMParams();
     if (Object.keys(currentUTM).length > 0) {
       saveUTMParams(currentUTM);
