@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Gift, Loader2 } from 'lucide-react';
+import { Gift, Loader2, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { PrivacyPolicyDialog } from '@/components/PrivacyPolicyDialog';
+import { buildURLWithUTM } from '@/hooks/useYandexMetrika';
 
 interface PhoneFormProps {
   prize: string;
@@ -13,7 +14,40 @@ interface PhoneFormProps {
 const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [countdown, setCountdown] = useState(5);
   const { toast } = useToast();
+
+  const mainSiteUrl = buildURLWithUTM('/');
+
+  // Автоматический редирект после успешной отправки
+  useEffect(() => {
+    if (!isSubmitted) return;
+
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          // Отправка цели в Метрику перед редиректом
+          if (typeof window !== 'undefined' && window.ym) {
+            window.ym(105962931, 'reachGoal', 'wheel_go_to_site', { from: 'auto_redirect' });
+          }
+          window.location.href = mainSiteUrl;
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isSubmitted, mainSiteUrl]);
+
+  const handleGoToSite = useCallback(() => {
+    if (typeof window !== 'undefined' && window.ym) {
+      window.ym(105962931, 'reachGoal', 'wheel_go_to_site', { from: 'button_click' });
+    }
+    window.location.href = mainSiteUrl;
+  }, [mainSiteUrl]);
 
   const formatPhone = (value: string) => {
     const digits = value.replace(/\D/g, '');
@@ -75,6 +109,7 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
           title: "🎉 Поздравляем!",
           description: `Ваш приз "${prize}" зафиксирован! Мы свяжемся с вами в ближайшее время.`,
         });
+        setIsSubmitted(true);
         onSuccess();
       } else {
         throw new Error('Server error');
@@ -91,14 +126,48 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
   };
 
   const formatPrizeText = (prizeValue: string) => {
-    // Check if it's a percentage prize (contains % or −)
     if (prizeValue.includes('%') || prizeValue.includes('−')) {
-      // Extract just the number and %
       const cleanPrize = prizeValue.replace('−', '');
       return `скидку ${cleanPrize} на весь срок хранения`;
     }
     return prizeValue;
   };
+
+  // Экран после успешной отправки с кнопкой и таймером
+  if (isSubmitted) {
+    return (
+      <div className="text-center space-y-5">
+        <div className="space-y-2">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-2">
+            <Gift className="w-8 h-8 text-primary" />
+          </div>
+          <h3 className="text-xl font-bold text-foreground">🎉 Приз зафиксирован!</h3>
+          <p className="text-base text-muted-foreground">Ваш приз:</p>
+          <div className="text-xl font-bold text-primary py-1">{formatPrizeText(prize)}</div>
+          <p className="text-sm text-muted-foreground">
+            Мы свяжемся с вами в ближайшее время
+          </p>
+        </div>
+
+        <div className="pt-2 space-y-3">
+          <Button 
+            onClick={handleGoToSite}
+            size="lg"
+            className="w-full h-14 text-lg font-bold gap-2"
+          >
+            <ExternalLink className="w-5 h-5" />
+            Перейти на сайт
+          </Button>
+          
+          <p className="text-sm text-muted-foreground">
+            Автоматический переход через{' '}
+            <span className="font-bold text-primary">{countdown}</span>{' '}
+            {countdown === 1 ? 'секунду' : countdown < 5 ? 'секунды' : 'секунд'}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="text-center space-y-4">
@@ -128,24 +197,27 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
 
         <Button
           type="submit"
-          size="lg"
+          disabled={isSubmitting || !isValidPhone()}
           className="w-full h-11 text-base font-semibold"
-          disabled={!isValidPhone() || isSubmitting}
         >
           {isSubmitting ? (
             <>
-              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Отправка...
             </>
           ) : (
-            'Забрать приз'
+            <>
+              <Gift className="mr-2 h-4 w-4" />
+              Забрать приз
+            </>
           )}
         </Button>
-      </form>
 
-      <p className="text-xs text-muted-foreground leading-relaxed">
-        Нажимая кнопку «Забрать приз», вы соглашаетесь на обработку персональных данных в соответствии с <PrivacyPolicyDialog />
-      </p>
+        <p className="text-xs text-muted-foreground pt-1">
+          Нажимая кнопку, вы соглашаетесь с{' '}
+          <PrivacyPolicyDialog />
+        </p>
+      </form>
     </div>
   );
 };
