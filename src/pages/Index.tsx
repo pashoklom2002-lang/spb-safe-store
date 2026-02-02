@@ -1,30 +1,29 @@
 import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { useYandexMetrika } from "@/hooks/useYandexMetrika";
-import { Hero } from "@/components/Hero";
-
-import { FacilityAdvantages } from "@/components/FacilityAdvantages";
-import { LocationAdvantage } from "@/components/LocationAdvantage";
-import { Benefits } from "@/components/Benefits";
-import { Problems } from "@/components/Problems";
-import { Pricing } from "@/components/Pricing";
-import { HowItWorks } from "@/components/HowItWorks";
-import { FAQ } from "@/components/FAQ";
-import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
-import { Contacts } from "@/components/Contacts";
-import { Reviews } from "@/components/Reviews";
-import { Photos } from "@/components/Photos";
 import { WheelTrigger } from "@/components/SpinWheel";
+
+// Seller-focused components
+import { HeroSeller } from "@/components/seller/HeroSeller";
+import { PainCalculator } from "@/components/seller/PainCalculator";
+import { UseCasesSeller } from "@/components/seller/UseCasesSeller";
+import { ContainersSeller } from "@/components/seller/ContainersSeller";
+import { ComparisonTable } from "@/components/seller/ComparisonTable";
+import { SellerCases } from "@/components/seller/SellerCases";
+import { AdvantagesSeller } from "@/components/seller/AdvantagesSeller";
+import { FAQSeller } from "@/components/seller/FAQSeller";
+import { PhotoTour } from "@/components/seller/PhotoTour";
+import { FinalCTA } from "@/components/seller/FinalCTA";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
-  const locationRef = useRef<HTMLDivElement>(null);
-  const benefitsRef = useRef<HTMLDivElement>(null);
-  const pricingRef = useRef<HTMLDivElement>(null);
+  const calculatorRef = useRef<HTMLDivElement>(null);
+  const containersRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
+  const photosRef = useRef<HTMLDivElement>(null);
 
-  // Инициализация Яндекс Метрики для SPA-трекинга и сохранения UTM
+  // Initialize Yandex Metrika for SPA tracking and UTM preservation
   useYandexMetrika();
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
@@ -35,35 +34,67 @@ const Index = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToCalculator = () => {
+    calculatorRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContainers = () => {
+    containersRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main className="min-h-screen">
       <Header 
-        onScrollToLocation={() => scrollToSection(locationRef)}
-        onScrollToBenefits={() => scrollToSection(benefitsRef)}
-        onScrollToPricing={() => scrollToSection(pricingRef)}
+        onScrollToCalculator={scrollToCalculator}
+        onScrollToContainers={scrollToContainers}
+        onScrollToPhotos={() => scrollToSection(photosRef)}
         onScrollToFAQ={() => scrollToSection(faqRef)}
         onScrollToForm={scrollToForm}
       />
       <div className="pt-20">
-        <Hero onScrollToForm={scrollToForm} />
+        {/* Block 1: Hero */}
+        <HeroSeller 
+          onScrollToCalculator={scrollToCalculator}
+          onScrollToContainers={scrollToContainers}
+        />
         
-        <div ref={pricingRef}>
-          <Pricing onScrollToForm={scrollToForm} />
+        {/* Block 2: Pain Calculator */}
+        <div ref={calculatorRef}>
+          <PainCalculator onScrollToForm={scrollToForm} />
         </div>
-        <Photos />
-        <FacilityAdvantages />
-        <div ref={benefitsRef}>
-          <Benefits />
+        
+        {/* Block 3: Use Cases */}
+        <UseCasesSeller />
+        
+        {/* Block 4: Container Options */}
+        <div ref={containersRef}>
+          <ContainersSeller onScrollToForm={scrollToForm} />
         </div>
-        <HowItWorks />
+        
+        {/* Block 5: Comparison Table */}
+        <ComparisonTable onScrollToForm={scrollToForm} />
+        
+        {/* Block 6: Seller Cases */}
+        <SellerCases onScrollToForm={scrollToForm} />
+        
+        {/* Block 7: Advantages */}
+        <AdvantagesSeller onScrollToForm={scrollToForm} />
+        
+        {/* Block 8: FAQ */}
         <div ref={faqRef}>
-          <FAQ />
+          <FAQSeller />
         </div>
-        <Reviews />
+        
+        {/* Block 9: Photo Tour */}
+        <div ref={photosRef}>
+          <PhotoTour />
+        </div>
+        
+        {/* Block 10: Final CTA + Form + Contacts */}
         <div ref={formRef}>
-          <ContactForm />
+          <FinalCTA />
         </div>
-        <Contacts />
+        
         <Footer />
       </div>
       
