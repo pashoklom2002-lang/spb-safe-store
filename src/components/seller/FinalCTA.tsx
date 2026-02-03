@@ -120,13 +120,13 @@ export const FinalCTA = () => {
         <h2 className={`text-3xl md:text-5xl font-bold text-center mb-4 text-primary-foreground transition-all duration-500 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          Забронируй контейнер за 2 минуты
+          Начать использовать
         </h2>
         <p className={`text-center text-primary-foreground/80 mb-12 max-w-xl mx-auto transition-all duration-500 ease-out delay-100 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          Напиши в Telegram: размер, срок, когда хочешь заехать.<br />
-          Отвечаем за 5 минут. Договор онлайн, заезд в день оплаты.
+          Напишите в Telegram или позвоните — обсудим ваши потребности.<br />
+          Ответим за 5 минут. Договор онлайн, въезд в день оплаты.
         </p>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
@@ -135,7 +135,7 @@ export const FinalCTA = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}>
             <div className="bg-primary-foreground rounded-2xl p-6 md:p-8 space-y-4">
-              <h3 className="text-xl font-bold text-background mb-6">Свяжись с нами</h3>
+              <h3 className="text-xl font-bold text-background mb-6">Свяжитесь с нами</h3>
               
               <a
                 href="https://t.me/skladno_tut"
@@ -200,7 +200,7 @@ export const FinalCTA = () => {
               className="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-border"
             >
               <h3 className="text-xl font-bold text-foreground mb-6">
-                Оставь заявку — перезвоним за 5 минут
+                Оставьте заявку — перезвоним за 5 минут
               </h3>
 
               <div className="space-y-4">
@@ -212,7 +212,7 @@ export const FinalCTA = () => {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
                     className="mt-2"
-                    placeholder="Как тебя зовут?"
+                    placeholder="Ваше имя"
                   />
                 </div>
 
@@ -235,12 +235,12 @@ export const FinalCTA = () => {
                     onValueChange={(v) => setFormData({ ...formData, containerType: v })}
                   >
                     <SelectTrigger className="mt-2">
-                      <SelectValue placeholder="Выбери размер" />
+                      <SelectValue placeholder="Выберите размер" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="5m">5 м² — Мини-склад (5 000₽/мес)</SelectItem>
-                      <SelectItem value="15m">15 м² — Стандарт (8 000₽/мес)</SelectItem>
-                      <SelectItem value="30m">30 м² — Для роста (19 000₽/мес)</SelectItem>
+                      <SelectItem value="5m">5 м² (5 000₽/мес)</SelectItem>
+                      <SelectItem value="15m">15 м² (8 000₽/мес)</SelectItem>
+                      <SelectItem value="30m">30 м² (19 000₽/мес)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -252,7 +252,7 @@ export const FinalCTA = () => {
                     onValueChange={(v) => setFormData({ ...formData, rentalPeriod: v })}
                   >
                     <SelectTrigger className="mt-2">
-                      <SelectValue placeholder="Выбери срок" />
+                      <SelectValue placeholder="Выберите срок" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="1 месяц">1 месяц</SelectItem>
@@ -269,11 +269,11 @@ export const FinalCTA = () => {
                   disabled={loading} 
                   className="w-full bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-6 text-lg"
                 >
-                  {loading ? "Отправка..." : "Отправить заявку →"}
+                  {loading ? "Отправка..." : "Отправить заявку"}
                 </Button>
 
                 <p className="text-xs text-center text-muted-foreground">
-                  Нажимая кнопку, ты соглашаешься с <PrivacyPolicyDialog />
+                  Нажимая кнопку, вы соглашаетесь с <PrivacyPolicyDialog />
                 </p>
               </div>
             </form>

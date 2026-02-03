@@ -4,21 +4,20 @@ import { useYandexMetrika } from "@/hooks/useYandexMetrika";
 import { Footer } from "@/components/Footer";
 import { WheelTrigger } from "@/components/SpinWheel";
 
-// Seller-focused components
+// B2B Infrastructure components
 import { HeroSeller } from "@/components/seller/HeroSeller";
-import { PainCalculator } from "@/components/seller/PainCalculator";
-import { UseCasesSeller } from "@/components/seller/UseCasesSeller";
-import { ContainersSeller } from "@/components/seller/ContainersSeller";
-import { ComparisonTable } from "@/components/seller/ComparisonTable";
-import { SellerCases } from "@/components/seller/SellerCases";
-import { AdvantagesSeller } from "@/components/seller/AdvantagesSeller";
+import { CapabilityOverview } from "@/components/seller/CapabilityOverview";
+import { SpaceOptions } from "@/components/seller/SpaceOptions";
+import { HowItWorks } from "@/components/seller/HowItWorks";
+import { UseCaseScenarios } from "@/components/seller/UseCaseScenarios";
+import { OperationalDetails } from "@/components/seller/OperationalDetails";
+import { Economics } from "@/components/seller/Economics";
 import { FAQSeller } from "@/components/seller/FAQSeller";
 import { PhotoTour } from "@/components/seller/PhotoTour";
 import { FinalCTA } from "@/components/seller/FinalCTA";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
-  const calculatorRef = useRef<HTMLDivElement>(null);
   const containersRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const photosRef = useRef<HTMLDivElement>(null);
@@ -34,51 +33,48 @@ const Index = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToCalculator = () => {
-    calculatorRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const scrollToContainers = () => {
     containersRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToPhotos = () => {
+    photosRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <main className="min-h-screen">
       <Header 
-        onScrollToCalculator={scrollToCalculator}
         onScrollToContainers={scrollToContainers}
-        onScrollToPhotos={() => scrollToSection(photosRef)}
+        onScrollToPhotos={scrollToPhotos}
         onScrollToFAQ={() => scrollToSection(faqRef)}
         onScrollToForm={scrollToForm}
       />
       <div className="pt-20">
         {/* Block 1: Hero */}
         <HeroSeller 
-          onScrollToCalculator={scrollToCalculator}
           onScrollToContainers={scrollToContainers}
+          onScrollToPhotos={scrollToPhotos}
         />
         
-        {/* Block 2: Pain Calculator */}
-        <div ref={calculatorRef}>
-          <PainCalculator onScrollToForm={scrollToForm} />
-        </div>
+        {/* Block 2: Capability Overview */}
+        <CapabilityOverview />
         
-        {/* Block 3: Use Cases */}
-        <UseCasesSeller />
-        
-        {/* Block 4: Container Options */}
+        {/* Block 3: Space Options */}
         <div ref={containersRef}>
-          <ContainersSeller onScrollToForm={scrollToForm} />
+          <SpaceOptions onScrollToForm={scrollToForm} />
         </div>
         
-        {/* Block 5: Comparison Table */}
-        <ComparisonTable onScrollToForm={scrollToForm} />
+        {/* Block 4: How It Works */}
+        <HowItWorks />
         
-        {/* Block 6: Seller Cases */}
-        <SellerCases onScrollToForm={scrollToForm} />
+        {/* Block 5: Use Case Scenarios */}
+        <UseCaseScenarios />
         
-        {/* Block 7: Advantages */}
-        <AdvantagesSeller onScrollToForm={scrollToForm} />
+        {/* Block 6: Operational Details */}
+        <OperationalDetails onScrollToForm={scrollToForm} />
+        
+        {/* Block 7: Economics */}
+        <Economics />
         
         {/* Block 8: FAQ */}
         <div ref={faqRef}>
