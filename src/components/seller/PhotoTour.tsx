@@ -29,15 +29,6 @@ const photos = [
   { src: facilityNew3, alt: "Проход между контейнерами" },
 ];
 
-// Placeholders for missing photos
-const placeholders = [
-  "Фура подъезжает к контейнеру вплотную",
-  "Внутри контейнера с паллетами и коробками",
-  "Ночное фото площадки (показать доступ 24/7)",
-  "Скриншот приложения с камерами видеонаблюдения",
-  "Селлер грузит коробки в фуру",
-];
-
 export const PhotoTour = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -112,12 +103,12 @@ export const PhotoTour = () => {
           <h2 className={`text-3xl md:text-5xl font-bold text-center mb-4 text-foreground transition-all duration-500 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}>
-            Посмотри, как это выглядит вживую
+            Площадка
           </h2>
           <p className={`text-center text-muted-foreground mb-12 transition-all duration-500 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}>
-            Фото-тур по площадке
+            Посмотрите как это выглядит
           </p>
           
           <div className={`relative transition-all duration-500 ease-out delay-200 ${
@@ -211,7 +202,7 @@ export const PhotoTour = () => {
               asChild
             >
               <a href="tel:+79956062273">
-                Хочешь посмотреть вживую? → Записаться на экскурсию
+                Посмотреть вживую → Записаться на экскурсию
               </a>
             </Button>
           </div>

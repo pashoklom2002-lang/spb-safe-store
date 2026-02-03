@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/sheet";
 
 interface HeaderProps {
-  onScrollToCalculator: () => void;
   onScrollToContainers: () => void;
   onScrollToPhotos: () => void;
   onScrollToFAQ: () => void;
@@ -20,7 +19,6 @@ interface HeaderProps {
 }
 
 export const Header = ({
-  onScrollToCalculator,
   onScrollToContainers,
   onScrollToPhotos,
   onScrollToFAQ,
@@ -77,16 +75,10 @@ export const Header = ({
           {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-5 text-foreground">
             <button 
-              onClick={onScrollToCalculator}
-              className="hover:text-primary transition-colors font-bold text-sm"
-            >
-              Калькулятор
-            </button>
-            <button 
               onClick={onScrollToContainers}
               className="hover:text-primary transition-colors font-bold text-sm"
             >
-              Цены
+              Площади
             </button>
             <button 
               onClick={onScrollToPhotos}
@@ -114,16 +106,10 @@ export const Header = ({
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-6 mt-8">
                   <button 
-                    onClick={() => handleNavClick(onScrollToCalculator)}
-                    className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
-                  >
-                    💰 Калькулятор экономии
-                  </button>
-                  <button 
                     onClick={() => handleNavClick(onScrollToContainers)}
                     className="text-left text-lg font-bold text-foreground hover:text-primary transition-colors"
                   >
-                    📦 Цены и размеры
+                    📦 Площади и цены
                   </button>
                   <button 
                     onClick={() => handleNavClick(onScrollToPhotos)}
@@ -141,7 +127,7 @@ export const Header = ({
                     onClick={() => handleNavClick(onScrollToForm)}
                     className="bg-primary text-primary-foreground hover:bg-primary-hover font-bold w-full mt-4"
                   >
-                    Забронировать контейнер
+                    Забронировать
                   </Button>
                   
                   <div className="pt-4 border-t border-border">

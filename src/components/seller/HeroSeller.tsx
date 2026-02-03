@@ -3,11 +3,11 @@ import heroImage from "@/assets/hero-containers.jpg";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface HeroSellerProps {
-  onScrollToCalculator: () => void;
   onScrollToContainers: () => void;
+  onScrollToPhotos: () => void;
 }
 
-export const HeroSeller = ({ onScrollToCalculator, onScrollToContainers }: HeroSellerProps) => {
+export const HeroSeller = ({ onScrollToContainers, onScrollToPhotos }: HeroSellerProps) => {
   const { ref, isVisible } = useScrollAnimation();
   
   return (
@@ -23,23 +23,25 @@ export const HeroSeller = ({ onScrollToCalculator, onScrollToContainers }: HeroS
       
       <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl">
-          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-4 md:mb-6 uppercase leading-tight transition-all duration-700 ease-out ${
+          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-4 md:mb-6 leading-tight transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Переплачиваешь за<br />фулфилмент WB в 3 раза?
+            Когда товарному бизнесу нужна гибкость
           </h1>
           
           <p className={`text-2xl md:text-4xl font-bold text-foreground mb-4 transition-all duration-700 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Храни товар за 8 000₽/мес с доступом 24/7
+            Операционное пространство с полным контролем доступа.
+            <br className="hidden md:block" />
+            <span className="text-muted-foreground">От 5м² до 30м². Шушары, 10 минут от КАД.</span>
           </p>
           
           <p className={`text-base md:text-xl text-muted-foreground mb-8 md:mb-12 max-w-2xl transition-all duration-700 ease-out delay-150 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Контейнер-склад для селлеров WB, Ozon, Яндекс.Маркет в Шушарах.<br />
-            Фура подъезжает вплотную. Свой замок. Камеры онлайн.
+            Собственный замок. Доступ 24/7. Фура к двери.<br />
+            Договор онлайн, въезд в день оплаты.
           </p>
           
           <div className={`flex flex-wrap gap-3 md:gap-4 transition-all duration-700 ease-out delay-200 ${
@@ -48,17 +50,17 @@ export const HeroSeller = ({ onScrollToCalculator, onScrollToContainers }: HeroS
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary-hover text-primary-foreground text-base md:text-lg px-6 md:px-8 py-5 md:py-6 h-auto font-bold"
-              onClick={onScrollToCalculator}
+              onClick={onScrollToContainers}
             >
-              Рассчитать экономию
+              Выбрать площадь
             </Button>
             <Button 
               size="lg" 
               variant="outline"
               className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 h-auto font-semibold border-2 border-foreground text-foreground hover:bg-foreground hover:text-background"
-              onClick={onScrollToContainers}
+              onClick={onScrollToPhotos}
             >
-              Посмотреть варианты
+              Посмотреть вживую
             </Button>
           </div>
         </div>
