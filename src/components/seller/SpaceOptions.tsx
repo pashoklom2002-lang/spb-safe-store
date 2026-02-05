@@ -14,8 +14,8 @@ interface SpaceOptionsProps {
 const containers = [
   {
     size: "5 м²",
-    price: "5 000₽",
-    priceYear: "4 000₽",
+    price: "3 500₽",
+    priceYear: "2 800₽",
     image: container20ft,
     hoverImage: container6mHover,
     capacity: "~20 коробок или 4 европаллеты",
@@ -24,8 +24,8 @@ const containers = [
   },
   {
     size: "15 м²",
-    price: "8 000₽",
-    priceYear: "6 700₽",
+    price: "7 500₽",
+    priceYear: "6 000₽",
     image: container20ft,
     hoverImage: container15mHover,
     capacity: "~80 коробок или 15 европаллет",
@@ -34,8 +34,8 @@ const containers = [
   },
   {
     size: "30 м²",
-    price: "19 000₽",
-    priceYear: "15 200₽",
+    price: "13 000₽",
+    priceYear: "10 400₽",
     image: container40ft,
     hoverImage: container30mHover,
     capacity: "~150 коробок или 20-25 европаллет",
