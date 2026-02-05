@@ -5,9 +5,9 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 
 const pricingData = [
-  { size: "5м²", month: "5 000₽", three: "4 500₽", six: "4 250₽", year: "4 000₽" },
-  { size: "15м²", month: "8 000₽", three: "7 200₽", six: "6 800₽", year: "6 700₽" },
-  { size: "30м²", month: "19 000₽", three: "17 100₽", six: "16 150₽", year: "15 200₽" },
+  { size: "5м²", month: "3 500₽", three: "3 150₽", six: "2 975₽", year: "2 800₽" },
+  { size: "15м²", month: "7 500₽", three: "6 750₽", six: "6 375₽", year: "6 000₽" },
+  { size: "30м²", month: "13 000₽", three: "11 700₽", six: "11 050₽", year: "10 400₽" },
 ];
 
 const included = [
