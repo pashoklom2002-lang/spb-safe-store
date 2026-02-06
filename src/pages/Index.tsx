@@ -1,61 +1,71 @@
-import { useState } from "react";
+import { useRef } from "react";
+import { Header } from "@/components/Header";
 import { useYandexMetrika } from "@/hooks/useYandexMetrika";
+import { Hero } from "@/components/Hero";
+
+import { FacilityAdvantages } from "@/components/FacilityAdvantages";
+import { LocationAdvantage } from "@/components/LocationAdvantage";
+import { Benefits } from "@/components/Benefits";
+import { Problems } from "@/components/Problems";
+import { Pricing } from "@/components/Pricing";
+import { HowItWorks } from "@/components/HowItWorks";
+import { FAQ } from "@/components/FAQ";
+import { ContactForm } from "@/components/ContactForm";
+import { Footer } from "@/components/Footer";
+import { Contacts } from "@/components/Contacts";
+import { Reviews } from "@/components/Reviews";
+import { Photos } from "@/components/Photos";
 import { WheelTrigger } from "@/components/SpinWheel";
 
-// Landing page components
-import {
-  LandingHeader,
-  LandingFooter,
-  HeroSection,
-  AdvantagesSection,
-  TargetAudienceSection,
-  HowItWorksSection,
-  ReviewsSection,
-  FAQSection,
-  FinalCTASection,
-  CalculatorFormModal,
-} from "@/components/landing";
-
 const Index = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLDivElement>(null);
+  const benefitsRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
 
-  // Initialize Yandex Metrika for SPA tracking and UTM preservation
+  // Инициализация Яндекс Метрики для SPA-трекинга и сохранения UTM
   useYandexMetrika();
 
-  const openForm = () => setIsFormOpen(true);
-  const closeForm = () => setIsFormOpen(false);
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <main className="min-h-screen">
-      <LandingHeader onOpenForm={openForm} />
-      
-      <div className="pt-[72px]">
-        {/* Section 1: Hero */}
-        <HeroSection onOpenForm={openForm} />
+      <Header 
+        onScrollToLocation={() => scrollToSection(locationRef)}
+        onScrollToBenefits={() => scrollToSection(benefitsRef)}
+        onScrollToPricing={() => scrollToSection(pricingRef)}
+        onScrollToFAQ={() => scrollToSection(faqRef)}
+        onScrollToForm={scrollToForm}
+      />
+      <div className="pt-20">
+        <Hero onScrollToForm={scrollToForm} />
         
-        {/* Section 2: Advantages */}
-        <AdvantagesSection />
-        
-        {/* Section 3: Target Audience */}
-        <TargetAudienceSection onOpenForm={openForm} />
-        
-        {/* Section 4: How It Works */}
-        <HowItWorksSection />
-        
-        {/* Section 5: Reviews */}
-        <ReviewsSection onOpenForm={openForm} />
-        
-        {/* Section 6: FAQ */}
-        <FAQSection />
-        
-        {/* Section 7: Final CTA */}
-        <FinalCTASection onOpenForm={openForm} />
-        
-        <LandingFooter />
+        <div ref={pricingRef}>
+          <Pricing onScrollToForm={scrollToForm} />
+        </div>
+        <Photos />
+        <FacilityAdvantages />
+        <div ref={benefitsRef}>
+          <Benefits />
+        </div>
+        <HowItWorks />
+        <div ref={faqRef}>
+          <FAQ />
+        </div>
+        <Reviews />
+        <div ref={formRef}>
+          <ContactForm />
+        </div>
+        <Contacts />
+        <Footer />
       </div>
-      
-      {/* Calculator Form Modal */}
-      <CalculatorFormModal isOpen={isFormOpen} onClose={closeForm} />
       
       {/* Wheel of Fortune trigger button */}
       <WheelTrigger />
