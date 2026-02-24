@@ -44,7 +44,7 @@ const Index = () => {
         onScrollToFAQ={() => scrollToSection(faqRef)}
         onScrollToForm={scrollToForm}
       />
-      <div className="pt-20">
+      <div className="pt-28">
         <Hero onScrollToForm={scrollToForm} />
         
         <div ref={pricingRef}>

@@ -59,17 +59,17 @@ export const Header = ({
   return (
     <header className="fixed top-0 left-0 right-0 bg-transparent z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div className="flex items-center justify-between h-28 gap-4">
           {/* Logo */}
           <button 
             onClick={scrollToTop}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
-            <img src={logo} alt="Складно тут" className="h-12 w-auto rounded-lg border-2 border-primary" />
+            <img src={logo} alt="Складно тут" className="h-16 w-auto rounded-lg border-2 border-primary" />
           </button>
 
           {/* Address Badge */}
-          <div className="flex items-center gap-1.5 bg-black text-white px-2 py-1 sm:px-3 sm:py-2 rounded-lg border-2 border-primary text-[10px] sm:text-sm font-bold">
+          <div className="flex items-center gap-1.5 bg-black text-white px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-primary text-xs sm:text-base font-bold">
             <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
             <span className="leading-tight">
               <span className="sm:hidden">Шушары,<br />Курьерский проезд 1А</span>
@@ -144,22 +144,22 @@ export const Header = ({
                     onClick={() => handleNavClick(onScrollToForm)}
                     className="bg-black text-white hover:bg-black/90 font-bold w-full mt-4 border-2 border-primary"
                   >
-                    Арендовать контейнер
-                  </Button>
+              Забронировать контейнер
+            </Button>
                 </nav>
               </SheetContent>
             </Sheet>
 
             <Button
               onClick={onScrollToForm}
-              className="bg-black text-white hover:bg-black/90 font-bold hidden md:flex border-2 border-primary"
+              className="bg-black text-white hover:bg-black/90 font-bold hidden md:flex border-2 border-primary text-base px-5 py-3 h-auto"
             >
-              Арендовать контейнер
+              Забронировать контейнер
             </Button>
             
             <a 
               href={phoneHref}
-              className="flex items-center gap-2 bg-black text-white px-3 py-1.5 rounded-lg border-2 border-primary hover:bg-black/90 transition-colors text-sm font-bold"
+              className="flex items-center gap-2 bg-black text-white px-4 py-2.5 rounded-lg border-2 border-primary hover:bg-black/90 transition-colors text-base font-bold"
             >
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">{phone}</span>
@@ -173,7 +173,7 @@ export const Header = ({
                 className="hover:opacity-80 transition-opacity"
                 aria-label="WhatsApp"
               >
-                <WhatsAppIcon className="w-[26px] h-[26px]" />
+                <WhatsAppIcon className="w-[32px] h-[32px]" />
               </a>
               
               <a
@@ -183,7 +183,7 @@ export const Header = ({
                 className="hover:opacity-80 transition-opacity"
                 aria-label="Telegram"
               >
-                <TelegramIcon className="w-[26px] h-[26px]" />
+                <TelegramIcon className="w-[32px] h-[32px]" />
               </a>
               
               <a
@@ -193,7 +193,7 @@ export const Header = ({
                 className="hover:opacity-80 transition-opacity"
                 aria-label="VK"
               >
-                <VKIcon className="w-[26px] h-[26px]" />
+                <VKIcon className="w-[32px] h-[32px]" />
               </a>
             </div>
           </div>
