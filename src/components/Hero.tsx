@@ -23,16 +23,15 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
       
       <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl">
-          <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 md:mb-6 uppercase leading-tight md:leading-loose transition-all duration-700 ease-out ${
+          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-4 md:mb-6 uppercase leading-tight transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Аренда контейнеров<br />в Шушарах
+            Храни вещи и товары<br />дешевле, чем на складе!
           </h1>
-          <p className={`text-lg md:text-2xl text-foreground mb-8 md:mb-12 transition-all duration-700 ease-out delay-100 ${
+          <p className={`text-lg md:text-2xl text-white mb-8 md:mb-12 transition-all duration-700 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Хранение вещей и оборудования в контейнерах в Шушарах<br />
-            Доступ 24/7
+            Надёжная аренда контейнеров в Шушарах с доступом 24/7
           </p>
           
           <div className={`flex flex-wrap gap-3 md:gap-4 transition-all duration-700 ease-out delay-200 ${
@@ -43,7 +42,7 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
               className="bg-primary hover:bg-primary-hover text-primary-foreground text-base md:text-lg px-6 md:px-8 py-4 md:py-6 h-auto font-semibold"
               onClick={onScrollToForm}
             >
-              Оставить заявку
+              Забронировать контейнер
             </Button>
             <Button 
               size="lg" 
@@ -51,7 +50,7 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
               className="text-base md:text-lg px-6 md:px-8 py-4 md:py-6 h-auto font-semibold border-2"
               onClick={onScrollToForm}
             >
-              Узнать цены
+              Рассчитать стоимость
             </Button>
           </div>
         </div>

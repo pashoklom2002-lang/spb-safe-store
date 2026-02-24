@@ -11,8 +11,6 @@ import { PrivacyPolicyDialog } from "./PrivacyPolicyDialog";
 const formSchema = z.object({
   name: z.string().trim().min(2, "Введите имя (минимум 2 символа)"),
   phone: z.string().trim().min(10, "Введите корректный телефон"),
-  containerType: z.enum(["5m", "15m", "30m"], { required_error: "Выберите размер контейнера" }),
-  rentalPeriod: z.string().trim().min(1, "Выберите срок аренды"),
 });
 
 export const ContactForm = () => {
@@ -21,8 +19,6 @@ export const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    containerType: "",
-    rentalPeriod: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -98,7 +94,7 @@ export const ContactForm = () => {
 
       // Успех
       toast.success("Заявка отправлена");
-      setFormData({ name: "", phone: "", containerType: "", rentalPeriod: "" });
+      setFormData({ name: "", phone: "" });
 
     } finally {
       // 6. setLoading(false) только в finally
@@ -161,41 +157,6 @@ export const ContactForm = () => {
                 />
               </div>
 
-              <div>
-                <Label>Размер контейнера *</Label>
-                <Select
-                  value={formData.containerType}
-                  onValueChange={(v) => setFormData({ ...formData, containerType: v })}
-                >
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Выберите размер" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="5m">5 м² — Секция</SelectItem>
-                    <SelectItem value="15m">15 м² — Личное хранение</SelectItem>
-                    <SelectItem value="30m">30 м² — Для бизнеса</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label>Срок аренды *</Label>
-                <Select
-                  value={formData.rentalPeriod}
-                  onValueChange={(v) => setFormData({ ...formData, rentalPeriod: v })}
-                >
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Выберите срок" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1 месяц">1 месяц</SelectItem>
-                    <SelectItem value="3 месяца">3 месяца</SelectItem>
-                    <SelectItem value="6 месяцев + 2 недели в подарок">6 месяцев + 2 недели в подарок</SelectItem>
-                    <SelectItem value="11 месяцев + 1 месяц в подарок">11 месяцев + 1 месяц в подарок</SelectItem>
-                    <SelectItem value="другой срок">Другой срок</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
 
               <Button type="submit" disabled={loading} className="w-full bg-primary text-black">
                 {loading ? "Отправка..." : "Оставить заявку"}
