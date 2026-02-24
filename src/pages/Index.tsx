@@ -8,6 +8,7 @@ import { LocationAdvantage } from "@/components/LocationAdvantage";
 import { Benefits } from "@/components/Benefits";
 import { Problems } from "@/components/Problems";
 import { Pricing } from "@/components/Pricing";
+import { MarketplaceSellers } from "@/components/MarketplaceSellers";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FAQ } from "@/components/FAQ";
 import { ContactForm } from "@/components/ContactForm";
@@ -50,6 +51,7 @@ const Index = () => {
         <div ref={pricingRef}>
           <Pricing onScrollToForm={scrollToForm} />
         </div>
+        <MarketplaceSellers />
         <Photos />
         <FacilityAdvantages />
         <div ref={benefitsRef}>
