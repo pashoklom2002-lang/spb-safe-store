@@ -31,7 +31,7 @@ export const Hero = ({ onScrollToForm }: HeroProps) => {
           <p className={`text-lg md:text-2xl text-white mb-8 md:mb-12 transition-all duration-700 ease-out delay-100 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Надёжная аренда контейнеров в Шушарах с доступом 24/7
+            Надёжное хранение в Шушарах с доступом 24/7 от 130 рублей в день
           </p>
           
           <div className={`flex flex-wrap gap-3 md:gap-4 transition-all duration-700 ease-out delay-200 ${
