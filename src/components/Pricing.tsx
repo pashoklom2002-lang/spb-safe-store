@@ -16,7 +16,7 @@ const containers = [
     price: "от 4 000 ₽",
   },
   {
-    type: "15 м² (20 ft)",
+    type: "15 м² / 20 футов",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
     hoverImage: container15mHover,
