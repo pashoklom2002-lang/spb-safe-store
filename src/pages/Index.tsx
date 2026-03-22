@@ -16,7 +16,7 @@ import { Footer } from "@/components/Footer";
 import { Contacts } from "@/components/Contacts";
 import { Reviews } from "@/components/Reviews";
 import { Photos } from "@/components/Photos";
-import { WheelTrigger } from "@/components/SpinWheel";
+import VenyooChat from "@/components/VenyooChat";
 
 const Index = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -69,8 +69,7 @@ const Index = () => {
         <Footer />
       </div>
       
-      {/* Wheel of Fortune trigger button */}
-      <WheelTrigger />
+      <VenyooChat />
     </main>
   );
 };

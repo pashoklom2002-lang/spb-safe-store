@@ -12,7 +12,7 @@ const SpinWheel = ({ sectors, onSpinEnd, disabled }: SpinWheelProps) => {
   const [rotation, setRotation] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
   const wheelRef = useRef<SVGGElement>(null);
-  const tickIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const tickIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { playTickSound, playSpinSound, playWinSound } = useSounds();
 
   const sectorAngle = 360 / sectors.length;
