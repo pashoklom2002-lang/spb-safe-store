@@ -1,25 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MessageCircle } from 'lucide-react';
 
+const VENYOO_SELECTOR = '.venyoo-activator, .venyoo-widget-button, [id*="venyoo"]';
+
 const VenyooChat = () => {
-  const [loaded, setLoaded] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const scriptLoaded = useRef(false);
+
+  useEffect(() => {
+    // Preload script on mount
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//api.venyoo.ru/wnew.js?wc=venyoo/default/science&widget_id=6459940496605192843';
+    script.onload = () => { scriptLoaded.current = true; };
+    document.body.appendChild(script);
+  }, []);
+
+  const clickVenyoo = () => {
+    const btn = document.querySelector(VENYOO_SELECTOR) as HTMLElement;
+    if (btn) {
+      btn.click();
+      setVisible(false);
+      return true;
+    }
+    return false;
+  };
 
   const handleClick = () => {
-    if (!loaded) {
-      setLoaded(true);
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = '//api.venyoo.ru/wnew.js?wc=venyoo/default/science&widget_id=6459940496605192843';
-      script.onload = () => {
-        // Auto-click the Venyoo widget button once loaded
-        setTimeout(() => {
-          const venyooBtn = document.querySelector('.venyoo-activator, .venyoo-widget-button, [id*="venyoo"]') as HTMLElement;
-          if (venyooBtn) venyooBtn.click();
-        }, 500);
-      };
-      document.body.appendChild(script);
-    }
+    if (clickVenyoo()) return;
+
+    // Widget element not yet in DOM — watch for it
+    const observer = new MutationObserver(() => {
+      if (clickVenyoo()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Safety timeout to disconnect observer
+    setTimeout(() => observer.disconnect(), 5000);
   };
+
+  if (!visible) return null;
 
   return (
     <button
