@@ -78,7 +78,7 @@ export const Footer = () => {
             <p className="font-medium">ИП Никитина-Шин Виктория Викторовна</p>
             <p>ОГРНИП: 325784700357201 | ИНН: 782619801384</p>
           </div>
-          <p className="font-bold text-center">© 2025 Складно тут. Все права защищены.</p>
+          <p className="font-bold text-center">© 2026 Складно тут. Все права защищены.</p>
         </div>
       </div>
     </footer>

@@ -69,8 +69,7 @@ const Index = () => {
         <Footer />
       </div>
       
-      {/* Wheel of Fortune trigger button */}
-      <WheelTrigger />
+      <VenyooChat />
     </main>
   );
 };
