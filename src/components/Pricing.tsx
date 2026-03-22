@@ -9,7 +9,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const containers = [
   {
-    type: "5 м² (7 ft)",
+    type: "5 м² / 7 футов",
     description: "Секция в контейнере",
     image: container20ft,
     hoverImage: container6mHover,
