@@ -9,21 +9,21 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const containers = [
   {
-    type: "5 м² (7 ft)",
+    type: "5 м² / 7 футов",
     description: "Секция в контейнере",
     image: container20ft,
     hoverImage: container6mHover,
     price: "от 4 000 ₽",
   },
   {
-    type: "15 м² (20 ft)",
+    type: "15 м² / 20 футов",
     description: "Для личного хранения, сезонных вещей, инвентаря, ремонта, небольшого бизнеса",
     image: container20ft,
     hoverImage: container15mHover,
     price: "от 8 400 ₽",
   },
   {
-    type: "30 м² (40 ft)",
+    type: "30 м² / 40 футов",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
     hoverImage: container30mHover,
