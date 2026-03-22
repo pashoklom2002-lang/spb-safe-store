@@ -23,7 +23,7 @@ const containers = [
     price: "от 8 400 ₽",
   },
   {
-    type: "30 м² (40 ft)",
+    type: "30 м² / 40 футов",
     description: "Для склада, e-commerce, стройки, оборудования и объёмного хранения",
     image: container40ft,
     hoverImage: container30mHover,
