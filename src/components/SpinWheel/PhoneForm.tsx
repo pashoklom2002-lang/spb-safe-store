@@ -91,7 +91,7 @@ const PhoneForm = ({ prize, onSuccess }: PhoneFormProps) => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://api.skladnotut.ru/send-to-bitrix.php', {
+      const response = await fetch('https://skladnotut.ru/send-to-bitrix.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
