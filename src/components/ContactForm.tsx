@@ -45,7 +45,7 @@ export const ContactForm = () => {
 
       try {
         try {
-          response = await fetch("https://api.skladnotut.ru/send-to-bitrix.php", {
+          response = await fetch("https://skladnotut.ru/send-to-bitrix.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(validated.data),
